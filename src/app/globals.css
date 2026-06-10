@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0807;
+  --color-bg-elevated: #14110f;
+  --color-card: #1a1614;
+  --color-card-hover: #221d1a;
+  --color-border: #2a2522;
+  --color-border-strong: #3d352f;
+  --color-text: #f5efe6;
+  --color-text-muted: #a8a098;
+  --color-text-subtle: #6f6963;
+  --color-accent: #1f6e5a;
+  --color-accent-soft: #2d8b73;
+  --color-accent-strong: #134d3e;
+  --color-gold: #c9a96a;
+  --color-gold-soft: #d4b87e;
+  --color-danger: #e07070;
+  --color-warning: #d4a851;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-tusker), "Impact", "Haettenschweiler",
+    "Arial Narrow", sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background-color: var(--color-bg);
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 50% -10%,
+        rgba(31, 110, 90, 0.08),
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 100%,
+        rgba(201, 169, 106, 0.05),
+        transparent 60%
+      );
+    background-attachment: fixed;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1 {
+    font-family: var(--font-display);
+    letter-spacing: -0.005em;
+    font-weight: 500;
+  }
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+    font-weight: 500;
+  }
+  ::selection {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+  *:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: brightness(0) saturate(100%) invert(78%) sepia(31%) saturate(459%) hue-rotate(354deg) brightness(89%) contrast(86%);
+    cursor: pointer;
+    opacity: 0.9;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+  }
+  hr {
+    border-color: var(--color-border);
+  }
+}
+
+@utility btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-medium transition disabled:opacity-50 disabled:pointer-events-none;
+  background-color: var(--color-accent);
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 14px -4px rgba(31, 110, 90, 0.5);
+  &:hover {
+    background-color: var(--color-accent-soft);
+    box-shadow: 0 6px 18px -4px rgba(45, 139, 115, 0.55);
+  }
+}
+
+@utility btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-medium transition disabled:opacity-50 disabled:pointer-events-none border bg-transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+  &:hover {
+    background-color: var(--color-card-hover);
+    border-color: var(--color-gold);
+    color: var(--color-gold-soft);
+  }
+}
+
+@utility btn-accent {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-base font-medium transition disabled:opacity-50 disabled:pointer-events-none;
+  background-color: var(--color-gold);
+  color: #1a1614;
+  &:hover {
+    background-color: var(--color-gold-soft);
+  }
+}
+
+@utility field-label {
+  @apply block text-sm font-medium mb-1.5;
+  color: var(--color-text);
+}
+
+@utility field-hint {
+  @apply text-xs mt-1;
+  color: var(--color-text-muted);
+}
+
+@utility field-error {
+  @apply text-xs mt-1;
+  color: var(--color-danger);
+}
+
+@utility input-base {
+  @apply w-full rounded-lg px-4 py-3 text-base transition;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  &::placeholder {
+    color: var(--color-text-subtle);
+  }
+  &:hover:not(:focus) {
+    border-color: var(--color-border-strong);
+  }
+  &:focus {
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(201, 169, 106, 0.18);
+    outline: none;
+  }
+}
+
+@utility card {
+  @apply rounded-xl p-5 transition;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+@utility chip {
+  @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium tracking-wide;
+  background-color: rgba(201, 169, 106, 0.1);
+  color: var(--color-gold-soft);
+  border: 1px solid rgba(201, 169, 106, 0.22);
+}
+
+@utility alert-warning {
+  @apply rounded-lg p-4 text-sm;
+  background-color: rgba(212, 168, 81, 0.07);
+  border: 1px solid rgba(212, 168, 81, 0.28);
+  color: #e8d098;
+}
+
+@utility alert-danger {
+  @apply rounded-lg p-4 text-sm;
+  background-color: rgba(224, 112, 112, 0.07);
+  border: 1px solid rgba(224, 112, 112, 0.3);
+  color: #f0b8b8;
+}
+
+@utility surface-muted {
+  @apply rounded-lg p-4;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+}
+
+@utility link-subtle {
+  color: var(--color-gold-soft);
+  text-decoration: underline;
+  text-decoration-color: rgba(201, 169, 106, 0.35);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+  &:hover {
+    text-decoration-color: var(--color-gold);
+  }
+}
+
+@utility eyebrow {
+  @apply text-xs uppercase font-medium;
+  letter-spacing: 0.18em;
+  color: var(--color-gold);
+}
