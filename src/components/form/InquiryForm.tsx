@@ -218,7 +218,7 @@ export function InquiryForm({
         <textarea
           id="description"
           rows={6}
-          placeholder="Co od akce čekáte? Catering, podnik, hudba, čas, jakákoli specifika — čím víc napíšete, tím přesněji Vám můžeme odpovědět."
+          placeholder="Co od akce čekáte? Catering, podnik, hudba, čas, jakákoli specifika — čím víc napíšete, tím přesněji vám můžeme odpovědět."
           className="input-base"
           {...register("description")}
         />

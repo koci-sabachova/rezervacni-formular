@@ -59,7 +59,7 @@ export function CateringBuilder({ menu }: Props) {
     return (
       <div className="surface-muted text-sm text-[var(--color-text-muted)]">
         Catering momentálně načítáme jinak — napište nám prosím požadavky do poznámky
-        (krok 4) a my se Vám ozveme s nabídkou.
+        (krok 4) a my se vám ozveme s nabídkou.
       </div>
     );
   }

@@ -60,7 +60,7 @@ export function ReservationCustomerEmail({
         <Container style={styles.container}>
           <Heading style={styles.h1}>Děkujeme za rezervaci, {firstName(data.name)}!</Heading>
           <Text style={styles.body1}>
-            Vaši žádost máme. Ozveme se Vám do <strong>48 hodin</strong> s potvrzením
+            Vaši žádost máme. Ozveme se vám do <strong>48 hodin</strong> s potvrzením
             (nebo s upřesňujícím dotazem) na e-mail{" "}
             <strong>{data.email}</strong>. Pokud byste chtěl/a něco upravit dříve, napište
             nám zpátky na tuto adresu nebo zavolejte.

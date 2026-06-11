@@ -48,7 +48,7 @@ const VENUE_PROFILES: Record<(typeof VENUES)[number], VenueProfile> = {
       "Večeři lze objednat z Cobry — kuchyň je společná",
     ],
     fitsYou:
-      "Sedne Vám, když chcete pivní akci, větší partu a neformální atmosféru.",
+      "Sedne vám, když chcete pivní akci, větší partu a neformální atmosféru.",
     links: [
       { label: "Stránky podniku", href: "https://www.barcobra.cz/informace/cs/" },
       {
@@ -59,7 +59,7 @@ const VENUE_PROFILES: Record<(typeof VENUES)[number], VenueProfile> = {
   },
   unsure: {
     tagline:
-      "Společně najdeme to pravé pro Vaši rezervaci.",
+      "Společně najdeme to pravé pro vaši rezervaci.",
   },
 };
 
@@ -180,7 +180,7 @@ export function Step1Basics() {
         <p className="text-sm text-[var(--color-text-muted)] mb-4">
           Cobra a Informace jsou dva podniky{" "}
           <strong className="text-[var(--color-text)]">10 metrů od sebe</strong> —
-          rádi Vám do výčepu doneseme večeři z Cobry.
+          rádi vám do výčepu doneseme večeři z Cobry.
         </p>
         <div className="grid gap-3">
           {VENUES.map((v) => {
@@ -260,9 +260,9 @@ export function Step1Basics() {
           <p className="font-medium text-[var(--color-gold-soft)]">Tip k výběru podniku</p>
           <p className="mt-1 opacity-80">
             Pro skupiny nad 30 lidí v Cobře už mluvíme o uzavřené společnosti. Pokud
-            Vám nejde primárně o koktejlové menu, bývá pro takovou partu praktičtější{" "}
+            vám nejde primárně o koktejlové menu, bývá pro takovou partu praktičtější{" "}
             <strong className="text-[var(--color-gold-soft)]">Informace</strong> — jídlo
-            z Cobry si tam stejně můžete objednat. Volba je samozřejmě na Vás.
+            z Cobry si tam stejně můžete objednat. Volba je samozřejmě na vás.
           </p>
         </div>
       )}

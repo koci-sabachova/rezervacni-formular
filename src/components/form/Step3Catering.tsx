@@ -38,7 +38,7 @@ export function Step3Catering({
         </p>
         <p className="mt-2 text-sm text-[var(--color-text-muted)]">
           Nebo to vymyslíme společně po mailu/telefonu. Pokud si myslíte na nějaké jídlo,
-          které zde nenajdete, uděláme, co bude v našich silách, abychom Vám ho zajistili.
+          které zde nenajdete, uděláme, co bude v našich silách, abychom vám ho zajistili.
         </p>
         {source === "snapshot" && (
           <p className="surface-muted mt-3 !px-3 !py-2 text-xs text-[var(--color-text-muted)]">
@@ -57,7 +57,7 @@ export function Step3Catering({
             Catering potřebujeme objednat aspoň 3 dny dopředu
           </p>
           <p className="mt-1 opacity-80">
-            Bez cateringu rezervaci přijímáme i na zítřek. Pokud Vám tento termín vyhovuje,
+            Bez cateringu rezervaci přijímáme i na zítřek. Pokud vám tento termín vyhovuje,
             můžeme catering probrat individuálně — napište to do poznámky v dalším kroku, nebo
             catering přeskočte a domluvíme detaily v odpovědi.
           </p>

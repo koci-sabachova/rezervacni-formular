@@ -27,8 +27,8 @@ export default async function PoptavkaPage({
         <p className="mt-4 max-w-prose text-[var(--color-text-muted)] leading-relaxed">
           Bar Cobra je ideální pro soukromé akce pro{" "}
           <strong className="text-[var(--color-text)]">50–100 lidí</strong>. Pronájem
-          poskytujeme formou garantované minimální útraty. Na všem se s Vámi rádi
-          dohodneme mailem, telefonicky nebo osobně, dle Vaší preference.
+          poskytujeme formou garantované minimální útraty. Na všem se s vámi rádi
+          dohodneme mailem, telefonicky nebo osobně, dle vaší preference.
         </p>
         <p className="mt-3 text-sm text-[var(--color-text-subtle)]">
           Hledáte naopak menší rezervaci?{" "}

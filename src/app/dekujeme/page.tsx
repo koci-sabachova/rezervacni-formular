@@ -22,8 +22,8 @@ export default async function ThanksPage({
         </h1>
         <p className="mt-5 text-[var(--color-text-muted)] leading-relaxed">
           {isInquiry
-            ? "Větší akce řešíme individuálně, takže Vám během několika dní zavoláme nebo napíšeme — domluvíme termín, podnik a co s cateringem."
-            : "Vaši rezervaci jsme přijali. Brzy Vám pošleme potvrzení nebo upřesňující dotaz na e-mail. Ozveme se do 48 hodin."}
+            ? "Větší akce řešíme individuálně, takže vám během několika dní zavoláme nebo napíšeme — domluvíme termín, podnik a co s cateringem."
+            : "Vaši rezervaci jsme přijali. Brzy vám pošleme potvrzení nebo upřesňující dotaz na e-mail. Ozveme se do 48 hodin."}
         </p>
         <p className="mt-3 text-sm text-[var(--color-text-subtle)]">
           Mezitím sledujte svou doručenou poštu (i složku se spamem).

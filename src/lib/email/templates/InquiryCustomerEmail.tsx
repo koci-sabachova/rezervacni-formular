@@ -31,13 +31,13 @@ export function InquiryCustomerEmail({ data }: { data: InquiryPayload }) {
   return (
     <Html lang="cs">
       <Head />
-      <Preview>Děkujeme za poptávku — ozveme se Vám zpátky</Preview>
+      <Preview>Děkujeme za poptávku — ozveme se vám zpátky</Preview>
       <Body style={styles.body}>
         <Container style={styles.container}>
           <Heading style={styles.h1}>Díky za poptávku, {first}!</Heading>
           <Text style={styles.body1}>
             Vaši představu na akci pro <strong>{data.estimatedPartySize} lidí</strong>{" "}
-            jsme přijali. Větší společnosti řešíme individuálně, takže Vám během několika
+            jsme přijali. Větší společnosti řešíme individuálně, takže vám během několika
             dní zavoláme nebo napíšeme — domluvíme termín, podnik a co s cateringem.
           </Text>
           <Text style={styles.body1}>
