@@ -11,11 +11,11 @@ export const CATERING_CATEGORIES = [
 export type CateringCategory = (typeof CATERING_CATEGORIES)[number];
 
 export const CATEGORY_LABELS: Record<CateringCategory, string> = {
-  slane_hlavni: "Hojnost, kterou nemáme v běžné nabídce na místě",
-  kanapky: "Kanapky a malé pochutiny",
-  misy: "Mísy hojnosti v libovolném množství dle budgetu",
-  mala_jidla: "Malá jídla z celodenní nabídky",
-  dort: "Dort",
+  slane_hlavni: "Sharing platters not on our regular menu",
+  kanapky: "Canapés and small bites",
+  misy: "Abundance platters in any quantity to match your budget",
+  mala_jidla: "Small dishes from our all-day menu",
+  dort: "Cake",
 };
 
 export const cateringItemSchema = z.object({

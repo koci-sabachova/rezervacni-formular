@@ -2,8 +2,8 @@
 
 import { useMemo } from "react";
 import { useFormContext } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import {
-  CATEGORY_LABELS,
   CATERING_CATEGORIES,
   type CateringCategory,
   type CateringItem,
@@ -18,6 +18,8 @@ type Props = {
 
 export function CateringBuilder({ menu }: Props) {
   const { watch, setValue } = useFormContext<ReservationInput>();
+  const t = useTranslations("catering");
+  const tSchemas = useTranslations("schemas.categories");
   const rawPicks = watch("catering") ?? [];
   const picks = rawPicks as CateringPick[];
 
@@ -34,9 +36,7 @@ export function CateringBuilder({ menu }: Props) {
   const setPick = (itemId: string, patch: Partial<CateringPick>) => {
     const idx = picks.findIndex((p) => p.itemId === itemId);
     if (idx === -1) {
-      setValue("catering", [...picks, { itemId, ...patch }], {
-        shouldDirty: true,
-      });
+      setValue("catering", [...picks, { itemId, ...patch }], { shouldDirty: true });
     } else {
       const next = [...picks];
       next[idx] = { ...next[idx], ...patch };
@@ -45,11 +45,7 @@ export function CateringBuilder({ menu }: Props) {
   };
 
   const removePick = (itemId: string) => {
-    setValue(
-      "catering",
-      picks.filter((p) => p.itemId !== itemId),
-      { shouldDirty: true },
-    );
+    setValue("catering", picks.filter((p) => p.itemId !== itemId), { shouldDirty: true });
   };
 
   const getPick = (itemId: string): CateringPick | undefined =>
@@ -58,8 +54,7 @@ export function CateringBuilder({ menu }: Props) {
   if (menu.length === 0) {
     return (
       <div className="surface-muted text-sm text-[var(--color-text-muted)]">
-        Catering momentálně načítáme jinak — napište nám prosím požadavky do poznámky
-        (krok 4) a my se vám ozveme s nabídkou.
+        {t("empty")}
       </div>
     );
   }
@@ -71,9 +66,7 @@ export function CateringBuilder({ menu }: Props) {
         if (!items || items.length === 0) return null;
         return (
           <section key={cat}>
-            <h3 className="mb-3 eyebrow !text-[11px]">
-              {CATEGORY_LABELS[cat]}
-            </h3>
+            <h3 className="mb-3 eyebrow !text-[11px]">{tSchemas(cat)}</h3>
             <div className="space-y-2">
               {items.map((item) => (
                 <CateringItemRow
@@ -82,6 +75,7 @@ export function CateringBuilder({ menu }: Props) {
                   pick={getPick(item.id)}
                   onSet={(patch) => setPick(item.id, patch)}
                   onRemove={() => removePick(item.id)}
+                  t={t}
                 />
               ))}
             </div>
@@ -97,11 +91,13 @@ function CateringItemRow({
   pick,
   onSet,
   onRemove,
+  t,
 }: {
   item: CateringItem;
   pick: CateringPick | undefined;
   onSet: (patch: Partial<CateringPick>) => void;
   onRemove: () => void;
+  t: ReturnType<typeof useTranslations>;
 }) {
   const isBudget = item.cena === "individualne";
   const isCake = item.kategorie === "dort";
@@ -116,11 +112,11 @@ function CateringItemRow({
         <div className="flex-1">
           <p className="font-medium text-[var(--color-text)]">{item.nazev}</p>
           <p className="text-xs text-[var(--color-text-subtle)]">
-            {item.popis ?? "Množství upravíme podle rozpočtu."} · {item.jednotka}
+            {item.popis ?? t("budgetDefault")} · {item.jednotka}
           </p>
         </div>
         <label className="flex items-center gap-2 text-sm">
-          <span className="text-[var(--color-text-muted)]">Rozpočet (Kč)</span>
+          <span className="text-[var(--color-text-muted)]">{t("budgetLabel")}</span>
           <input
             type="number"
             inputMode="numeric"
@@ -139,7 +135,7 @@ function CateringItemRow({
     );
   }
 
-  if (hasPricedVariants) {
+  if (hasPricedVariants || isCake) {
     const variant = pick?.variant ?? "";
     const count = pick?.count ?? 0;
     const variants = item.varianty ?? [];
@@ -154,6 +150,7 @@ function CateringItemRow({
         : priceRange.length > 0
           ? `${priceRange.join(" / ")} Kč`
           : formatCzk(item.cena as number);
+
     return (
       <div className="card space-y-2">
         <div className="flex items-start justify-between gap-3">
@@ -163,11 +160,11 @@ function CateringItemRow({
               <p className="text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
             )}
             <p className="text-xs text-[var(--color-text-subtle)]">
-              {item.jednotka} · {priceLabel}
+              {item.jednotka}{hasPricedVariants ? ` · ${priceLabel}` : ` · ${formatCzk(item.cena as number)}`}
             </p>
           </div>
           {pick && count > 0 && (
-            <span className="chip">{count}× v košíku</span>
+            <span className="chip">{count}× {t("inCart")}</span>
           )}
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
@@ -176,18 +173,14 @@ function CateringItemRow({
             value={variant}
             onChange={(e) => {
               const v = e.target.value;
-              if (!v) {
-                onRemove();
-              } else {
-                onSet({ variant: v, count: count || 1 });
-              }
+              if (!v) onRemove();
+              else onSet({ variant: v, count: count || 1 });
             }}
           >
-            <option value="">Vyberte variantu</option>
+            <option value="">{t("selectVariant")}</option>
             {variants.map((v) => (
               <option key={v} value={v}>
-                {v}
-                {prices[v] !== undefined ? ` — ${formatCzk(prices[v])}` : ""}
+                {v}{hasPricedVariants && prices[v] !== undefined ? ` — ${formatCzk(prices[v])}` : ""}
               </option>
             ))}
           </select>
@@ -199,57 +192,7 @@ function CateringItemRow({
               if (n <= 0) onRemove();
               else onSet({ variant, count: n });
             }}
-          />
-        </div>
-      </div>
-    );
-  }
-
-  if (isCake) {
-    const variant = pick?.variant ?? "";
-    const count = pick?.count ?? 0;
-    const variants = item.varianty ?? [];
-    return (
-      <div className="card space-y-2">
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex-1">
-            <p className="font-medium text-[var(--color-text)]">{item.nazev}</p>
-            <p className="text-xs text-[var(--color-text-subtle)]">
-              {item.jednotka} · {formatCzk(item.cena as number)}
-            </p>
-          </div>
-          {pick && count > 0 && (
-            <span className="chip">{count}× v košíku</span>
-          )}
-        </div>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
-          <select
-            className="input-base !py-2 sm:max-w-xs"
-            value={variant}
-            onChange={(e) => {
-              const v = e.target.value;
-              if (!v) {
-                onRemove();
-              } else {
-                onSet({ variant: v, count: count || 1 });
-              }
-            }}
-          >
-            <option value="">Vyberte variantu</option>
-            {variants.map((v) => (
-              <option key={v} value={v}>
-                {v}
-              </option>
-            ))}
-          </select>
-          <CountStepper
-            value={count}
-            min={1}
-            disabled={!variant}
-            onChange={(n) => {
-              if (n <= 0) onRemove();
-              else onSet({ variant, count: n });
-            }}
+            t={t}
           />
         </div>
       </div>
@@ -265,7 +208,7 @@ function CateringItemRow({
           {item.jednotka} · {formatCzk(item.cena as number)}
           {isKanapky && (
             <span className="ml-2 text-[var(--color-gold)]">
-              (min. {min} ks od jednoho druhu)
+              ({t("minPcs", { min })})
             </span>
           )}
         </p>
@@ -277,6 +220,7 @@ function CateringItemRow({
           if (n <= 0) onRemove();
           else onSet({ count: n });
         }}
+        t={t}
       />
     </div>
   );
@@ -287,11 +231,13 @@ function CountStepper({
   min,
   disabled,
   onChange,
+  t,
 }: {
   value: number;
   min: number;
   disabled?: boolean;
   onChange: (next: number) => void;
+  t: ReturnType<typeof useTranslations>;
 }) {
   const decrement = () => {
     if (value === 0) return;
@@ -306,7 +252,7 @@ function CountStepper({
     <div className="flex items-center gap-2">
       <button
         type="button"
-        aria-label="Ubrat"
+        aria-label="Remove"
         className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] text-lg text-[var(--color-text)] transition hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] disabled:opacity-40 disabled:hover:border-[var(--color-border)] disabled:hover:text-[var(--color-text)]"
         onClick={decrement}
         disabled={disabled || value === 0}
@@ -323,10 +269,7 @@ function CountStepper({
         disabled={disabled}
         onChange={(e) => {
           const n = Number(e.target.value);
-          if (Number.isNaN(n) || n <= 0) {
-            onChange(0);
-            return;
-          }
+          if (Number.isNaN(n) || n <= 0) { onChange(0); return; }
           if (n < min) onChange(min);
           else onChange(Math.floor(n));
         }}
@@ -334,7 +277,7 @@ function CountStepper({
       />
       <button
         type="button"
-        aria-label="Přidat"
+        aria-label="Add"
         className="grid h-9 w-9 place-items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] text-lg text-[var(--color-text)] transition hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] disabled:opacity-40 disabled:hover:border-[var(--color-border)] disabled:hover:text-[var(--color-text)]"
         onClick={increment}
         disabled={disabled}
@@ -347,6 +290,7 @@ function CountStepper({
 
 export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
   const { watch } = useFormContext<ReservationInput>();
+  const t = useTranslations("catering");
   const picks = (watch("catering") ?? []) as CateringPick[];
   const priced = priceCatering(picks, menu);
 
@@ -358,8 +302,7 @@ export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
         <div className="text-sm">
           <span className="eyebrow !text-[10px]">Catering</span>
           <span className="ml-2 text-[var(--color-text-muted)]">
-            {priced.lines.length}{" "}
-            {priced.lines.length === 1 ? "položka" : "položek"}
+            {t("items", { count: priced.lines.length })}
           </span>
         </div>
         <div className="text-right">
@@ -367,7 +310,7 @@ export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
             {formatCzk(priced.total)}
             {priced.hasEstimates && (
               <span className="ml-1 text-xs font-sans text-[var(--color-text-subtle)]">
-                (vč. odhadů)
+                ({t("inclEstimates")})
               </span>
             )}
           </div>

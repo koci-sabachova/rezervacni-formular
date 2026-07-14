@@ -9,6 +9,7 @@ import {
   Text,
 } from "@react-email/components";
 import type { InquiryPayload } from "@/lib/schemas/inquiry";
+import { emailMsg } from "../messages";
 
 const styles = {
   body: { backgroundColor: "#faf8f5", fontFamily: "Inter, Arial, sans-serif" },
@@ -26,27 +27,34 @@ const styles = {
   hr: { borderColor: "#e7e5e4", margin: "20px 0" },
 };
 
-export function InquiryCustomerEmail({ data }: { data: InquiryPayload }) {
-  const first = data.name.trim().split(" ")[0];
+export function InquiryCustomerEmail({
+  data,
+  locale = "en",
+}: {
+  data: InquiryPayload;
+  locale?: string;
+}) {
+  const t = (path: string, vars?: Record<string, string | number>) =>
+    emailMsg(locale, path, vars);
+
+  const firstName = data.name.trim().split(" ")[0];
+  const body1Strong = t("emailInquiryCustomer.body1Strong", { count: data.estimatedPartySize });
+  const body1Template = t("emailInquiryCustomer.body1");
+  const body1Parts = body1Template.split("{strong}");
+
   return (
-    <Html lang="cs">
+    <Html lang={locale}>
       <Head />
-      <Preview>Děkujeme za poptávku — ozveme se vám zpátky</Preview>
+      <Preview>{t("emailInquiryCustomer.preview")}</Preview>
       <Body style={styles.body}>
         <Container style={styles.container}>
-          <Heading style={styles.h1}>Díky za poptávku, {first}!</Heading>
+          <Heading style={styles.h1}>{t("emailInquiryCustomer.heading", { name: firstName })}</Heading>
           <Text style={styles.body1}>
-            Vaši představu na akci pro <strong>{data.estimatedPartySize} lidí</strong>{" "}
-            jsme přijali. Větší společnosti řešíme individuálně, takže vám během několika
-            dní zavoláme nebo napíšeme — domluvíme termín, podnik a co s cateringem.
+            {body1Parts[0]}<strong>{body1Strong}</strong>{body1Parts[1] ?? ""}
           </Text>
-          <Text style={styles.body1}>
-            Pokud máte mezitím doplnění nebo otázku, odpovězte nám rovnou na tento e-mail.
-          </Text>
+          <Text style={styles.body1}>{t("emailInquiryCustomer.body2")}</Text>
           <Hr style={styles.hr} />
-          <Text style={styles.small}>
-            Cobra &amp; Informace · Praha · rezervace@barcobra.cz
-          </Text>
+          <Text style={styles.small}>{t("emailInquiryCustomer.footer")}</Text>
         </Container>
       </Body>
     </Html>

@@ -32,7 +32,7 @@ export function priceCatering(
         pick,
         lineTotal: budget,
         isEstimate: true,
-        label: `${item.nazev} — odhad ${budget.toLocaleString("cs-CZ")} Kč`,
+        label: `${item.nazev} — est. ${budget.toLocaleString("en-US")} Kč`,
       });
       continue;
     }
@@ -65,5 +65,5 @@ export function priceCatering(
 }
 
 export function formatCzk(amount: number): string {
-  return `${amount.toLocaleString("cs-CZ")} Kč`;
+  return `${amount.toLocaleString("en-US")} Kč`;
 }

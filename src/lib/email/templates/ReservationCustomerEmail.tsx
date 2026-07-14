@@ -10,12 +10,9 @@ import {
   Text,
 } from "@react-email/components";
 import type { PricedCatering } from "@/lib/schemas/catering";
-import {
-  EVENT_TYPE_LABELS,
-  VENUE_LABELS,
-  type ReservationPayload,
-} from "@/lib/schemas/reservation";
+import type { ReservationPayload } from "@/lib/schemas/reservation";
 import { formatLongDate } from "@/lib/utils/dates";
+import { emailMsg } from "../messages";
 
 const styles = {
   body: { backgroundColor: "#faf8f5", fontFamily: "Inter, Arial, sans-serif" },
@@ -46,36 +43,45 @@ const styles = {
 export function ReservationCustomerEmail({
   data,
   pricedCatering,
+  locale = "en",
 }: {
   data: ReservationPayload;
   pricedCatering: PricedCatering;
+  locale?: string;
 }) {
+  const t = (path: string, vars?: Record<string, string | number>) =>
+    emailMsg(locale, path, vars);
+
+  const venueLabel = t(`schemas.venues.${data.venue}`);
+  const eventTypeLabel = data.eventType ? t(`schemas.eventTypes.${data.eventType}`) : "—";
+  const longDate = formatLongDate(data.date, locale);
+  const firstName = firstNameOf(data.name);
+
+  const bodyTemplate = t("emailReservationCustomer.body", { email: data.email });
+  const bodyStrong = t("emailReservationCustomer.bodyStrong");
+  const bodyParts = bodyTemplate.split("{strong}");
+
   return (
-    <Html lang="cs">
+    <Html lang={locale}>
       <Head />
-      <Preview>
-        Děkujeme za rezervaci, ozveme se do 48 hodin · Cobra &amp; Informace
-      </Preview>
+      <Preview>{t("emailReservationCustomer.preview")}</Preview>
       <Body style={styles.body}>
         <Container style={styles.container}>
-          <Heading style={styles.h1}>Děkujeme za rezervaci, {firstName(data.name)}!</Heading>
+          <Heading style={styles.h1}>{t("emailReservationCustomer.heading", { name: firstName })}</Heading>
           <Text style={styles.body1}>
-            Vaši žádost máme. Ozveme se vám do <strong>48 hodin</strong> s potvrzením
-            (nebo s upřesňujícím dotazem) na e-mail{" "}
-            <strong>{data.email}</strong>. Pokud byste chtěl/a něco upravit dříve, napište
-            nám zpátky na tuto adresu nebo zavolejte.
+            {bodyParts[0]}<strong>{bodyStrong}</strong>{bodyParts[1] ?? ""}
           </Text>
 
           <Hr style={styles.hr} />
 
-          <Text style={styles.label}>Vaše shrnutí</Text>
+          <Text style={styles.label}>{t("emailReservationCustomer.summaryLabel")}</Text>
 
           <Text style={styles.value}>
-            <strong>{formatLongDate(data.date)}</strong> od {data.time}
+            <strong>{longDate}</strong> {t("emailReservationOperator.from", { time: data.time })}
             <br />
-            {data.partySize} lidí · {VENUE_LABELS[data.venue]}
+            {data.partySize} guests · {venueLabel}
             <br />
-            {data.eventType ? EVENT_TYPE_LABELS[data.eventType] : "—"}
+            {eventTypeLabel}
             {data.eventType === "jine" && data.eventTypeOther
               ? ` (${data.eventTypeOther})`
               : ""}
@@ -83,45 +89,41 @@ export function ReservationCustomerEmail({
 
           {pricedCatering.lines.length > 0 && (
             <>
-              <Text style={styles.label}>Catering</Text>
+              <Text style={styles.label}>{t("emailReservationCustomer.cateringLabel")}</Text>
               {pricedCatering.lines.map((line, i) => (
                 <Text key={i} style={styles.cateringRow}>
                   • {line.label}
                 </Text>
               ))}
               <Text style={styles.total}>
-                Předběžně:{" "}
-                {pricedCatering.total.toLocaleString("cs-CZ")} Kč
-                {pricedCatering.hasEstimates && " (vč. odhadů u mís)"}
+                {t("emailReservationCustomer.preliminary", {
+                  amount: pricedCatering.total.toLocaleString("en-US"),
+                })}
+                {pricedCatering.hasEstimates
+                  ? ` (${t("emailReservationCustomer.inclEstimates")})`
+                  : ""}
               </Text>
             </>
           )}
 
           {data.note && (
-            <>
-              <Text style={styles.label}>Vaše poznámka</Text>
-              <Text style={{ ...styles.value, whiteSpace: "pre-wrap" }}>
-                {data.note}
-              </Text>
-            </>
+            <Section>
+              <Text style={styles.label}>{t("emailReservationCustomer.noteLabel")}</Text>
+              <Text style={{ ...styles.value, whiteSpace: "pre-wrap" }}>{data.note}</Text>
+            </Section>
           )}
 
           <Hr style={styles.hr} />
 
-          <Text style={styles.small}>
-            Tento e-mail je automatická kopie. Odpovědět nám můžete přímo na něj —
-            chodí nám rovnou do schránky.
-          </Text>
-          <Text style={styles.small}>
-            Cobra &amp; Informace · Praha · rezervace@barcobra.cz
-          </Text>
+          <Text style={styles.small}>{t("emailReservationCustomer.footerCopy")}</Text>
+          <Text style={styles.small}>{t("emailReservationCustomer.footerContact")}</Text>
         </Container>
       </Body>
     </Html>
   );
 }
 
-function firstName(full: string): string {
+function firstNameOf(full: string): string {
   const trimmed = full.trim();
   const space = trimmed.indexOf(" ");
   return space > 0 ? trimmed.slice(0, space) : trimmed;

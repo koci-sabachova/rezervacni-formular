@@ -10,12 +10,9 @@ import {
   Text,
 } from "@react-email/components";
 import type { PricedCatering } from "@/lib/schemas/catering";
-import {
-  EVENT_TYPE_LABELS,
-  VENUE_LABELS,
-  type ReservationPayload,
-} from "@/lib/schemas/reservation";
+import type { ReservationPayload } from "@/lib/schemas/reservation";
 import { formatLongDate } from "@/lib/utils/dates";
+import { emailMsg } from "../messages";
 
 const styles = {
   body: { backgroundColor: "#faf8f5", fontFamily: "Inter, Arial, sans-serif" },
@@ -46,49 +43,52 @@ const styles = {
 export function ReservationOperatorEmail({
   data,
   pricedCatering,
+  locale = "en",
 }: {
   data: ReservationPayload;
   pricedCatering: PricedCatering;
+  locale?: string;
 }) {
-  const eventTypeLabel = data.eventType ? EVENT_TYPE_LABELS[data.eventType] : "—";
+  const t = (path: string, vars?: Record<string, string | number>) =>
+    emailMsg(locale, path, vars);
+
+  const venueLabel = t(`schemas.venues.${data.venue}`);
+  const eventTypeLabel = data.eventType ? t(`schemas.eventTypes.${data.eventType}`) : "—";
+  const longDate = formatLongDate(data.date, locale);
 
   return (
-    <Html lang="cs">
+    <Html lang={locale}>
       <Head />
-      <Preview>
-        {`Nová rezervace · ${formatLongDate(data.date)} · ${data.partySize} lidí`}
-      </Preview>
+      <Preview>{t("emailReservationOperator.preview", { date: longDate, count: data.partySize })}</Preview>
       <Body style={styles.body}>
         <Container style={styles.container}>
-          <Heading style={styles.h1}>Nová rezervace</Heading>
-          <Text style={styles.small}>
-            Cobra &amp; Informace · vyplněno přes web
-          </Text>
+          <Heading style={styles.h1}>{t("emailReservationOperator.heading")}</Heading>
+          <Text style={styles.small}>{t("emailReservationOperator.submittedVia")}</Text>
 
           <Hr style={styles.hr} />
 
           <Section>
-            <Text style={styles.label}>Kontakt</Text>
+            <Text style={styles.label}>{t("emailReservationOperator.contact")}</Text>
             <Text style={styles.value}>
               <strong>{data.name}</strong>
               <br />
               {data.phone} · {data.email}
             </Text>
 
-            <Text style={styles.label}>Datum &amp; čas</Text>
+            <Text style={styles.label}>{t("emailReservationOperator.dateTime")}</Text>
             <Text style={styles.value}>
-              {formatLongDate(data.date)}
+              {longDate}
               <br />
-              od {data.time}
+              {t("emailReservationOperator.from", { time: data.time })}
             </Text>
 
-            <Text style={styles.label}>Počet lidí</Text>
+            <Text style={styles.label}>{t("emailReservationOperator.guests")}</Text>
             <Text style={styles.value}>{String(data.partySize)}</Text>
 
-            <Text style={styles.label}>Podnik</Text>
-            <Text style={styles.value}>{VENUE_LABELS[data.venue]}</Text>
+            <Text style={styles.label}>{t("emailReservationOperator.venue")}</Text>
+            <Text style={styles.value}>{venueLabel}</Text>
 
-            <Text style={styles.label}>Typ akce</Text>
+            <Text style={styles.label}>{t("emailReservationOperator.eventType")}</Text>
             <Text style={styles.value}>
               {eventTypeLabel}
               {data.eventType === "jine" && data.eventTypeOther
@@ -100,24 +100,25 @@ export function ReservationOperatorEmail({
           <Hr style={styles.hr} />
 
           <Section>
-            <Text style={styles.label}>Catering</Text>
+            <Text style={styles.label}>{t("emailReservationOperator.catering")}</Text>
             {pricedCatering.lines.length === 0 ? (
-              <Text style={styles.value}>Bez cateringu</Text>
+              <Text style={styles.value}>{t("emailReservationOperator.noCatering")}</Text>
             ) : (
               <>
                 {pricedCatering.lines.map((line, i) => (
                   <Text key={i} style={styles.cateringRow}>
                     • {line.label}{" "}
                     <span style={styles.cateringTotal}>
-                      ({line.lineTotal.toLocaleString("cs-CZ")} Kč
-                      {line.isEstimate ? ", odhad" : ""})
+                      ({line.lineTotal.toLocaleString("en-US")} Kč
+                      {line.isEstimate ? `, ${t("emailReservationOperator.estimate")}` : ""})
                     </span>
                   </Text>
                 ))}
                 <Text style={styles.total}>
-                  Celkem:{" "}
-                  {pricedCatering.total.toLocaleString("cs-CZ")} Kč
-                  {pricedCatering.hasEstimates && " (vč. odhadů)"}
+                  {t("emailReservationOperator.total", {
+                    amount: pricedCatering.total.toLocaleString("en-US"),
+                  })}
+                  {pricedCatering.hasEstimates && ` (${t("emailReservationOperator.inclEstimates")})`}
                 </Text>
               </>
             )}
@@ -127,7 +128,7 @@ export function ReservationOperatorEmail({
             <>
               <Hr style={styles.hr} />
               <Section>
-                <Text style={styles.label}>Poznámka od hosta</Text>
+                <Text style={styles.label}>{t("emailReservationOperator.note")}</Text>
                 <Text style={{ ...styles.value, whiteSpace: "pre-wrap" }}>
                   {data.note}
                 </Text>
@@ -136,10 +137,7 @@ export function ReservationOperatorEmail({
           )}
 
           <Hr style={styles.hr} />
-          <Text style={styles.small}>
-            Host očekává odpověď do 48 hodin (text auto-replyu mu to slibuje).
-            Odpovídej z této schránky nebo přepošli na vlastní e-mail.
-          </Text>
+          <Text style={styles.small}>{t("emailReservationOperator.footer")}</Text>
         </Container>
       </Body>
     </Html>

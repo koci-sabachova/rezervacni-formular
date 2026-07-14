@@ -1,8 +1,9 @@
 "use server";
 
 import { headers } from "next/headers";
+import { getTranslations } from "next-intl/server";
 import {
-  inquirySchema,
+  createInquirySchema,
   type InquiryInput,
   type InquiryPayload,
 } from "@/lib/schemas/inquiry";
@@ -15,19 +16,23 @@ export type SubmitInquiryResult = { ok: true } | { ok: false; error: string };
 
 export async function submitInquiry(
   input: InquiryInput,
+  locale: string = "en",
 ): Promise<SubmitInquiryResult> {
+  const tActions = await getTranslations({ locale, namespace: "actions" });
+
   if (input.honeypot && input.honeypot.length > 0) {
     return { ok: true };
   }
 
-  const parsed = inquirySchema.safeParse(input);
+  const schema = createInquirySchema();
+  const parsed = schema.safeParse(input);
   if (!parsed.success) {
     const first = parsed.error.issues[0];
     return {
       ok: false,
       error: first
-        ? `Údaje nejsou kompletní: ${first.message}`
-        : "Údaje nejsou kompletní.",
+        ? tActions("incompleteWithMsg", { message: first.message })
+        : tActions("incomplete"),
     };
   }
   const data: InquiryPayload = parsed.data;
@@ -39,32 +44,27 @@ export async function submitInquiry(
     undefined;
   const turnstile = await verifyTurnstile(data.turnstileToken, ip);
   if (!turnstile.ok) {
-    return {
-      ok: false,
-      error:
-        "Nepodařilo se ověřit, že nejste robot. Obnovte stránku a zkuste to znovu.",
-    };
+    return { ok: false, error: tActions("turnstile") };
   }
 
   const operatorRes = await sendEmail({
     audience: "operator",
-    subject: `Poptávka · ${data.estimatedPartySize} lidí · ${data.name}`,
-    react: InquiryOperatorEmail({ data }),
+    subject: tActions("inquirySubjectOperator", {
+      count: data.estimatedPartySize,
+      name: data.name,
+    }),
+    react: InquiryOperatorEmail({ data, locale }),
     replyTo: data.email,
   });
   if (!operatorRes.ok) {
-    return {
-      ok: false,
-      error:
-        "Něco se pokazilo při odesílání. Zkuste to prosím za chvíli znovu, nebo nám napište na rezervace@barcobra.cz.",
-    };
+    return { ok: false, error: tActions("sendError") };
   }
 
   const customerRes = await sendEmail({
     audience: "customer",
     to: data.email,
-    subject: "Děkujeme za poptávku · Cobra & Informace",
-    react: InquiryCustomerEmail({ data }),
+    subject: tActions("inquirySubjectCustomer"),
+    react: InquiryCustomerEmail({ data, locale }),
   });
   if (!customerRes.ok) {
     console.warn("[inquiry] customer auto-reply failed:", customerRes.error);

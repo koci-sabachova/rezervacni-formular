@@ -1,5 +1,10 @@
 import { addDays, format, isAfter, isEqual, parseISO, startOfDay } from "date-fns";
 import { cs } from "date-fns/locale";
+import { enUS } from "date-fns/locale";
+
+function dateFnsLocale(locale: string) {
+  return locale === "cs" ? cs : enUS;
+}
 
 export function todayLocal(): Date {
   return startOfDay(new Date());
@@ -34,19 +39,18 @@ export function isDateAtLeast(iso: string | undefined | null, minDaysAhead: numb
   return days >= minDaysAhead;
 }
 
-export function formatLongDate(iso: string | undefined | null): string {
+export function formatLongDate(iso: string | undefined | null, locale: string = "en"): string {
   const d = isoToDate(iso);
   if (!d) return "—";
-  return format(d, "EEEE d. MMMM yyyy", { locale: cs });
+  return format(d, "EEEE d. MMMM yyyy", { locale: dateFnsLocale(locale) });
 }
 
-export function formatShortDate(iso: string | undefined | null): string {
+export function formatShortDate(iso: string | undefined | null, locale: string = "en"): string {
   const d = isoToDate(iso);
   if (!d) return "—";
-  return format(d, "d. M. yyyy", { locale: cs });
+  return format(d, "d. M. yyyy", { locale: dateFnsLocale(locale) });
 }
 
-/** True if date >= tomorrow. */
 export function isFutureDate(iso: string | undefined | null): boolean {
   const d = isoToDate(iso);
   if (!d) return false;

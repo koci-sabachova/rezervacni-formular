@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { FormProvider, useForm, type FieldPath } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
 import {
-  reservationSchema,
+  createReservationSchema,
   MAX_PARTY_SIZE_MAIN,
   type ReservationInput,
+  type ReservationValidationMessages,
 } from "@/lib/schemas/reservation";
 import type { CateringMenu } from "@/lib/sheets/fetch";
 import { StepIndicator } from "./StepIndicator";
@@ -17,27 +19,13 @@ import { Step4Contact } from "./Step4Contact";
 import { TurnstileWidget } from "./Turnstile";
 import { submitReservation } from "@/app/actions/submit-reservation";
 
-const DRAFT_KEY = "rezervace-draft-v2";
+const DRAFT_KEY = "reservation-draft-v2";
 const TOTAL_STEPS = 3;
 
 const STEP_FIELDS: Record<number, FieldPath<ReservationInput>[]> = {
   1: ["date", "time", "partySize", "venue", "eventType", "eventTypeOther"],
   2: ["catering"],
   3: ["name", "phone", "email", "note", "gdpr", "honeypot"],
-};
-
-const FIELD_LABELS: Partial<Record<FieldPath<ReservationInput>, string>> = {
-  date: "datum",
-  time: "začátek",
-  partySize: "počet lidí",
-  venue: "podnik",
-  eventType: "typ akce",
-  eventTypeOther: "upřesnění typu akce",
-  catering: "catering",
-  name: "jméno",
-  phone: "telefon",
-  email: "e-mail",
-  gdpr: "souhlas se zpracováním údajů",
 };
 
 const DEFAULT_VALUES: ReservationInput = {
@@ -59,6 +47,46 @@ const DEFAULT_VALUES: ReservationInput = {
 
 export function ReservationForm({ menu }: { menu: CateringMenu }) {
   const router = useRouter();
+  const locale = useLocale();
+  const t = useTranslations("reservationForm");
+  const tVal = useTranslations("validation");
+
+  const validationMsgs = useMemo<ReservationValidationMessages>(
+    () => ({
+      date: tVal("date"),
+      time: tVal("time"),
+      phoneMin: tVal("phoneMin"),
+      phoneRegex: tVal("phoneRegex"),
+      email: tVal("email"),
+      partySizeInt: tVal("partySizeInt"),
+      partySizeMin: tVal("partySizeMin"),
+      partySizeMax: tVal("partySizeMax"),
+      name: tVal("name"),
+      gdpr: tVal("gdprReservation"),
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [locale],
+  );
+
+  const schema = useMemo(
+    () => createReservationSchema(validationMsgs).schema,
+    [validationMsgs],
+  );
+
+  const fieldLabels: Partial<Record<FieldPath<ReservationInput>, string>> = {
+    date: t("fieldDate"),
+    time: t("fieldTime"),
+    partySize: t("fieldPartySize"),
+    venue: t("fieldVenue"),
+    eventType: t("fieldEventType"),
+    eventTypeOther: t("fieldEventTypeOther"),
+    catering: t("fieldCatering"),
+    name: t("fieldName"),
+    phone: t("fieldPhone"),
+    email: t("fieldEmail"),
+    gdpr: t("fieldGdpr"),
+  };
+
   const [step, setStep] = useState(1);
   const [serverError, setServerError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,7 +94,7 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
 
   const methods = useForm<ReservationInput>({
     defaultValues: DEFAULT_VALUES,
-    resolver: zodResolver(reservationSchema),
+    resolver: zodResolver(schema),
     mode: "onChange",
     shouldUnregister: false,
   });
@@ -74,13 +102,8 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(DRAFT_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        methods.reset({ ...DEFAULT_VALUES, ...parsed });
-      }
-    } catch {
-      /* ignore */
-    }
+      if (raw) methods.reset({ ...DEFAULT_VALUES, ...JSON.parse(raw) });
+    } catch { /* ignore */ }
     setHydrated(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -89,16 +112,10 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
     if (!hydrated) return;
     const sub = methods.watch((values) => {
       try {
-        const { turnstileToken: _t, honeypot: _h, ...persisted } = values as Record<
-          string,
-          unknown
-        >;
-        void _t;
-        void _h;
+        const { turnstileToken: _t, honeypot: _h, ...persisted } = values as Record<string, unknown>;
+        void _t; void _h;
         localStorage.setItem(DRAFT_KEY, JSON.stringify(persisted));
-      } catch {
-        /* ignore */
-      }
+      } catch { /* ignore */ }
     });
     return () => sub.unsubscribe();
   }, [methods, hydrated]);
@@ -111,8 +128,8 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
   const missingFields =
     stepErrorStep !== null
       ? STEP_FIELDS[stepErrorStep]
-          .filter((f) => errors[f] && FIELD_LABELS[f])
-          .map((f) => FIELD_LABELS[f]!)
+          .filter((f) => errors[f] && fieldLabels[f])
+          .map((f) => fieldLabels[f]!)
       : [];
 
   async function goNext() {
@@ -127,9 +144,7 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
     }
   }
 
-  useEffect(() => {
-    setStepErrorStep(null);
-  }, [step]);
+  useEffect(() => { setStepErrorStep(null); }, [step]);
 
   function handleSubmitError() {
     const errs = methods.formState.errors as Record<string, unknown>;
@@ -137,10 +152,7 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
       const fieldsWithErrors = STEP_FIELDS[s].filter((f) => errs[f]);
       if (fieldsWithErrors.length > 0) {
         setStepErrorStep(s);
-        if (s !== step) {
-          setStep(s);
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
+        if (s !== step) { setStep(s); window.scrollTo({ top: 0, behavior: "smooth" }); }
         return;
       }
     }
@@ -162,53 +174,36 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
     setServerError(null);
     setIsSubmitting(true);
     try {
-      const result = await submitReservation(values);
+      const result = await submitReservation(values, locale);
       if (result.ok) {
-        try {
-          localStorage.removeItem(DRAFT_KEY);
-        } catch {
-          /* ignore */
-        }
-        router.push("/dekujeme");
+        try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
+        router.push(`/${locale}/thank-you`);
       } else {
         setServerError(result.error);
         setIsSubmitting(false);
       }
     } catch (err) {
       console.error(err);
-      setServerError(
-        "Něco se pokazilo při odesílání. Zkuste to prosím za chvíli znovu, nebo nám napište na rezervace@barcobra.cz.",
-      );
+      setServerError(t("serverError"));
       setIsSubmitting(false);
     }
   }
 
   return (
     <FormProvider {...methods}>
-      <form
-        onSubmit={methods.handleSubmit(onSubmit, handleSubmitError)}
-        className="space-y-6"
-        noValidate
-      >
+      <form onSubmit={methods.handleSubmit(onSubmit, handleSubmitError)} className="space-y-6" noValidate>
         <StepIndicator current={step} total={TOTAL_STEPS} />
 
         {step === 1 && <Step1Basics />}
         {step === 2 && (
-          <Step3Catering
-            menu={menu.items}
-            source={menu.source}
-            onSkip={skipCatering}
-          />
+          <Step3Catering menu={menu.items} source={menu.source} onSkip={skipCatering} />
         )}
         {step === 3 && (
           <div className="space-y-6">
             <Step4Contact />
             <TurnstileWidget
               onToken={(token) =>
-                methods.setValue("turnstileToken", token, {
-                  shouldDirty: false,
-                  shouldValidate: false,
-                })
+                methods.setValue("turnstileToken", token, { shouldDirty: false, shouldValidate: false })
               }
             />
             {serverError && <div className="alert-danger">{serverError}</div>}
@@ -217,40 +212,26 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
 
         {showStepError && (
           <div role="alert" className="alert-danger">
-            <p className="font-medium">Potřebujeme vědět ještě něco…</p>
+            <p className="font-medium">{t("stepErrorTitle")}</p>
             {missingFields.length > 0 ? (
-              <p className="mt-1 opacity-80">
-                Doplňte prosím: {missingFields.join(", ")}.
-              </p>
+              <p className="mt-1 opacity-80">{t("stepErrorFill", { fields: missingFields.join(", ") })}</p>
             ) : (
-              <p className="mt-1 opacity-80">
-                Mrkněte výš na pole označená červeně a doplňte je.
-              </p>
+              <p className="mt-1 opacity-80">{t("stepErrorRed")}</p>
             )}
           </div>
         )}
 
         <div className="flex flex-col-reverse gap-2 pt-2 sm:flex-row sm:items-center sm:justify-between">
-          <button
-            type="button"
-            onClick={goBack}
-            disabled={step === 1}
-            className="btn-ghost"
-          >
-            Zpět
+          <button type="button" onClick={goBack} disabled={step === 1} className="btn-ghost">
+            {t("back")}
           </button>
           {step < TOTAL_STEPS ? (
-            <button
-              type="button"
-              onClick={goNext}
-              disabled={step === 1 && overflow}
-              className="btn-primary"
-            >
-              Pokračovat
+            <button type="button" onClick={goNext} disabled={step === 1 && overflow} className="btn-primary">
+              {t("continue")}
             </button>
           ) : (
             <button type="submit" disabled={isSubmitting} className="btn-primary">
-              {isSubmitting ? "Odesíláme…" : "Odeslat rezervaci"}
+              {isSubmitting ? t("submitting") : t("submit")}
             </button>
           )}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormContext } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import type { ReservationInput } from "@/lib/schemas/reservation";
 
 export function Step4Contact() {
@@ -8,13 +9,14 @@ export function Step4Contact() {
     register,
     formState: { errors },
   } = useFormContext<ReservationInput>();
+  const t = useTranslations("step4");
 
   return (
     <div className="space-y-5">
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className="field-label">
-            Jméno a příjmení <span className="text-[var(--color-accent-soft)]">*</span>
+            {t("name")} <span className="text-[var(--color-accent-soft)]">*</span>
           </label>
           <input
             id="name"
@@ -27,7 +29,7 @@ export function Step4Contact() {
         </div>
         <div>
           <label htmlFor="phone" className="field-label">
-            Telefon <span className="text-[var(--color-accent-soft)]">*</span>
+            {t("phone")} <span className="text-[var(--color-accent-soft)]">*</span>
           </label>
           <input
             id="phone"
@@ -43,7 +45,7 @@ export function Step4Contact() {
 
       <div>
         <label htmlFor="email" className="field-label">
-          E-mail <span className="text-[var(--color-accent-soft)]">*</span>
+          {t("email")} <span className="text-[var(--color-accent-soft)]">*</span>
         </label>
         <input
           id="email"
@@ -57,12 +59,13 @@ export function Step4Contact() {
 
       <div>
         <label htmlFor="note" className="field-label">
-          Poznámka <span className="text-[var(--color-text-subtle)] text-xs">(volitelné)</span>
+          {t("noteLabel")}{" "}
+          <span className="text-[var(--color-text-subtle)] text-xs">({t("noteOptional")})</span>
         </label>
         <textarea
           id="note"
           rows={4}
-          placeholder="Alergie, výzdoba, vlastní dort, hudba… cokoli, co bychom měli vědět."
+          placeholder={t("notePlaceholder")}
           className="input-base"
           {...register("note")}
         />
@@ -71,7 +74,7 @@ export function Step4Contact() {
 
       {/* honeypot */}
       <div aria-hidden className="hidden">
-        <label htmlFor="honeypot">Pokud vidíte toto pole, nechte ho prázdné</label>
+        <label htmlFor="honeypot">{t("honeypot")}</label>
         <input
           id="honeypot"
           type="text"
@@ -88,7 +91,7 @@ export function Step4Contact() {
           {...register("gdpr")}
         />
         <span className="text-sm text-[var(--color-text-muted)]">
-          Souhlasím se zpracováním osobních údajů pro účel vyřízení rezervace.{" "}
+          {t("gdpr")}{" "}
           <span className="text-[var(--color-accent-soft)]">*</span>
         </span>
       </label>

@@ -1,6 +1,6 @@
 "use client";
 
-const STEP_LABELS = ["O akci", "Catering", "Kontakt"];
+import { useTranslations } from "next-intl";
 
 export function StepIndicator({
   current,
@@ -9,15 +9,13 @@ export function StepIndicator({
   current: number;
   total: number;
 }) {
-  const label = STEP_LABELS[current - 1] ?? "";
+  const t = useTranslations("stepIndicator");
+  const label = t(`step${current}` as "step1" | "step2" | "step3");
+
   return (
     <div className="mb-10">
-      <p className="eyebrow">
-        Krok {current} z {total}
-      </p>
-      <p className="mt-1 text-2xl font-medium text-[var(--color-text)]">
-        {label}
-      </p>
+      <p className="eyebrow">{t("label", { current, total })}</p>
+      <p className="mt-1 text-2xl font-medium text-[var(--color-text)]">{label}</p>
       <div
         className="mt-4 grid gap-2"
         style={{ gridTemplateColumns: `repeat(${total}, minmax(0, 1fr))` }}
