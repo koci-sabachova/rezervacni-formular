@@ -31,18 +31,16 @@ export function Step3Catering({
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl text-[var(--color-text)]">{t("title")}</h2>
-        <p className="mt-2 text-sm text-[var(--color-text-muted)]">
+        <button type="button" onClick={onSkip} className="link-subtle text-sm mt-1 block">
+          {t("skip")}
+        </button>
+        <p className="mt-3 text-sm text-[var(--color-text-muted)]">
           {t.rich("body", {
             bold: (c) => <strong className="text-[var(--color-text)]">{c}</strong>,
             em: (c) => <em>{c}</em>,
           })}
         </p>
         <p className="mt-2 text-sm text-[var(--color-text-muted)]">{t("bodyAlt")}</p>
-        {source === "snapshot" && (
-          <p className="surface-muted mt-3 !px-3 !py-2 text-xs text-[var(--color-text-muted)]">
-            {t("snapshotWarning")}
-          </p>
-        )}
       </div>
 
       <CateringBuilder menu={menu} />
@@ -53,12 +51,6 @@ export function Step3Catering({
           <p className="mt-1 opacity-80">{t("leadWarningBody")}</p>
         </div>
       )}
-
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-        <button type="button" onClick={onSkip} className="link-subtle text-sm text-left">
-          {t("skip")}
-        </button>
-      </div>
 
       <StickyCateringTotal menu={menu} />
     </div>

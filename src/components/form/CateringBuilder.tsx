@@ -20,6 +20,7 @@ export function CateringBuilder({ menu }: Props) {
   const { watch, setValue } = useFormContext<ReservationInput>();
   const t = useTranslations("catering");
   const tSchemas = useTranslations("schemas.categories");
+  const tItems = useTranslations("cateringItems");
   const rawPicks = watch("catering") ?? [];
   const picks = rawPicks as CateringPick[];
 
@@ -67,7 +68,7 @@ export function CateringBuilder({ menu }: Props) {
         return (
           <section key={cat}>
             <h3 className="mb-3 eyebrow !text-[11px]">{tSchemas(cat)}</h3>
-            <div className="space-y-2">
+            <div>
               {items.map((item) => (
                 <CateringItemRow
                   key={item.id}
@@ -76,6 +77,7 @@ export function CateringBuilder({ menu }: Props) {
                   onSet={(patch) => setPick(item.id, patch)}
                   onRemove={() => removePick(item.id)}
                   t={t}
+                  tItems={tItems}
                 />
               ))}
             </div>
@@ -92,12 +94,14 @@ function CateringItemRow({
   onSet,
   onRemove,
   t,
+  tItems,
 }: {
   item: CateringItem;
   pick: CateringPick | undefined;
   onSet: (patch: Partial<CateringPick>) => void;
   onRemove: () => void;
   t: ReturnType<typeof useTranslations>;
+  tItems: ReturnType<typeof useTranslations>;
 }) {
   const isBudget = item.cena === "individualne";
   const isCake = item.kategorie === "dort";
@@ -108,11 +112,11 @@ function CateringItemRow({
   if (isBudget) {
     const current = pick?.budget ?? 0;
     return (
-      <div className="card flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 py-4 border-b border-[var(--color-border)] last:border-0">
         <div className="flex-1">
-          <p className="font-medium text-[var(--color-text)]">{item.nazev}</p>
+          <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
           <p className="text-xs text-[var(--color-text-subtle)]">
-            {item.popis ?? t("budgetDefault")} · {item.jednotka}
+            {item.popis ?? t("budgetDefault")}
           </p>
         </div>
         <label className="flex items-center gap-2 text-sm">
@@ -152,10 +156,10 @@ function CateringItemRow({
           : formatCzk(item.cena as number);
 
     return (
-      <div className="card space-y-2">
+      <div className="space-y-3 py-4 border-b border-[var(--color-border)] last:border-0">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <p className="font-medium text-[var(--color-text)]">{item.nazev}</p>
+            <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
             {item.popis && (
               <p className="text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
             )}
@@ -201,9 +205,9 @@ function CateringItemRow({
 
   const count = pick?.count ?? 0;
   return (
-    <div className="card flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 py-4 border-b border-[var(--color-border)] last:border-0">
       <div className="flex-1">
-        <p className="font-medium text-[var(--color-text)]">{item.nazev}</p>
+        <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
         <p className="text-xs text-[var(--color-text-subtle)]">
           {item.jednotka} · {formatCzk(item.cena as number)}
           {isKanapky && (
@@ -297,7 +301,7 @@ export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
   if (priced.lines.length === 0) return null;
 
   return (
-    <div className="sticky bottom-0 z-10 -mx-4 mt-4 border-t border-[var(--color-border)] bg-[var(--color-bg)]/95 px-4 py-3 backdrop-blur sm:rounded-b-xl">
+    <div className="sticky bottom-0 z-10 -mx-8 sm:-mx-10 mt-4 border-t border-[var(--color-border)] bg-[var(--color-card)]/95 px-8 sm:px-10 py-3 backdrop-blur rounded-b-[2rem]">
       <div className="flex items-baseline justify-between gap-4">
         <div className="text-sm">
           <span className="eyebrow !text-[10px]">Catering</span>

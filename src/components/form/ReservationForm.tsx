@@ -190,6 +190,7 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
   }
 
   return (
+    <div className="form-shell">
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit, handleSubmitError)} className="space-y-6" noValidate>
         <StepIndicator current={step} total={TOTAL_STEPS} />
@@ -237,5 +238,6 @@ export function ReservationForm({ menu }: { menu: CateringMenu }) {
         </div>
       </form>
     </FormProvider>
+    </div>
   );
 }

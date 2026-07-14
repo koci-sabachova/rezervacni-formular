@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -20,12 +20,13 @@ export default async function ThanksPage({
   searchParams: Promise<{ typ?: string }>;
 }) {
   const [{ locale }, { typ }] = await Promise.all([params, searchParams]);
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "thankYou" });
   const isInquiry = typ === "inquiry";
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
-      <div className="card text-center !p-10 sm:!p-14">
+      <div className="form-shell text-center !p-10 sm:!p-14">
         <p className="eyebrow">{t("eyebrow")}</p>
         <h1 className="mt-4 text-4xl sm:text-5xl text-[var(--color-text)]">
           {isInquiry ? t("inquiryTitle") : t("reservationTitle")}

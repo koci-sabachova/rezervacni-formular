@@ -4,9 +4,9 @@
       "title": "Rezervace · Cobra & Informace",
       "description": "Rezervace skupin 10–35 lidí pro bar Cobra a výčep Informace. Catering na míru, ozveme se do 48 hodin."
     },
-    "thankYou": { "title": "Děkujeme — Cobra & Informace" },
+    "thankYou": { "title": "Děkujeme · Cobra & Informace" },
     "inquiry": {
-      "title": "Pronájem baru Cobra — poptávka · Cobra & Informace",
+      "title": "Pronájem baru Cobra, poptávka · Cobra & Informace",
       "description": "Poptávkový formulář pro uzavřené společnosti od 36 lidí. Domluvíme se individuálně."
     }
   },
@@ -29,15 +29,15 @@
     "reservationTitle": "Díky za rezervaci!",
     "reservationBody": "Vaši rezervaci jsme přijali. Brzy vám pošleme potvrzení nebo upřesňující dotaz na e-mail. Ozveme se do 48 hodin.",
     "inquiryTitle": "Díky za poptávku!",
-    "inquiryBody": "Větší akce řešíme individuálně, takže vám během několika dní zavoláme nebo napíšeme — domluvíme termín, podnik a co s cateringem.",
+    "inquiryBody": "Větší akce řešíme individuálně, takže vám během několika dní zavoláme nebo napíšeme, domluvíme termín, podnik a co s cateringem.",
     "spam": "Mezitím sledujte svou doručenou poštu (i složku se spamem).",
     "back": "Zpět na rezervační formulář"
   },
   "inquiryPage": {
     "eyebrow": "Cobra & Informace · Praha",
-    "title": "pronájem baru Cobra — poptávka",
+    "title": "pronájem baru Cobra, poptávka",
     "capacity": "50–100 lidí",
-    "description": "Bar Cobra je ideální pro soukromé akce pro {capacity}. Pronájem poskytujeme formou garantované minimální útraty. Na všem se s vámi rádi dohodneme mailem, telefonicky nebo osobně, dle vaší preference.",
+    "description": "Bar Cobra je ideální pro soukromé akce pro <capacity>50–100 lidí</capacity>. Pronájem poskytujeme formou garantované minimální útraty. Na všem se s vámi rádi dohodneme mailem, telefonicky nebo osobně, dle vaší preference.",
     "smallerText": "Hledáte naopak menší rezervaci?",
     "smallerLink": "Hlavní formulář (10–35 lidí)"
   },
@@ -61,16 +61,15 @@
     "partySize": { "label": "Počet lidí" },
     "underflow": {
       "title": "Pro {min} a méně lidí máme jednodušší cestu.",
-      "body": "Tenhle formulář je dělaný pro větší skupiny — na menší stůl se rychleji dostanete přes rezervujstul.cz. Pokud chcete, pokračujte ale klidně dál — domluvíme se."
+      "body": "Tenhle formulář je dělaný pro větší skupiny, na menší stůl se rychleji dostanete přes <a>rezervujstul.cz</a>. Pokud chcete, pokračujte ale klidně dál, domluvíme se."
     },
     "overflow": {
       "title": "Nad 35 lidí to řešíme individuálně.",
-      "body": "Pro uzavřené společnosti máme zvlášť poptávkový formulář — domluvíme se telefonicky nebo na schůzce.",
+      "body": "Pro uzavřené společnosti máme zvlášť poptávkový formulář, domluvíme se telefonicky nebo na schůzce.",
       "link": "Pokračovat na poptávkový formulář"
     },
     "venueLegend": "Kam to chcete?",
-    "venueHint": "Cobra a Informace jsou dva podniky {bold} — rádi vám do výčepu doneseme večeři z Cobry.",
-    "venueHintBold": "10 metrů od sebe",
+    "venueHint": "Cobra a Informace jsou dva podniky <bold>10 metrů od sebe</bold>, rádi vám do výčepu doneseme večeři z Cobry.",
     "cobra": {
       "bullet1": "Široká nabídka koktejlů včetně signature menu",
       "bullet2": "Večeře, obědy, o víkendu brunch",
@@ -84,27 +83,24 @@
       "tagline": "Menší, neformální podnik propojený s Cobrou.",
       "bullet1": "Základní nabídka vín, koktejlů a destilátů",
       "bullet2": "Samoobslužná sekce s drobnými jídly k pivu",
-      "bullet3": "Večeři lze objednat z Cobry — kuchyň je společná",
+      "bullet3": "Večeři lze objednat z Cobry, kuchyň je společná",
       "fitsYou": "Sedne vám, když chcete pivní akci, větší partu a neformální atmosféru.",
       "linkSite": "Stránky podniku",
       "linkMenu": "Menu (PDF)"
     },
     "unsure": { "tagline": "Společně najdeme to pravé pro vaši rezervaci." },
     "largeCobraTitle": "Tip k výběru podniku",
-    "largeCobraBody": "Pro skupiny nad 30 lidí v Cobře už mluvíme o uzavřené společnosti. Pokud vám nejde primárně o koktejlové menu, bývá pro takovou partu praktičtější {bold} — jídlo z Cobry si tam stejně můžete objednat. Volba je samozřejmě na vás.",
-    "largeCobraBold": "Informace",
+    "largeCobraBody": "Pro skupiny nad 30 lidí v Cobře už mluvíme o uzavřené společnosti. Pokud vám nejde primárně o koktejlové menu, bývá pro takovou partu praktičtější <bold>Informace</bold>, jídlo z Cobry si tam stejně můžete objednat. Volba je samozřejmě na vás.",
     "eventTypeLegend": "Druh akce",
     "eventTypeOtherPlaceholder": "Doplňte prosím (volitelně)"
   },
   "step3": {
     "title": "Chcete si rovnou objednat pohoštění?",
-    "body": "Přidávejte položky tlačítky {bold}. Cena se počítá živě dole. Catering je {em} — můžete ho přeskočit a domluvit jen rezervaci.",
-    "bodyBold": "−/+",
-    "bodyEm": "volitelný",
+    "body": "Přidávejte položky tlačítky <bold>−/+</bold>. Cena se počítá živě dole. Catering je <em>volitelný</em>, můžete ho přeskočit a domluvit jen rezervaci.",
     "bodyAlt": "Nebo to vymyslíme společně po mailu/telefonu. Pokud si myslíte na nějaké jídlo, které zde nenajdete, uděláme, co bude v našich silách, abychom vám ho zajistili.",
-    "snapshotWarning": "Catering nabídka se aktuálně načítá z bundlovaného snapshotu (živá data nejsou dostupná). Položky a ceny mohou být mírně neaktuální — finální cenu potvrdíme v odpovědi.",
+    "snapshotWarning": "Catering nabídka se aktuálně načítá z bundlovaného snapshotu (živá data nejsou dostupná). Položky a ceny mohou být mírně neaktuální, finální cenu potvrdíme v odpovědi.",
     "leadWarningTitle": "Catering potřebujeme objednat aspoň 3 dny dopředu",
-    "leadWarningBody": "Bez cateringu rezervaci přijímáme i na zítřek. Pokud vám tento termín vyhovuje, můžeme catering probrat individuálně — napište to do poznámky v dalším kroku, nebo catering přeskočte a domluvíme detaily v odpovědi.",
+    "leadWarningBody": "Bez cateringu rezervaci přijímáme i na zítřek. Pokud vám tento termín vyhovuje, můžeme catering probrat individuálně, napište to do poznámky v dalším kroku, nebo catering přeskočte a domluvíme detaily v odpovědi.",
     "skip": "Catering nechci, jen rezervaci"
   },
   "step4": {
@@ -113,7 +109,7 @@
     "email": "E-mail",
     "noteLabel": "Poznámka",
     "noteOptional": "volitelné",
-    "notePlaceholder": "Alergie, výzdoba, vlastní dort, hudba… cokoli, co bychom měli vědět.",
+    "notePlaceholder": "Zde můžete zanechat pár svých slov. Třeba, že si chcete přinést balonky a dort.",
     "honeypot": "Pokud vidíte toto pole, nechte ho prázdné",
     "gdpr": "Souhlasím se zpracováním osobních údajů pro účel vyřízení rezervace."
   },
@@ -139,7 +135,7 @@
     "submitting": "Odesíláme…"
   },
   "catering": {
-    "empty": "Catering momentálně načítáme jinak — napište nám prosím požadavky do poznámky (krok 3) a my se vám ozveme s nabídkou.",
+    "empty": "Catering momentálně načítáme jinak, napište nám prosím požadavky do poznámky (krok 3) a my se vám ozveme s nabídkou.",
     "budgetLabel": "Rozpočet (Kč)",
     "budgetDefault": "Množství upravíme podle rozpočtu.",
     "selectVariant": "Vyberte variantu",
@@ -159,7 +155,7 @@
     "eventTypeLabel": "Typ akce",
     "eventTypePlaceholder": "firemní vánoční večírek / svatba / 50. narozeniny…",
     "descriptionLabel": "Vaše představa",
-    "descriptionPlaceholder": "Co od akce čekáte? Catering, podnik, hudba, čas, jakákoli specifika — čím víc napíšete, tím přesněji vám můžeme odpovědět.",
+    "descriptionPlaceholder": "Co od akce čekáte? Catering, podnik, hudba, čas, jakákoli specifika, čím víc napíšete, tím přesněji vám můžeme odpovědět.",
     "honeypot": "Pokud vidíte toto pole, nechte ho prázdné",
     "gdpr": "Souhlasím se zpracováním osobních údajů pro účel vyřízení poptávky.",
     "serverError": "Něco se pokazilo při odesílání. Zkuste to prosím za chvíli znovu, nebo nám napište na rezervace@barcobra.cz.",
@@ -223,7 +219,7 @@
     "preliminary": "Předběžně: {amount} Kč",
     "inclEstimates": "vč. odhadů u mís",
     "noteLabel": "Vaše poznámka",
-    "footerCopy": "Tento e-mail je automatická kopie. Odpovědět nám můžete přímo na něj — chodí nám rovnou do schránky.",
+    "footerCopy": "Tento e-mail je automatická kopie. Odpovědět nám můžete přímo na něj, chodí nám rovnou do schránky.",
     "footerContact": "Cobra & Informace · Praha · rezervace@barcobra.cz"
   },
   "emailReservationOperator": {
@@ -245,21 +241,46 @@
     "footer": "Host očekává odpověď do 48 hodin (text auto-replyu mu to slibuje). Odpovídej z této schránky nebo přepošli na vlastní e-mail."
   },
   "emailInquiryCustomer": {
-    "preview": "Děkujeme za poptávku — ozveme se vám zpátky",
+    "preview": "Děkujeme za poptávku, ozveme se vám zpátky",
     "heading": "Díky za poptávku, {name}!",
-    "body1": "Vaši představu na akci pro {strong} jsme přijali. Větší společnosti řešíme individuálně, takže vám během několika dní zavoláme nebo napíšeme — domluvíme termín, podnik a co s cateringem.",
+    "body1": "Vaši představu na akci pro {strong} jsme přijali. Větší společnosti řešíme individuálně, takže vám během několika dní zavoláme nebo napíšeme, domluvíme termín, podnik a co s cateringem.",
     "body1Strong": "{count} lidí",
     "body2": "Pokud máte mezitím doplnění nebo otázku, odpovězte nám rovnou na tento e-mail.",
     "footer": "Cobra & Informace · Praha · rezervace@barcobra.cz"
   },
   "emailInquiryOperator": {
-    "preview": "Poptávka — uzavřená společnost · {count} lidí",
-    "heading": "Poptávka — větší akce",
+    "preview": "Poptávka, uzavřená společnost · {count} lidí",
+    "heading": "Poptávka, větší akce",
     "submittedVia": "Vyplněno přes web (formulář 36+ lidí)",
     "contact": "Kontakt",
     "estimatedGuests": "Předpokládaný počet lidí",
     "estimatedDate": "Předpokládané datum",
     "eventType": "Typ akce",
     "vision": "Představa hosta"
+  },
+  "cateringItems": {
+    "slane-rizecky": "Kuřecí mini řízečky & kyselé okurky",
+    "slane-tatarak": "Hovězí tatarák & topinky z kváskového chleba",
+    "slane-carpaccio": "Carpaccio se sýrem parmigiano reggiano, rukola, citron & focaccia",
+    "slane-salat-krevety": "Salát z krevet, brambor a sušených rajčat & naše focaccia",
+    "mj-hummus": "Hummus ze žlutého hrachu (vegan)",
+    "mj-baba": "Baba ganoush (vegan)",
+    "mj-muhammara": "Muhammara (vegan)",
+    "mj-olivy-rajcata": "Nakládané olivy & sušená rajčata (vegan)",
+    "mj-chorizovka": "Chorizovka (pálivé)",
+    "kan-prazska": "Pražská šunka, smetanový křen, cornichon, kváskový chléb",
+    "kan-lilek": "Marinovaný lilek, focaccia, oliva",
+    "kan-vajicka": "Vajíčková pomazánka s lanýžovou majonézou, naše focaccia, pažitka",
+    "kan-pomazanky": "Kanapky s baba ganoush / hummus / muhammara",
+    "kan-tatarak-rajcata": "Tatarák ze sušených rajčat na topince",
+    "kan-zavitek-kreveta": "Letní závitek s krevetou",
+    "kan-zavitek-tofu": "Letní závitek s tofu, zeleninou a omeletou",
+    "kan-focaccia-halloumi-granat": "Naše focaccia s pomazánkou z pečených paprik a vlašských oříšků Muhammara, sýr halloumi & granátové jablko",
+    "kan-focaccia-muhammara": "Kanapky s naší focacciou, muhammarou a grilovaným halloumi",
+    "kan-pizza-snek": "Pizza šnek se šunkou a sýrem",
+    "mis-olivy": "Marinované olivy a sušená rajčata (vegan)",
+    "mis-syry": "Mísa evropských sýrů a hroznové víno",
+    "mis-uzeniny": "Mísa uzenin, nakládaná zelenina a hrubozrnná hořčice",
+    "dort-12": "Dort pro 12 lidí"
   }
 }

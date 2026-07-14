@@ -4,9 +4,9 @@
       "title": "Reservations · Cobra & Informace",
       "description": "Group reservations for 10–35 people at Bar Cobra and Tap Room Informace. Custom catering, we'll get back to you within 48 hours."
     },
-    "thankYou": { "title": "Thank you — Cobra & Informace" },
+    "thankYou": { "title": "Thank you · Cobra & Informace" },
     "inquiry": {
-      "title": "Bar Cobra private hire — enquiry · Cobra & Informace",
+      "title": "Bar Cobra private hire, enquiry · Cobra & Informace",
       "description": "Enquiry form for private events from 36 people. We'll work out the details individually."
     }
   },
@@ -29,15 +29,15 @@
     "reservationTitle": "Thanks for your reservation!",
     "reservationBody": "We have received your reservation. We'll send you a confirmation or a follow-up question by email soon. We'll get back to you within 48 hours.",
     "inquiryTitle": "Thanks for your enquiry!",
-    "inquiryBody": "Larger events are handled individually, so we'll call or write to you within a few days — we'll agree on a date, venue and catering.",
+    "inquiryBody": "Larger events are handled individually, so we'll call or write to you within a few days, we'll agree on a date, venue and catering.",
     "spam": "In the meantime, keep an eye on your inbox (including your spam folder).",
     "back": "Back to the reservation form"
   },
   "inquiryPage": {
     "eyebrow": "Cobra & Informace · Prague",
-    "title": "Bar Cobra private hire — enquiry",
+    "title": "Bar Cobra private hire, enquiry",
     "capacity": "50–100 people",
-    "description": "Bar Cobra is ideal for private events for {capacity}. Private hire is offered as a guaranteed minimum spend. We are happy to discuss everything with you by email, phone or in person, whichever you prefer.",
+    "description": "Bar Cobra is ideal for private events for <capacity>50–100 people</capacity>. Private hire is offered as a guaranteed minimum spend. We are happy to discuss everything with you by email, phone or in person, whichever you prefer.",
     "smallerText": "Looking for a smaller reservation instead?",
     "smallerLink": "Main form (10–35 people)"
   },
@@ -61,16 +61,15 @@
     "partySize": { "label": "Number of guests" },
     "underflow": {
       "title": "For {min} or fewer people we have a simpler option.",
-      "body": "This form is designed for larger groups — for a smaller table it's quicker to book via rezervujstul.cz. Feel free to continue here though — we'll work it out."
+      "body": "This form is designed for larger groups, for a smaller table it's quicker to book via <a>rezervujstul.cz</a>. Feel free to continue here though, we'll work it out."
     },
     "overflow": {
       "title": "For groups over 35 we handle things individually.",
-      "body": "For private hire we have a separate enquiry form — we'll sort out the details by phone or in person.",
+      "body": "For private hire we have a separate enquiry form, we'll sort out the details by phone or in person.",
       "link": "Continue to enquiry form"
     },
     "venueLegend": "Where would you like to go?",
-    "venueHint": "Cobra and Informace are two venues {bold} — we're happy to bring dinner from Cobra into the tap room.",
-    "venueHintBold": "10 metres apart",
+    "venueHint": "Cobra and Informace are two venues <bold>10 metres apart</bold>, we're happy to bring dinner from Cobra into the tap room.",
     "cobra": {
       "bullet1": "Extensive cocktail menu including signature drinks",
       "bullet2": "Dinner, lunch, weekend brunch",
@@ -84,27 +83,24 @@
       "tagline": "A smaller, informal venue connected to Cobra.",
       "bullet1": "Basic selection of wines, cocktails and spirits",
       "bullet2": "Self-service section with bar snacks",
-      "bullet3": "Dinner can be ordered from Cobra — the kitchen is shared",
+      "bullet3": "Dinner can be ordered from Cobra, the kitchen is shared",
       "fitsYou": "A great fit if you want a beer-focused event, a bigger group and an informal atmosphere.",
       "linkSite": "Venue website",
       "linkMenu": "Menu (PDF)"
     },
     "unsure": { "tagline": "We'll find the right fit for your reservation together." },
     "largeCobraTitle": "Tip on choosing a venue",
-    "largeCobraBody": "For groups over 30 at Cobra we're really talking about a private hire. If the cocktail menu isn't your top priority, {bold} tends to work better for a larger crowd — you can still order food from Cobra there. The choice is of course yours.",
-    "largeCobraBold": "Informace",
+    "largeCobraBody": "For groups over 30 at Cobra we're really talking about a private hire. If the cocktail menu isn't your top priority, <bold>Informace</bold> tends to work better for a larger crowd, you can still order food from Cobra there. The choice is of course yours.",
     "eventTypeLegend": "Type of event",
     "eventTypeOtherPlaceholder": "Please specify (optional)"
   },
   "step3": {
     "title": "Would you like to order catering at the same time?",
-    "body": "Add items using the {bold} buttons. The price updates live below. Catering is {em} — you can skip it and just confirm the reservation.",
-    "bodyBold": "−/+",
-    "bodyEm": "optional",
+    "body": "Add items using the <bold>−/+</bold> buttons. The price updates live below. Catering is <em>optional</em>, you can skip it and just confirm the reservation.",
     "bodyAlt": "Or we can work it out together by email or phone. If you have a dish in mind that you don't see here, we'll do our best to make it happen.",
-    "snapshotWarning": "The catering menu is currently loaded from a bundled snapshot (live data is not available). Items and prices may be slightly out of date — we'll confirm the final price in our reply.",
+    "snapshotWarning": "The catering menu is currently loaded from a bundled snapshot (live data is not available). Items and prices may be slightly out of date, we'll confirm the final price in our reply.",
     "leadWarningTitle": "Catering needs to be ordered at least 3 days in advance",
-    "leadWarningBody": "Without catering we can accept a reservation as late as tomorrow. If this date still works for you, we can discuss catering individually — add a note in the next step, or skip catering and we'll sort out the details in our reply.",
+    "leadWarningBody": "Without catering we can accept a reservation as late as tomorrow. If this date still works for you, we can discuss catering individually, add a note in the next step, or skip catering and we'll sort out the details in our reply.",
     "skip": "No catering, just the reservation"
   },
   "step4": {
@@ -113,7 +109,7 @@
     "email": "E-mail",
     "noteLabel": "Note",
     "noteOptional": "optional",
-    "notePlaceholder": "Allergies, decorations, your own cake, music… anything we should know.",
+    "notePlaceholder": "Feel free to leave us a few words. For example, that you'd like to bring balloons and a cake.",
     "honeypot": "If you see this field, leave it empty",
     "gdpr": "I consent to the processing of my personal data for the purpose of handling this reservation."
   },
@@ -139,7 +135,7 @@
     "submitting": "Submitting…"
   },
   "catering": {
-    "empty": "The catering menu is temporarily unavailable — please write your requirements in the note field (step 3) and we'll get back to you with options.",
+    "empty": "The catering menu is temporarily unavailable, please write your requirements in the note field (step 3) and we'll get back to you with options.",
     "budgetLabel": "Budget (Kč)",
     "budgetDefault": "Quantity adjusted to your budget.",
     "selectVariant": "Select a variant",
@@ -159,7 +155,7 @@
     "eventTypeLabel": "Type of event",
     "eventTypePlaceholder": "company Christmas party / wedding / 50th birthday…",
     "descriptionLabel": "Your vision",
-    "descriptionPlaceholder": "What are you expecting from the event? Catering, venue, music, timing, any specifics — the more you write, the more precisely we can respond.",
+    "descriptionPlaceholder": "What are you expecting from the event? Catering, venue, music, timing, any specifics, the more you write, the more precisely we can respond.",
     "honeypot": "If you see this field, leave it empty",
     "gdpr": "I consent to the processing of my personal data for the purpose of handling this enquiry.",
     "serverError": "Something went wrong while submitting. Please try again in a moment, or email us at rezervace@barcobra.cz.",
@@ -223,7 +219,7 @@
     "preliminary": "Preliminary: {amount} Kč",
     "inclEstimates": "incl. estimates for platters",
     "noteLabel": "Your note",
-    "footerCopy": "This email is an automatic copy. You can reply directly to it — it goes straight to our inbox.",
+    "footerCopy": "This email is an automatic copy. You can reply directly to it, it goes straight to our inbox.",
     "footerContact": "Cobra & Informace · Prague · rezervace@barcobra.cz"
   },
   "emailReservationOperator": {
@@ -245,21 +241,46 @@
     "footer": "The guest expects a reply within 48 hours (the auto-reply confirms this). Reply from this inbox or forward to your own email."
   },
   "emailInquiryCustomer": {
-    "preview": "Thank you for your enquiry — we'll get back to you",
+    "preview": "Thank you for your enquiry, we'll get back to you",
     "heading": "Thanks for your enquiry, {name}!",
-    "body1": "We've received your idea for an event for {strong}. Larger events are handled individually, so we'll call or write to you within a few days — we'll agree on a date, venue and catering.",
+    "body1": "We've received your idea for an event for {strong}. Larger events are handled individually, so we'll call or write to you within a few days, we'll agree on a date, venue and catering.",
     "body1Strong": "{count} guests",
     "body2": "If you have any additions or questions in the meantime, just reply to this email.",
     "footer": "Cobra & Informace · Prague · rezervace@barcobra.cz"
   },
   "emailInquiryOperator": {
-    "preview": "Enquiry — private hire · {count} guests",
-    "heading": "Enquiry — larger event",
+    "preview": "Enquiry, private hire · {count} guests",
+    "heading": "Enquiry, larger event",
     "submittedVia": "Submitted via website (form for 36+ guests)",
     "contact": "Contact",
     "estimatedGuests": "Estimated number of guests",
     "estimatedDate": "Estimated date",
     "eventType": "Type of event",
     "vision": "Guest's vision"
+  },
+  "cateringItems": {
+    "slane-rizecky": "Mini chicken schnitzels & pickles",
+    "slane-tatarak": "Beef tartare & sourdough toast",
+    "slane-carpaccio": "Beef carpaccio with parmigiano reggiano, rocket, lemon & focaccia",
+    "slane-salat-krevety": "Prawn, potato & sun-dried tomato salad with our focaccia",
+    "mj-hummus": "Yellow pea hummus (vegan)",
+    "mj-baba": "Baba ganoush (vegan)",
+    "mj-muhammara": "Muhammara (vegan)",
+    "mj-olivy-rajcata": "Marinated olives & sun-dried tomatoes (vegan)",
+    "mj-chorizovka": "Chorizo spread (spicy)",
+    "kan-prazska": "Prague ham, creamed horseradish, cornichon, sourdough bread",
+    "kan-lilek": "Marinated aubergine, focaccia, olive",
+    "kan-vajicka": "Egg spread with truffle mayo, our focaccia, chives",
+    "kan-pomazanky": "Canapés with baba ganoush / hummus / muhammara",
+    "kan-tatarak-rajcata": "Sun-dried tomato tartare on toast",
+    "kan-zavitek-kreveta": "Summer roll with prawn",
+    "kan-zavitek-tofu": "Summer roll with tofu, vegetables and omelette",
+    "kan-focaccia-halloumi-granat": "Our focaccia with muhammara spread, halloumi & pomegranate",
+    "kan-focaccia-muhammara": "Canapés with our focaccia, muhammara and grilled halloumi",
+    "kan-pizza-snek": "Ham and cheese pizza scrolls",
+    "mis-olivy": "Marinated olives & sun-dried tomatoes (vegan)",
+    "mis-syry": "European cheese board with grapes",
+    "mis-uzeniny": "Charcuterie board, pickled vegetables & wholegrain mustard",
+    "dort-12": "Cake for 12 people"
   }
 }

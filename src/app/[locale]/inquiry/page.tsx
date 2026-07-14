@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { InquiryForm } from "@/components/form/InquiryForm";
 
 export async function generateMetadata({
@@ -21,6 +21,7 @@ export default async function InquiryPage({
   searchParams: Promise<{ guests?: string }>;
 }) {
   const [{ locale }, { guests }] = await Promise.all([params, searchParams]);
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "inquiryPage" });
 
   const prefill = guests ? Number(guests) : undefined;

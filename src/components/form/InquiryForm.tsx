@@ -115,6 +115,7 @@ export function InquiryForm({ prefillPartySize }: { prefillPartySize?: number })
   }
 
   return (
+    <div className="form-shell">
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
@@ -203,5 +204,6 @@ export function InquiryForm({ prefillPartySize }: { prefillPartySize?: number })
         </button>
       </div>
     </form>
+    </div>
   );
 }

@@ -90,7 +90,7 @@ export function Step1Basics() {
               {t.rich("underflow.body", {
                 a: (c) => (
                   <a
-                    href="https://www.rezervujstul.cz/"
+                    href={`https://barcobra.rezervujstul.cz/reservation-form.php?lang=${locale === "cs" ? "cz" : "en"}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="link-subtle"
@@ -127,11 +127,11 @@ export function Step1Basics() {
             bold: (c) => <strong className="text-[var(--color-text)]">{c}</strong>,
           })}
         </p>
-        <div className="grid gap-3">
+        <div className="grid gap-2">
           {VENUES.map((v) => (
             <label
               key={v}
-              className="card cursor-pointer hover:!border-[var(--color-border-strong)] has-[:checked]:!border-[var(--color-accent)] has-[:checked]:bg-[var(--color-card-hover)] has-[:checked]:shadow-[0_0_0_3px_rgba(31,110,90,0.15)]"
+              className="block cursor-pointer rounded-2xl p-5 transition bg-[var(--color-bg-elevated)] hover:bg-[#e9e4da] has-[:checked]:bg-[var(--color-card-hover)]"
             >
               <div className="flex items-start gap-3">
                 <input

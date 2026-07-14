@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ReservationForm } from "@/components/form/ReservationForm";
 import { getCateringMenu } from "@/lib/sheets/fetch";
 
@@ -10,6 +10,7 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const [menu, t] = await Promise.all([
     getCateringMenu(),
     getTranslations({ locale, namespace: "home" }),
@@ -27,7 +28,7 @@ export default async function HomePage({
           <strong className="text-[var(--color-text)]">{t("descriptionGroupsBold")}</strong>.{" "}
           {t("descriptionFill")}{" "}
           <a
-            href="https://www.rezervujstul.cz/"
+            href={`https://barcobra.rezervujstul.cz/reservation-form.php?lang=${locale === "cs" ? "cz" : "en"}`}
             className="link-subtle"
             target="_blank"
             rel="noopener noreferrer"
