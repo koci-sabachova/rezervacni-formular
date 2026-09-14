@@ -2,12 +2,48 @@
   "metadata": {
     "home": {
       "title": "Reservations · Cobra & Informace",
+      "description": "Book a table, a group celebration for 10–35 people, or send an enquiry for a private event — Bar Cobra and Tap Room Informace."
+    },
+    "reservation": {
+      "title": "Group reservation · Cobra & Informace",
       "description": "Group reservations for 10–35 people at Bar Cobra and Tap Room Informace. Custom catering, we'll get back to you within 48 hours."
     },
     "thankYou": { "title": "Thank you · Cobra & Informace" },
     "inquiry": {
       "title": "Bar Cobra private hire, enquiry · Cobra & Informace",
-      "description": "Enquiry form for private events from 36 people. We'll work out the details individually."
+      "description": "Enquiry form for private events from 40 people. We'll work out the details individually."
+    }
+  },
+  "hub": {
+    "eyebrow": "Cobra & Informace · Prague",
+    "title": "Reservations",
+    "subtitle": "How many of you will there be? We'll point you to the right form.",
+    "smallCobra": {
+      "label": "up to 10 people",
+      "title": "Table reservation at Cobra",
+      "body": "A quick booking through our regular reservation system.",
+      "cta": "Book a table at Cobra"
+    },
+    "smallInformace": {
+      "label": "up to 10 people",
+      "title": "Table reservation at Informace",
+      "body": "A quick booking through our regular reservation system.",
+      "cta": "Book a table at Informace"
+    },
+    "medium": {
+      "label": "10–35 people",
+      "title": "Celebration or gathering",
+      "body": "Choose a venue, build your catering right away, we'll get back to you within 48 hours.",
+      "bullet1": "Celebration at Cobra, up to 20 people",
+      "bullet2": "Celebration at Informace",
+      "bullet3": "Private event at Informace",
+      "cta": "Fill in the form"
+    },
+    "large": {
+      "label": "40–100 people",
+      "title": "Private hire",
+      "body": "Full private hire of Bar Cobra for your event, we'll work out the details individually.",
+      "cta": "Send an enquiry"
     }
   },
   "layout": {
@@ -16,7 +52,7 @@
     "footerLinkText": "Send us an email",
     "footerSuffix": "and we'll talk about a private hire at Bar Cobra."
   },
-  "home": {
+  "reservationPage": {
     "eyebrow": "Cobra & Informace · Prague",
     "title": "Group reservation",
     "descriptionGroups": "For groups of",
@@ -31,15 +67,15 @@
     "inquiryTitle": "Thanks for your enquiry!",
     "inquiryBody": "Larger events are handled individually, so we'll call or write to you within a few days, we'll agree on a date, venue and catering.",
     "spam": "In the meantime, keep an eye on your inbox (including your spam folder).",
-    "back": "Back to the reservation form"
+    "back": "Back to home"
   },
   "inquiryPage": {
     "eyebrow": "Cobra & Informace · Prague",
     "title": "Bar Cobra private hire, enquiry",
-    "capacity": "50–100 people",
-    "description": "Bar Cobra is ideal for private events for <capacity>50–100 people</capacity>. Private hire is offered as a guaranteed minimum spend. We are happy to discuss everything with you by email, phone or in person, whichever you prefer.",
-    "smallerText": "Looking for a smaller reservation instead?",
-    "smallerLink": "Main form (10–35 people)"
+    "capacity": "50–70 people",
+    "description": "Bar Cobra is ideal for private events for <capacity>50–70 people</capacity>, we're happy to discuss other sizes individually too. Private hire is offered as a guaranteed minimum spend. We are happy to discuss everything with you by email, phone or in person, whichever you prefer.",
+    "smallerText": "Looking for a different event size?",
+    "smallerLink": "Back to reservation options"
   },
   "stepIndicator": {
     "label": "Step {current} of {total}",
@@ -49,8 +85,14 @@
   },
   "step1": {
     "date": {
-      "label": "Date",
+      "label": "Preferred date",
       "hint": "The earliest possible date is tomorrow. Catering requires at least 3 days' notice."
+    },
+    "dateFlexible": {
+      "legend": "Is the date flexible?",
+      "yes": "Yes",
+      "no": "No",
+      "hint": "If the preferred date doesn't work out, we'll try to suggest another one."
     },
     "time": {
       "label": "Start time",
@@ -58,17 +100,21 @@
       "hint": "14:00–20:30 (every 30 minutes)",
       "hintCapacity": "For capacity reasons we do not accept reservations after 20:30."
     },
-    "partySize": { "label": "Number of guests" },
+    "partySize": {
+      "label": "Number of guests",
+      "decrease": "Decrease by 5",
+      "increase": "Increase by 5"
+    },
     "underflow": {
       "title": "For {min} or fewer people we have a simpler option.",
       "body": "This form is designed for larger groups, for a smaller table it's quicker to book via <a>rezervujstul.cz</a>. Feel free to continue here though, we'll work it out."
     },
     "overflow": {
       "title": "For groups over 35 we handle things individually.",
-      "body": "For private hire we have a separate enquiry form, we'll sort out the details by phone or in person.",
+      "body": "There isn't much more room at the tap room. If you need a bigger event, fill in our form and we'll look at renting out the whole of Cobra.",
       "link": "Continue to enquiry form"
     },
-    "venueLegend": "Where would you like to go?",
+    "venueLegend": "What space are you looking for?",
     "venueHint": "Cobra and Informace are two venues <bold>10 metres apart</bold>, we're happy to bring dinner from Cobra into the tap room.",
     "cobra": {
       "bullet1": "Extensive cocktail menu including signature drinks",
@@ -80,7 +126,7 @@
       "linkSignature": "Signature menu (PDF)"
     },
     "informace": {
-      "tagline": "A smaller, informal venue connected to Cobra.",
+      "tagline": "A smaller, informal venue just around the corner from Cobra.",
       "bullet1": "Basic selection of wines, cocktails and spirits",
       "bullet2": "Self-service section with bar snacks",
       "bullet3": "Dinner can be ordered from Cobra, the kitchen is shared",
@@ -89,8 +135,8 @@
       "linkMenu": "Menu (PDF)"
     },
     "unsure": { "tagline": "We'll find the right fit for your reservation together." },
-    "largeCobraTitle": "Tip on choosing a venue",
-    "largeCobraBody": "For groups over 30 at Cobra we're really talking about a private hire. If the cocktail menu isn't your top priority, <bold>Informace</bold> tends to work better for a larger crowd, you can still order food from Cobra there. The choice is of course yours.",
+    "informaceCapacityTitle": "Approaching capacity at Informace",
+    "informaceCapacityBody": "At this size, you'd probably want the whole venue to yourselves. We don't charge rent for a private hire at our venues, instead we agree on a guaranteed minimum spend, ideally one you consume in full anyway.",
     "eventTypeLegend": "Type of event",
     "eventTypeOtherPlaceholder": "Please specify (optional)"
   },
@@ -101,7 +147,8 @@
     "snapshotWarning": "The catering menu is currently loaded from a bundled snapshot (live data is not available). Items and prices may be slightly out of date, we'll confirm the final price in our reply.",
     "leadWarningTitle": "Catering needs to be ordered at least 3 days in advance",
     "leadWarningBody": "Without catering we can accept a reservation as late as tomorrow. If this date still works for you, we can discuss catering individually, add a note in the next step, or skip catering and we'll sort out the details in our reply.",
-    "skip": "No catering, just the reservation"
+    "skip": "No catering, just the reservation",
+    "reveal": "I'd like to take a look"
   },
   "step4": {
     "name": "Full name",
@@ -228,6 +275,7 @@
     "submittedVia": "Cobra & Informace · submitted via website",
     "contact": "Contact",
     "dateTime": "Date & time",
+    "dateFlexible": "date is flexible",
     "from": "from {time}",
     "guests": "Number of guests",
     "venue": "Venue",
@@ -251,7 +299,7 @@
   "emailInquiryOperator": {
     "preview": "Enquiry, private hire · {count} guests",
     "heading": "Enquiry, larger event",
-    "submittedVia": "Submitted via website (form for 36+ guests)",
+    "submittedVia": "Submitted via website (form for 40+ guests)",
     "contact": "Contact",
     "estimatedGuests": "Estimated number of guests",
     "estimatedDate": "Estimated date",

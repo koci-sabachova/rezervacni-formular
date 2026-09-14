@@ -147,7 +147,7 @@ export function InquiryForm({ prefillPartySize }: { prefillPartySize?: number })
           <label htmlFor="partySize" className="field-label">
             {t("partySize")} <span className="text-[var(--color-accent-soft)]">*</span>
           </label>
-          <input id="partySize" type="number" inputMode="numeric" min={36} className="input-base" {...register("estimatedPartySize")} />
+          <input id="partySize" type="number" inputMode="numeric" min={40} className="input-base" {...register("estimatedPartySize")} />
           {errors.estimatedPartySize && (
             <p className="field-error">{errors.estimatedPartySize.message as string}</p>
           )}

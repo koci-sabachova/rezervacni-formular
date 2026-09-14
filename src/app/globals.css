@@ -206,6 +206,31 @@
   color: var(--color-danger);
 }
 
+/* Stronger than alert-warning — for info that's easy to skim past
+   but shouldn't be (commercial terms, capacity commitments). */
+@utility alert-notice {
+  @apply rounded-lg p-5 text-sm border-l-4;
+  background-color: rgba(31, 110, 90, 0.06);
+  border-color: var(--color-accent);
+  border-top: 1px solid rgba(31, 110, 90, 0.18);
+  border-right: 1px solid rgba(31, 110, 90, 0.18);
+  border-bottom: 1px solid rgba(31, 110, 90, 0.18);
+  color: var(--color-text);
+}
+
+/* ─── Motion ───────────────────────────────────────────── */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ─── Links ────────────────────────────────────────────── */
 
 @utility link-subtle {

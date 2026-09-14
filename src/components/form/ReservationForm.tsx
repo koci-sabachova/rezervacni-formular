@@ -23,13 +23,14 @@ const DRAFT_KEY = "reservation-draft-v2";
 const TOTAL_STEPS = 3;
 
 const STEP_FIELDS: Record<number, FieldPath<ReservationInput>[]> = {
-  1: ["date", "time", "partySize", "venue", "eventType", "eventTypeOther"],
+  1: ["date", "dateFlexible", "time", "partySize", "venue", "eventType", "eventTypeOther"],
   2: ["catering"],
   3: ["name", "phone", "email", "note", "gdpr", "honeypot"],
 };
 
 const DEFAULT_VALUES: ReservationInput = {
   date: "",
+  dateFlexible: false,
   time: "",
   partySize: "" as unknown as number,
   venue: "" as unknown as ReservationInput["venue"],

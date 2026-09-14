@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import Image from "next/image";
 import { useFormContext } from "react-hook-form";
 import { useTranslations, useLocale } from "next-intl";
 import { tomorrowIso } from "@/lib/utils/dates";
@@ -16,6 +18,7 @@ export function Step1Basics() {
   const {
     register,
     watch,
+    setValue,
     formState: { errors },
   } = useFormContext<ReservationInput>();
 
@@ -29,7 +32,17 @@ export function Step1Basics() {
   const overflow = partySize > MAX_PARTY_SIZE_MAIN;
   const underflow = partySize > 0 && partySize < MIN_PARTY_SIZE;
   const minDate = tomorrowIso();
-  const showLargeCobraHint = venue === "cobra" && partySize >= 30;
+  const cobraHidden = partySize > 20;
+  const informaceNearCapacity = partySize >= 30;
+  const visibleVenues = cobraHidden ? VENUES.filter((v) => v !== "cobra") : VENUES;
+
+  // Cobra isn't offered above 20 people — drop a stale selection so it
+  // can't be silently submitted once the option has disappeared.
+  useEffect(() => {
+    if (cobraHidden && venue === "cobra") {
+      setValue("venue", "" as unknown as ReservationInput["venue"], { shouldValidate: false });
+    }
+  }, [cobraHidden, venue, setValue]);
 
   return (
     <div className="space-y-6">
@@ -47,6 +60,28 @@ export function Step1Basics() {
           />
           {errors.date && <p className="field-error">{errors.date.message as string}</p>}
           <p className="field-hint">{t("date.hint")}</p>
+
+          <fieldset className="mt-3">
+            <legend className="field-label mb-1.5">{t("dateFlexible.legend")}</legend>
+            <div className="flex gap-2">
+              {([true, false] as const).map((val) => (
+                <label
+                  key={String(val)}
+                  className="flex cursor-pointer items-center justify-center rounded-lg border bg-[var(--color-bg-elevated)] border-[var(--color-border)] px-4 py-2 text-sm text-[var(--color-text-muted)] transition hover:border-[var(--color-border-strong)] hover:text-[var(--color-text)] has-[:checked]:border-[var(--color-accent)] has-[:checked]:bg-[var(--color-accent)] has-[:checked]:text-white"
+                >
+                  <input
+                    type="radio"
+                    value={String(val)}
+                    checked={watch("dateFlexible") === val}
+                    onChange={() => setValue("dateFlexible", val, { shouldDirty: true, shouldValidate: true })}
+                    className="sr-only"
+                  />
+                  {val ? t("dateFlexible.yes") : t("dateFlexible.no")}
+                </label>
+              ))}
+            </div>
+            <p className="field-hint">{t("dateFlexible.hint")}</p>
+          </fieldset>
         </div>
 
         <div>
@@ -69,15 +104,34 @@ export function Step1Basics() {
         <label htmlFor="partySize" className="field-label">
           {t("partySize.label")} <span className="text-[var(--color-accent-soft)]">*</span>
         </label>
-        <input
-          id="partySize"
-          type="number"
-          inputMode="numeric"
-          min={1}
-          max={100}
-          className="input-base sm:max-w-[180px]"
-          {...register("partySize")}
-        />
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            aria-label={t("partySize.decrease")}
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] text-lg text-[var(--color-text)] transition hover:border-[var(--color-gold)] hover:text-[var(--color-gold)] disabled:opacity-40 disabled:hover:border-[var(--color-border)] disabled:hover:text-[var(--color-text)]"
+            onClick={() => setValue("partySize", Math.max(0, partySize - 5) as unknown as number, { shouldDirty: true, shouldValidate: true })}
+            disabled={partySize <= 0}
+          >
+            −
+          </button>
+          <input
+            id="partySize"
+            type="number"
+            inputMode="numeric"
+            min={1}
+            max={100}
+            className="input-base sm:max-w-[140px] text-center"
+            {...register("partySize")}
+          />
+          <button
+            type="button"
+            aria-label={t("partySize.increase")}
+            className="grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] text-lg text-[var(--color-text)] transition hover:border-[var(--color-gold)] hover:text-[var(--color-gold)]"
+            onClick={() => setValue("partySize", Math.min(100, partySize + 5) as unknown as number, { shouldDirty: true, shouldValidate: true })}
+          >
+            +
+          </button>
+        </div>
         {errors.partySize && (
           <p className="field-error">{errors.partySize.message as string}</p>
         )}
@@ -118,7 +172,8 @@ export function Step1Basics() {
         )}
       </div>
 
-      <fieldset>
+      {partySize > 0 && (
+      <fieldset className="animate-[fadeIn_0.25s_ease-out]">
         <legend className="field-label mb-3">
           {t("venueLegend")} <span className="text-[var(--color-accent-soft)]">*</span>
         </legend>
@@ -128,7 +183,7 @@ export function Step1Basics() {
           })}
         </p>
         <div className="grid gap-2">
-          {VENUES.map((v) => (
+          {visibleVenues.map((v) => (
             <label
               key={v}
               className="block cursor-pointer rounded-2xl p-5 transition bg-[var(--color-bg-elevated)] hover:bg-[#e9e4da] has-[:checked]:bg-[var(--color-card-hover)]"
@@ -141,7 +196,16 @@ export function Step1Basics() {
                   {...register("venue")}
                 />
                 <div className="flex-1">
-                  <div className="flex flex-wrap items-baseline gap-2">
+                  <div className="flex flex-wrap items-center gap-2">
+                    {(v === "cobra" || v === "informace") && (
+                      <Image
+                        src={`/brand/${v === "cobra" ? "cobra-mark" : "informace-mark"}.png`}
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="h-5 w-5"
+                      />
+                    )}
                     <span className="text-lg font-medium text-[var(--color-text)]">
                       {tSchemas(`venues.${v}`)}
                     </span>
@@ -166,10 +230,21 @@ export function Step1Basics() {
                       ))}
                     </ul>
                   )}
-                  {v !== "unsure" && (
-                    <p className="mt-3 text-sm italic text-[var(--color-text-subtle)]">
-                      {t(`${v}.fitsYou`)}
-                    </p>
+                  {v === "informace" && informaceNearCapacity ? (
+                    <div className="mt-3 rounded-lg border-l-4 border-[var(--color-accent)] bg-white/70 p-3.5">
+                      <p className="font-semibold text-[var(--color-accent-strong)]">
+                        {t("informaceCapacityTitle")}
+                      </p>
+                      <p className="mt-1 text-sm leading-relaxed text-[var(--color-text)]">
+                        {t("informaceCapacityBody")}
+                      </p>
+                    </div>
+                  ) : (
+                    v !== "unsure" && (
+                      <p className="mt-3 text-sm italic text-[var(--color-text-subtle)]">
+                        {t(`${v}.fitsYou`)}
+                      </p>
+                    )
                   )}
                   {v === "cobra" && (
                     <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
@@ -211,18 +286,6 @@ export function Step1Basics() {
         </div>
         {errors.venue && <p className="field-error mt-2">{errors.venue.message as string}</p>}
       </fieldset>
-
-      {showLargeCobraHint && (
-        <div className="alert-warning">
-          <p className="font-medium text-[var(--color-gold-soft)]">{t("largeCobraTitle")}</p>
-          <p className="mt-1 opacity-80">
-            {t.rich("largeCobraBody", {
-              bold: (c) => (
-                <strong className="text-[var(--color-gold-soft)]">{c}</strong>
-              ),
-            })}
-          </p>
-        </div>
       )}
 
       <fieldset>

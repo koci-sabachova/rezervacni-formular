@@ -78,6 +78,7 @@ export function ReservationOperatorEmail({
             <Text style={styles.label}>{t("emailReservationOperator.dateTime")}</Text>
             <Text style={styles.value}>
               {longDate}
+              {data.dateFlexible && ` — ${t("emailReservationOperator.dateFlexible")}`}
               <br />
               {t("emailReservationOperator.from", { time: data.time })}
             </Text>

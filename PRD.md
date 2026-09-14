@@ -2,7 +2,7 @@
 
 ## 1. Kontext a problém
 
-Cobra (bar) a Informace (výčep) jsou dva propojené podniky vzdálené ~10 metrů; produkty se mezi nimi přenášejí. Cobra je starší a známější, Informace menší a praktičtější pro některé skupiny.
+Cobra (bar) a Informace (výčep) jsou dva podniky hned za rohem od sebe (~10 metrů); produkty se mezi nimi přenášejí. Cobra je starší a známější, Informace menší a praktičtější pro některé skupiny.
 
 Pro malé rezervace (do 10 lidí) běží **rezervujstul.cz**. Pro větší rezervace zákazníci píší e-mail — a v něm pravidelně chybí klíčové údaje:
 
@@ -50,7 +50,7 @@ Cíl: nahradit "napište nám e-mail" strukturovaným formulářem, který:
 
 | Podnik       | Běžný provoz | Uzavřená společnost |
 |--------------|--------------|---------------------|
-| Cobra        | 15–20 lidí   | až 100 lidí         |
+| Cobra        | 15–20 lidí   | ideálně 50–70 lidí, až 100 lidí |
 | Informace    | do 20 lidí   | do 30 lidí          |
 
 **Strop celkem:** 100 lidí (Cobra uzavřená). Nad 100 v1 nepřijímáme.
@@ -71,10 +71,12 @@ Tento popis slouží dvěma účelům: (1) PRD kontext pro logiku doporučení p
 - Z Informací si lze **objednat večeři z Cobry** (díky propojení podniků).
 
 ### Praktický důsledek pro výběr
+- **Do 20 lidí** se pohodlně vejde do obou podniků — skutečný překryv, volba jde čistě podle vkusu (koktejly vs. pivo).
 - Hosté se zájmem o **koktejly / signature drinky** → Cobra.
 - Hosté se zájmem o **pivo + neformální atmosféru** → Informace.
-- Velké skupiny (~25+) bez důrazu na koktejly → Informace bývá praktičtější (stejně si jídlo z Cobry mohou objednat).
-- Velké skupiny 30+ s pivním nebo cateringovým profilem, kde Informace nestačí kapacitou → Cobra uzavřená společnost.
+- **Nad 20 lidí** Cobra z nabídky podniku úplně mizí (nad běžnou kapacitou 15–20, na uzavřenou společnost zase málo) a zůstávají jen Informace / "ještě nevím".
+- **Kolem 30–35 lidí v Informacích** → fakticky uzavřená společnost s garantovanou minimální útratou, kapacitně těsné, řešíme individuálně (stále přes hlavní formulář, jde-li o ≤35 lidí). Tahle informace je teď přímo součástí karty Informací, ne samostatný box.
+- **Uzavřená společnost v Cobře** (poptávkový formulář 40+) → ideální rozsah je **50–70 lidí**, nad 70 se to prodiskutuje individuálně, strop celkem 100.
 
 ## 5. Hlavní formulář — pole
 
@@ -88,11 +90,11 @@ Tento popis slouží dvěma účelům: (1) PRD kontext pro logiku doporučení p
   - "Nejsem si jistý/á, doporučte mi"
 
 ### Logika doporučení podniku
-Když host vybere "Nejsem si jistý" nebo Cobru se 30+ lidmi bez důrazu na koktejlové menu (viz krok 2), formulář ukáže nenásilný hint:
+Do 20 lidí je to skutečný překryv — oba podniky se pohodlně hodí, volba je čistě podle vkusu (nabídne se Cobra, Informace i "ještě nevím"). Nad 20 lidí Cobra z nabídky úplně zmizí — nemá smysl ji nabízet, nabídnou se jen Informace a "ještě nevím".
 
-> *Pro skupiny nad 25 lidí, kde není hlavní zájem koktejlové menu, většinou doporučujeme Informace — je to praktičtější pro větší partu. Cobra je ideální, pokud chcete plné koktejlové menu nebo signature drinky.*
+Kolem 30–35 lidí přidá karta Informací zvýrazněnou zprávu přímo v sobě, že se blíží kapacitě a jde už fakticky o uzavřenou společnost s garantovanou minimální útratou — řešíme individuálně, ale stále přes hlavní formulář.
 
-Volba je vždy na zákazníkovi, jen ho navedeme.
+Volba mezi Informacemi a "ještě nevím" je vždy na zákazníkovi.
 
 ### Krok 2: Charakter akce (krátký)
 - **Typ akce** — narozeniny / sraz / firemní / jiné (textové pole).

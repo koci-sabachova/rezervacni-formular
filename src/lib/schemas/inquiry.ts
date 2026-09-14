@@ -40,7 +40,7 @@ export function createInquirySchema(msgs: InquiryValidationMessages = defaultMsg
       estimatedPartySize: z.coerce
         .number()
         .int(msgs.partySizeInt)
-        .min(36, msgs.partySizeMin)
+        .min(40, msgs.partySizeMin)
         .max(500, msgs.partySizeMax),
       estimatedDate: z.string().trim().max(120).optional().or(z.literal("")),
       eventType: z.string().trim().min(2, msgs.eventType).max(120),

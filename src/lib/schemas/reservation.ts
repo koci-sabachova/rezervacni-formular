@@ -56,6 +56,7 @@ export function createReservationSchema(msgs: ReservationValidationMessages = de
 
   const step1Schema = z.object({
     date: isoDate,
+    dateFlexible: z.boolean().default(false),
     time: time24,
     partySize: z.coerce
       .number()

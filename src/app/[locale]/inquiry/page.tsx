@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { InquiryForm } from "@/components/form/InquiryForm";
+import { BrandMarks } from "@/components/BrandMarks";
 
 export async function generateMetadata({
   params,
@@ -26,15 +27,17 @@ export default async function InquiryPage({
 
   const prefill = guests ? Number(guests) : undefined;
   const safePrefill =
-    prefill && Number.isFinite(prefill) && prefill >= 36 ? prefill : undefined;
+    prefill && Number.isFinite(prefill) && prefill >= 40 ? prefill : undefined;
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-12 sm:py-20">
       <header className="mb-10">
-        <p className="eyebrow">{t("eyebrow")}</p>
-        <h1 className="mt-3 text-4xl sm:text-5xl text-[var(--color-text)]">
-          {t("title")}
-        </h1>
+        <div className="flex items-center gap-3">
+          <BrandMarks only="cobra" />
+          <h1 className="text-4xl sm:text-5xl text-[var(--color-text)]">
+            {t("title")}
+          </h1>
+        </div>
         <p className="mt-4 max-w-prose text-[var(--color-text-muted)] leading-relaxed">
           {t.rich("description", {
             capacity: () => (

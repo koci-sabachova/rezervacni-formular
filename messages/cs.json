@@ -2,12 +2,48 @@
   "metadata": {
     "home": {
       "title": "Rezervace · Cobra & Informace",
+      "description": "Rezervace stolu, oslavy pro skupinu 10–35 lidí nebo poptávka uzavřené společnosti — bar Cobra a výčep Informace."
+    },
+    "reservation": {
+      "title": "Rezervace větší skupiny · Cobra & Informace",
       "description": "Rezervace skupin 10–35 lidí pro bar Cobra a výčep Informace. Catering na míru, ozveme se do 48 hodin."
     },
     "thankYou": { "title": "Děkujeme · Cobra & Informace" },
     "inquiry": {
       "title": "Pronájem baru Cobra, poptávka · Cobra & Informace",
-      "description": "Poptávkový formulář pro uzavřené společnosti od 36 lidí. Domluvíme se individuálně."
+      "description": "Poptávkový formulář pro uzavřené společnosti od 40 lidí. Domluvíme se individuálně."
+    }
+  },
+  "hub": {
+    "eyebrow": "Cobra & Informace · Praha",
+    "title": "Rezervace",
+    "subtitle": "Kolik vás bude? Podle velikosti akce vás pošleme na tu správnou cestu.",
+    "smallCobra": {
+      "label": "do 10 osob",
+      "title": "Rezervace stolu v Cobře",
+      "body": "Rychlá rezervace přes náš běžný rezervační systém.",
+      "cta": "Rezervovat stůl v Cobře"
+    },
+    "smallInformace": {
+      "label": "do 10 osob",
+      "title": "Rezervace stolu v Informacích",
+      "body": "Rychlá rezervace přes náš běžný rezervační systém.",
+      "cta": "Rezervovat stůl v Informacích"
+    },
+    "medium": {
+      "label": "10–35 osob",
+      "title": "Oslava nebo sraz",
+      "body": "Vyberete podnik, můžete rovnou sestavit catering, ozveme se do 48 hodin.",
+      "bullet1": "Oslava v Cobře do 20 lidí",
+      "bullet2": "Oslava v Informacích",
+      "bullet3": "Uzavřená společnost v Informacích",
+      "cta": "Vyplnit formulář"
+    },
+    "large": {
+      "label": "40–100 osob",
+      "title": "Uzavřená společnost",
+      "body": "Pronájem baru Cobra na celou akci, vše domluvíme individuálně.",
+      "cta": "Poslat poptávku"
     }
   },
   "layout": {
@@ -16,7 +52,7 @@
     "footerLinkText": "Napište nám email",
     "footerSuffix": "pobavíme se spolu o uzavřené společnosti v baru Cobra."
   },
-  "home": {
+  "reservationPage": {
     "eyebrow": "Cobra & Informace · Praha",
     "title": "Rezervace větší skupiny",
     "descriptionGroups": "Pro skupiny",
@@ -31,15 +67,15 @@
     "inquiryTitle": "Díky za poptávku!",
     "inquiryBody": "Větší akce řešíme individuálně, takže vám během několika dní zavoláme nebo napíšeme, domluvíme termín, podnik a co s cateringem.",
     "spam": "Mezitím sledujte svou doručenou poštu (i složku se spamem).",
-    "back": "Zpět na rezervační formulář"
+    "back": "Zpět na úvod"
   },
   "inquiryPage": {
     "eyebrow": "Cobra & Informace · Praha",
     "title": "pronájem baru Cobra, poptávka",
-    "capacity": "50–100 lidí",
-    "description": "Bar Cobra je ideální pro soukromé akce pro <capacity>50–100 lidí</capacity>. Pronájem poskytujeme formou garantované minimální útraty. Na všem se s vámi rádi dohodneme mailem, telefonicky nebo osobně, dle vaší preference.",
-    "smallerText": "Hledáte naopak menší rezervaci?",
-    "smallerLink": "Hlavní formulář (10–35 lidí)"
+    "capacity": "50–70 lidí",
+    "description": "Bar Cobra je ideální pro soukromé akce pro <capacity>50–70 lidí</capacity>, individuálně se domluvíme i na jinou velikost. Pronájem poskytujeme formou garantované minimální útraty. Na všem se s vámi rádi dohodneme mailem, telefonicky nebo osobně, dle vaší preference.",
+    "smallerText": "Hledáte jinou velikost akce?",
+    "smallerLink": "Zpět na výběr rezervace"
   },
   "stepIndicator": {
     "label": "Krok {current} z {total}",
@@ -49,8 +85,14 @@
   },
   "step1": {
     "date": {
-      "label": "Datum",
+      "label": "Preferované datum",
       "hint": "Nejdřívější možný termín je zítra. Pro catering potřebujeme aspoň 3 dny."
+    },
+    "dateFlexible": {
+      "legend": "Je datum flexibilní?",
+      "yes": "Ano",
+      "no": "Ne",
+      "hint": "Pokud by preferovaný termín nešel, zkusíme navrhnout jiný."
     },
     "time": {
       "label": "Začátek",
@@ -58,17 +100,21 @@
       "hint": "14:00–20:30 (po 30 minutách)",
       "hintCapacity": "Z kapacitních důvodů nepřijímáme rezervace po 20:30."
     },
-    "partySize": { "label": "Počet lidí" },
+    "partySize": {
+      "label": "Počet lidí",
+      "decrease": "Ubrat 5 lidí",
+      "increase": "Přidat 5 lidí"
+    },
     "underflow": {
       "title": "Pro {min} a méně lidí máme jednodušší cestu.",
       "body": "Tenhle formulář je dělaný pro větší skupiny, na menší stůl se rychleji dostanete přes <a>rezervujstul.cz</a>. Pokud chcete, pokračujte ale klidně dál, domluvíme se."
     },
     "overflow": {
       "title": "Nad 35 lidí to řešíme individuálně.",
-      "body": "Pro uzavřené společnosti máme zvlášť poptávkový formulář, domluvíme se telefonicky nebo na schůzce.",
+      "body": "O moc víc se vás už do výčepu nevejde. Pokud potřebujete větší akci, vyplňte nám formulář a podíváme se na možnosti pronájmu celé Cobry.",
       "link": "Pokračovat na poptávkový formulář"
     },
-    "venueLegend": "Kam to chcete?",
+    "venueLegend": "Jaký prostor poptáváte?",
     "venueHint": "Cobra a Informace jsou dva podniky <bold>10 metrů od sebe</bold>, rádi vám do výčepu doneseme večeři z Cobry.",
     "cobra": {
       "bullet1": "Široká nabídka koktejlů včetně signature menu",
@@ -80,7 +126,7 @@
       "linkSignature": "Signature menu (PDF)"
     },
     "informace": {
-      "tagline": "Menší, neformální podnik propojený s Cobrou.",
+      "tagline": "Menší, neformální podnik hned za rohem od Cobry.",
       "bullet1": "Základní nabídka vín, koktejlů a destilátů",
       "bullet2": "Samoobslužná sekce s drobnými jídly k pivu",
       "bullet3": "Večeři lze objednat z Cobry, kuchyň je společná",
@@ -89,8 +135,8 @@
       "linkMenu": "Menu (PDF)"
     },
     "unsure": { "tagline": "Společně najdeme to pravé pro vaši rezervaci." },
-    "largeCobraTitle": "Tip k výběru podniku",
-    "largeCobraBody": "Pro skupiny nad 30 lidí v Cobře už mluvíme o uzavřené společnosti. Pokud vám nejde primárně o koktejlové menu, bývá pro takovou partu praktičtější <bold>Informace</bold>, jídlo z Cobry si tam stejně můžete objednat. Volba je samozřejmě na vás.",
+    "informaceCapacityTitle": "Blížíte se kapacitě Informací",
+    "informaceCapacityBody": "V takovém počtu lidí už by se vám hodilo mít pro sebe celý podnik. Za uzavřenou společnost v našich podnicích nevybíráme žádný nájem, ale domluvíme se na výši garantované minimální útraty. Tu v ideálním případě v plné výši prokonzumujete.",
     "eventTypeLegend": "Druh akce",
     "eventTypeOtherPlaceholder": "Doplňte prosím (volitelně)"
   },
@@ -101,7 +147,8 @@
     "snapshotWarning": "Catering nabídka se aktuálně načítá z bundlovaného snapshotu (živá data nejsou dostupná). Položky a ceny mohou být mírně neaktuální, finální cenu potvrdíme v odpovědi.",
     "leadWarningTitle": "Catering potřebujeme objednat aspoň 3 dny dopředu",
     "leadWarningBody": "Bez cateringu rezervaci přijímáme i na zítřek. Pokud vám tento termín vyhovuje, můžeme catering probrat individuálně, napište to do poznámky v dalším kroku, nebo catering přeskočte a domluvíme detaily v odpovědi.",
-    "skip": "Catering nechci, jen rezervaci"
+    "skip": "Catering nechci, jen rezervaci",
+    "reveal": "Na to se chci podívat"
   },
   "step4": {
     "name": "Jméno a příjmení",
@@ -228,6 +275,7 @@
     "submittedVia": "Cobra & Informace · vyplněno přes web",
     "contact": "Kontakt",
     "dateTime": "Datum & čas",
+    "dateFlexible": "datum je flexibilní",
     "from": "od {time}",
     "guests": "Počet lidí",
     "venue": "Podnik",
@@ -251,7 +299,7 @@
   "emailInquiryOperator": {
     "preview": "Poptávka, uzavřená společnost · {count} lidí",
     "heading": "Poptávka, větší akce",
-    "submittedVia": "Vyplněno přes web (formulář 36+ lidí)",
+    "submittedVia": "Vyplněno přes web (formulář 40+ lidí)",
     "contact": "Kontakt",
     "estimatedGuests": "Předpokládaný počet lidí",
     "estimatedDate": "Předpokládané datum",
