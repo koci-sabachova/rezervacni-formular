@@ -12,6 +12,10 @@
     "inquiry": {
       "title": "Bar Cobra private hire, enquiry · Cobra & Informace",
       "description": "Enquiry form for private events from 40 people. We'll work out the details individually."
+    },
+    "cateringMenu": {
+      "title": "Catering menu · Cobra & Informace",
+      "description": "Our full catering menu for reservations at Bar Cobra and Tap Room Informace — food, abundance platters, canapés and cake."
     }
   },
   "hub": {
@@ -76,6 +80,13 @@
     "description": "Bar Cobra is ideal for private events for <capacity>50–70 people</capacity>, we're happy to discuss other sizes individually too. Private hire is offered as a guaranteed minimum spend. We are happy to discuss everything with you by email, phone or in person, whichever you prefer.",
     "smallerText": "Looking for a different event size?",
     "smallerLink": "Back to reservation options"
+  },
+  "cateringPage": {
+    "title": "Catering menu",
+    "subtitle": "Our full catering menu for reservations at Cobra and Informace. Prices are indicative, we'll confirm the final offer based on your group size and date.",
+    "priceIndividual": "custom quote, based on budget",
+    "reserveText": "See something you like?",
+    "reserveLink": "Add it straight to a reservation"
   },
   "stepIndicator": {
     "label": "Step {current} of {total}",
