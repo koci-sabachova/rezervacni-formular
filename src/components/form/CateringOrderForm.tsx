@@ -151,7 +151,7 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
                   <StickyCateringTotal menu={menu.items} />
                 </div>
               </div>
-              <aside className="hidden lg:block lg:sticky lg:top-8 lg:self-start">
+              <aside className="hidden lg:block lg:sticky lg:top-[106px] lg:self-start">
                 <CateringOrderSummary menu={menu.items} />
               </aside>
             </div>
