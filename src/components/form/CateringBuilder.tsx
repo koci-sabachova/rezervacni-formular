@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { useFormContext } from "react-hook-form";
-import { useTranslations } from "next-intl";
+import { useFormContext, type FieldValues } from "react-hook-form";
+import { useTranslations, useLocale } from "next-intl";
 import {
   CATERING_CATEGORIES,
   type CateringCategory,
@@ -10,14 +10,19 @@ import {
   type CateringPick,
 } from "@/lib/schemas/catering";
 import { priceCatering, formatCzk } from "@/lib/catering/calculate";
-import type { ReservationInput } from "@/lib/schemas/reservation";
+import { translateVariant } from "@/lib/catering/variant-labels";
 
 type Props = {
   menu: CateringItem[];
 };
 
+// Works with any form that has a `catering: CateringPick[]` field — the
+// reservation form and the standalone catering order form both qualify.
+// Typed against the permissive FieldValues bag rather than a specific form
+// shape (react-hook-form's Path<T> can't be resolved for a form type the
+// component doesn't know ahead of time); values are cast at the edges.
 export function CateringBuilder({ menu }: Props) {
-  const { watch, setValue } = useFormContext<ReservationInput>();
+  const { watch, setValue } = useFormContext<FieldValues>();
   const t = useTranslations("catering");
   const tSchemas = useTranslations("schemas.categories");
   const tItems = useTranslations("cateringItems");
@@ -103,6 +108,7 @@ function CateringItemRow({
   t: ReturnType<typeof useTranslations>;
   tItems: ReturnType<typeof useTranslations>;
 }) {
+  const locale = useLocale();
   const isBudget = item.cena === "individualne";
   const isCake = item.kategorie === "dort";
   const isKanapky = item.kategorie === "kanapky";
@@ -184,7 +190,8 @@ function CateringItemRow({
             <option value="">{t("selectVariant")}</option>
             {variants.map((v) => (
               <option key={v} value={v}>
-                {v}{hasPricedVariants && prices[v] !== undefined ? ` — ${formatCzk(prices[v])}` : ""}
+                {translateVariant(v, locale)}
+                {hasPricedVariants && prices[v] !== undefined ? ` — ${formatCzk(prices[v])}` : ""}
               </option>
             ))}
           </select>
@@ -293,7 +300,7 @@ function CountStepper({
 }
 
 export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
-  const { watch } = useFormContext<ReservationInput>();
+  const { watch } = useFormContext<FieldValues>();
   const t = useTranslations("catering");
   const picks = (watch("catering") ?? []) as CateringPick[];
   const priced = priceCatering(picks, menu);

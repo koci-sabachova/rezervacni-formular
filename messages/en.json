@@ -70,6 +70,8 @@
     "reservationBody": "We have received your reservation. We'll send you a confirmation or a follow-up question by email soon. We'll get back to you within 48 hours.",
     "inquiryTitle": "Thanks for your enquiry!",
     "inquiryBody": "Larger events are handled individually, so we'll call or write to you within a few days, we'll agree on a date, venue and catering.",
+    "cateringTitle": "Thanks for your catering order!",
+    "cateringBody": "We've received your order. We'll send you a confirmation or a follow-up question by email soon.",
     "spam": "In the meantime, keep an eye on your inbox (including your spam folder).",
     "back": "Back to home"
   },
@@ -82,11 +84,28 @@
     "smallerLink": "Back to reservation options"
   },
   "cateringPage": {
-    "title": "Catering menu",
-    "subtitle": "Our full catering menu for reservations at Cobra and Informace. Prices are indicative, we'll confirm the final offer based on your group size and date.",
-    "priceIndividual": "custom quote, based on budget",
-    "reserveText": "See something you like?",
-    "reserveLink": "Add it straight to a reservation"
+    "title": "Catering order",
+    "subtitle": "Pick from the Cobra and Informace menu and order it directly. Prices are indicative, we'll confirm the final offer based on your group size and date.",
+    "snapshotWarning": "The catering menu is currently loaded from a bundled snapshot (live data is not available). Items and prices may be slightly out of date, we'll confirm the final price in our reply."
+  },
+  "cateringOrderForm": {
+    "menuEmpty": "We couldn't load the catering menu right now. Please email us directly at rezervace@barcobra.cz.",
+    "contactTitle": "Contact",
+    "name": "First and last name",
+    "phone": "Phone",
+    "email": "Email",
+    "eventDateLabel": "Event date",
+    "eventDateOptional": "optional",
+    "eventDatePlaceholder": "e.g. 15 Oct 2026, or \"not sure yet\"",
+    "noteLabel": "Note",
+    "noteOptional": "optional",
+    "notePlaceholder": "Anything we should know — allergies, guest count, pickup time…",
+    "honeypot": "Leave this empty",
+    "gdpr": "I consent to the processing of my personal data to handle this order.",
+    "submit": "Send order",
+    "submitting": "Sending…",
+    "serverError": "Something went wrong while submitting. Please try again in a moment, or email us at rezervace@barcobra.cz.",
+    "formErrorTitle": "Please check the highlighted fields in the form above."
   },
   "stepIndicator": {
     "label": "Step {current} of {total}",
@@ -255,7 +274,9 @@
     "inquiryPartySizeMin": "For groups up to 35 people, please use the main form",
     "inquiryPartySizeMax": "For an event this size, please contact us directly by phone",
     "inquiryEventType": "Please enter the type of event",
-    "inquiryDescription": "Please write a few sentences about your vision (at least 10 characters)"
+    "inquiryDescription": "Please write a few sentences about your vision (at least 10 characters)",
+    "cateringEmpty": "Please add at least one item to your order",
+    "gdprCateringOrder": "Consent is required to submit the order"
   },
   "actions": {
     "incompleteWithMsg": "Some information is missing: {message}",
@@ -265,7 +286,9 @@
     "reservationSubjectOperator": "Reservation · {date} · {count} guests · {name}",
     "reservationSubjectCustomer": "Thank you for your reservation · Cobra & Informace",
     "inquirySubjectOperator": "Enquiry · {count} guests · {name}",
-    "inquirySubjectCustomer": "Thank you for your enquiry · Cobra & Informace"
+    "inquirySubjectCustomer": "Thank you for your enquiry · Cobra & Informace",
+    "cateringOrderSubjectOperator": "Catering order · {amount} Kč · {name}",
+    "cateringOrderSubjectCustomer": "Thank you for your catering order · Cobra & Informace"
   },
   "emailReservationCustomer": {
     "preview": "Thank you for your reservation, we'll be in touch within 48 hours · Cobra & Informace",
@@ -316,6 +339,27 @@
     "estimatedDate": "Estimated date",
     "eventType": "Type of event",
     "vision": "Guest's vision"
+  },
+  "emailCateringOperator": {
+    "preview": "New catering order · {amount} Kč",
+    "heading": "New catering order",
+    "submittedVia": "Cobra & Informace · ordered via website (/catering page)",
+    "contact": "Contact",
+    "eventDate": "Event date",
+    "order": "Order",
+    "estimate": "estimate",
+    "total": "Total: {amount} Kč",
+    "inclEstimates": "incl. estimates",
+    "note": "Note from guest",
+    "footer": "The guest expects a reply within 48 hours (the auto-reply promises this). Reply from this inbox or forward to your own email."
+  },
+  "emailCateringCustomer": {
+    "preview": "Thank you for your catering order",
+    "heading": "Thanks for your order, {name}!",
+    "body1": "We've received your catering order, here it is for your records:",
+    "total": "Total: {amount} Kč",
+    "body2": "We'll follow up with a confirmation or a question. If you have anything to add in the meantime, just reply to this email.",
+    "footer": "Cobra & Informace · Prague · rezervace@barcobra.cz"
   },
   "cateringItems": {
     "slane-rizecky": "Mini chicken schnitzels & pickles",

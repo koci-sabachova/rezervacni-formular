@@ -70,6 +70,8 @@
     "reservationBody": "Vaši rezervaci jsme přijali. Brzy vám pošleme potvrzení nebo upřesňující dotaz na e-mail. Ozveme se do 48 hodin.",
     "inquiryTitle": "Díky za poptávku!",
     "inquiryBody": "Větší akce řešíme individuálně, takže vám během několika dní zavoláme nebo napíšeme, domluvíme termín, podnik a co s cateringem.",
+    "cateringTitle": "Díky za objednávku cateringu!",
+    "cateringBody": "Objednávku jsme přijali. Brzy vám pošleme potvrzení nebo upřesňující dotaz na e-mail.",
     "spam": "Mezitím sledujte svou doručenou poštu (i složku se spamem).",
     "back": "Zpět na úvod"
   },
@@ -82,11 +84,28 @@
     "smallerLink": "Zpět na výběr rezervace"
   },
   "cateringPage": {
-    "title": "Nabídka cateringu",
-    "subtitle": "Kompletní nabídka k rezervaci v Cobře i Informacích. Ceny jsou orientační, finální nabídku potvrdíme podle počtu lidí a termínu.",
-    "priceIndividual": "individuálně, dle rozpočtu",
-    "reserveText": "Líbí se vám něco odsud?",
-    "reserveLink": "Rovnou to zahrňte do rezervace"
+    "title": "Objednávka cateringu",
+    "subtitle": "Vyberte si z nabídky Cobry i Informací a rovnou objednejte. Ceny jsou orientační, finální nabídku potvrdíme podle počtu lidí a termínu.",
+    "snapshotWarning": "Catering nabídka se aktuálně načítá z bundlovaného snapshotu (živá data nejsou dostupná). Položky a ceny mohou být mírně neaktuální, finální cenu potvrdíme v odpovědi."
+  },
+  "cateringOrderForm": {
+    "menuEmpty": "Nabídku cateringu se teď nepodařilo načíst. Napište nám prosím přímo na rezervace@barcobra.cz.",
+    "contactTitle": "Kontakt",
+    "name": "Jméno a příjmení",
+    "phone": "Telefon",
+    "email": "E-mail",
+    "eventDateLabel": "Termín akce",
+    "eventDateOptional": "volitelné",
+    "eventDatePlaceholder": "např. 15. 10. 2026, nebo „ještě nevím“",
+    "noteLabel": "Poznámka",
+    "noteOptional": "volitelné",
+    "notePlaceholder": "Cokoliv, co bychom měli vědět — alergie, počet lidí, čas vyzvednutí…",
+    "honeypot": "Nechte prázdné",
+    "gdpr": "Souhlasím se zpracováním osobních údajů za účelem vyřízení objednávky.",
+    "submit": "Odeslat objednávku",
+    "submitting": "Odesílám…",
+    "serverError": "Něco se pokazilo při odesílání. Zkuste to prosím za chvíli znovu, nebo nám napište na rezervace@barcobra.cz.",
+    "formErrorTitle": "Zkontrolujte prosím zvýrazněná pole ve formuláři výše."
   },
   "stepIndicator": {
     "label": "Krok {current} z {total}",
@@ -255,7 +274,9 @@
     "inquiryPartySizeMin": "Pro skupiny do 35 lidí použijte hlavní formulář",
     "inquiryPartySizeMax": "Pro tak velkou akci nás kontaktujte přímo telefonicky",
     "inquiryEventType": "Vyplňte typ akce",
-    "inquiryDescription": "Napište pár vět o své představě (alespoň 10 znaků)"
+    "inquiryDescription": "Napište pár vět o své představě (alespoň 10 znaků)",
+    "cateringEmpty": "Přidejte do objednávky aspoň jednu položku",
+    "gdprCateringOrder": "Bez souhlasu objednávku nelze odeslat"
   },
   "actions": {
     "incompleteWithMsg": "Údaje nejsou kompletní: {message}",
@@ -265,7 +286,9 @@
     "reservationSubjectOperator": "Rezervace · {date} · {count} lidí · {name}",
     "reservationSubjectCustomer": "Děkujeme za rezervaci · Cobra & Informace",
     "inquirySubjectOperator": "Poptávka · {count} lidí · {name}",
-    "inquirySubjectCustomer": "Děkujeme za poptávku · Cobra & Informace"
+    "inquirySubjectCustomer": "Děkujeme za poptávku · Cobra & Informace",
+    "cateringOrderSubjectOperator": "Objednávka cateringu · {amount} Kč · {name}",
+    "cateringOrderSubjectCustomer": "Děkujeme za objednávku cateringu · Cobra & Informace"
   },
   "emailReservationCustomer": {
     "preview": "Děkujeme za rezervaci, ozveme se do 48 hodin · Cobra & Informace",
@@ -316,6 +339,27 @@
     "estimatedDate": "Předpokládané datum",
     "eventType": "Typ akce",
     "vision": "Představa hosta"
+  },
+  "emailCateringOperator": {
+    "preview": "Nová objednávka cateringu · {amount} Kč",
+    "heading": "Nová objednávka cateringu",
+    "submittedVia": "Cobra & Informace · objednáno přes web (stránka /catering)",
+    "contact": "Kontakt",
+    "eventDate": "Termín akce",
+    "order": "Objednávka",
+    "estimate": "odhad",
+    "total": "Celkem: {amount} Kč",
+    "inclEstimates": "vč. odhadů",
+    "note": "Poznámka od hosta",
+    "footer": "Host očekává odpověď do 48 hodin (text auto-replyu mu to slibuje). Odpovídej z této schránky nebo přepošli na vlastní e-mail."
+  },
+  "emailCateringCustomer": {
+    "preview": "Děkujeme za objednávku cateringu",
+    "heading": "Díky za objednávku, {name}!",
+    "body1": "Vaši objednávku cateringu jsme přijali, tady je pro přehled:",
+    "total": "Celkem: {amount} Kč",
+    "body2": "Ozveme se s potvrzením nebo upřesňujícím dotazem. Pokud máte mezitím doplnění, odpovězte nám rovnou na tento e-mail.",
+    "footer": "Cobra & Informace · Praha · rezervace@barcobra.cz"
   },
   "cateringItems": {
     "slane-rizecky": "Kuřecí mini řízečky & kyselé okurky",

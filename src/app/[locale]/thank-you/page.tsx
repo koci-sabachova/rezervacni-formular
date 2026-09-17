@@ -24,19 +24,18 @@ export default async function ThanksPage({
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "thankYou" });
   const isInquiry = typ === "inquiry";
+  const isCatering = typ === "catering";
+  const title = isInquiry ? t("inquiryTitle") : isCatering ? t("cateringTitle") : t("reservationTitle");
+  const body = isInquiry ? t("inquiryBody") : isCatering ? t("cateringBody") : t("reservationBody");
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-16 sm:py-24">
       <div className="form-shell text-center !p-10 sm:!p-14">
         <div className="flex items-center justify-center gap-3">
           <BrandMarks only={isInquiry ? "cobra" : undefined} />
-          <h1 className="text-4xl sm:text-5xl text-[var(--color-text)]">
-            {isInquiry ? t("inquiryTitle") : t("reservationTitle")}
-          </h1>
+          <h1 className="text-4xl sm:text-5xl text-[var(--color-text)]">{title}</h1>
         </div>
-        <p className="mt-5 text-[var(--color-text-muted)] leading-relaxed">
-          {isInquiry ? t("inquiryBody") : t("reservationBody")}
-        </p>
+        <p className="mt-5 text-[var(--color-text-muted)] leading-relaxed">{body}</p>
         <p className="mt-3 text-sm text-[var(--color-text-subtle)]">
           {t("spam")}
         </p>
