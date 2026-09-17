@@ -357,3 +357,46 @@ export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
     </div>
   );
 }
+
+/**
+ * Itemized running order — meant to sit as a sticky sidebar next to the
+ * menu on wide screens, so items add up in view instead of only showing
+ * as a bottom-bar total (see StickyCateringTotal, used on narrow screens).
+ */
+export function CateringOrderSummary({ menu }: { menu: CateringItem[] }) {
+  const { watch } = useFormContext<FieldValues>();
+  const t = useTranslations("catering");
+  const picks = (watch("catering") ?? []) as CateringPick[];
+  const priced = priceCatering(picks, menu);
+
+  return (
+    <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
+      <h3 className="eyebrow !text-[10px] mb-3">{t("summaryTitle")}</h3>
+      {priced.lines.length === 0 ? (
+        <p className="text-sm text-[var(--color-text-subtle)]">{t("summaryEmpty")}</p>
+      ) : (
+        <ul className="space-y-2">
+          {priced.lines.map((line, i) => (
+            <li key={i} className="flex items-baseline justify-between gap-3 text-sm">
+              <span className="text-[var(--color-text-muted)]">{line.label}</span>
+              <span className="shrink-0 font-medium text-[var(--color-text)]">
+                {formatCzk(line.lineTotal)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <div className="mt-4 flex items-baseline justify-between gap-3 border-t border-[var(--color-border)] pt-4">
+        <span className="text-sm text-[var(--color-text-muted)]">{t("summaryTotal")}</span>
+        <span className="text-xl font-medium text-[var(--color-gold-soft)]">
+          {formatCzk(priced.total)}
+          {priced.hasEstimates && (
+            <span className="ml-1 text-xs font-sans text-[var(--color-text-subtle)]">
+              ({t("inclEstimates")})
+            </span>
+          )}
+        </span>
+      </div>
+    </div>
+  );
+}

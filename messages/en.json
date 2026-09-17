@@ -227,7 +227,10 @@
     "selectVariant": "Select a variant",
     "minPcs": "min. {min} pcs per type",
     "items": "{count, plural, one {# item} other {# items}}",
-    "inclEstimates": "incl. estimates"
+    "inclEstimates": "incl. estimates",
+    "summaryTitle": "Your order",
+    "summaryEmpty": "No items yet — add some from the menu on the left.",
+    "summaryTotal": "Total"
   },
   "inquiryForm": {
     "name": "Full name",

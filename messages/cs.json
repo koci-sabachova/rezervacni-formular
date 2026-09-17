@@ -227,7 +227,10 @@
     "selectVariant": "Vyberte variantu",
     "minPcs": "min. {min} ks od jednoho druhu",
     "items": "{count, plural, one {# položka} few {# položky} other {# položek}}",
-    "inclEstimates": "vč. odhadů"
+    "inclEstimates": "vč. odhadů",
+    "summaryTitle": "Vaše objednávka",
+    "summaryEmpty": "Zatím žádné položky — přidejte je z nabídky vlevo.",
+    "summaryTotal": "Celkem"
   },
   "inquiryForm": {
     "name": "Jméno a příjmení",

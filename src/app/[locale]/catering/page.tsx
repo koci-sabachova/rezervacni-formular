@@ -29,7 +29,7 @@ export default async function CateringMenuPage({
   ]);
 
   return (
-    <main className="mx-auto max-w-3xl px-4 py-12 sm:py-20">
+    <main className="mx-auto max-w-5xl px-4 py-12 sm:py-20">
       <header className="mb-10">
         <div className="flex items-center gap-3">
           <BrandMarks />

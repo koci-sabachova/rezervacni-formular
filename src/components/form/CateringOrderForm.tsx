@@ -10,7 +10,7 @@ import {
   type CateringOrderValidationMessages,
 } from "@/lib/schemas/catering-order";
 import type { CateringMenu } from "@/lib/sheets/fetch";
-import { CateringBuilder, StickyCateringTotal } from "./CateringBuilder";
+import { CateringBuilder, StickyCateringTotal, CateringOrderSummary } from "./CateringBuilder";
 import { priceCatering } from "@/lib/catering/calculate";
 
 const DRAFT_KEY = "catering-order-draft-v1";
@@ -139,15 +139,22 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
               {t("menuEmpty")}
             </p>
           ) : (
-            <>
-              <CateringBuilder menu={menu.items} />
-              {errors.catering && (
-                <p ref={cateringErrorRef} className="field-error">
-                  {errors.catering.message as string}
-                </p>
-              )}
-              <StickyCateringTotal menu={menu.items} />
-            </>
+            <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+              <div>
+                <CateringBuilder menu={menu.items} />
+                {errors.catering && (
+                  <p ref={cateringErrorRef} className="field-error">
+                    {errors.catering.message as string}
+                  </p>
+                )}
+                <div className="lg:hidden">
+                  <StickyCateringTotal menu={menu.items} />
+                </div>
+              </div>
+              <aside className="hidden lg:block lg:sticky lg:top-8 lg:self-start">
+                <CateringOrderSummary menu={menu.items} />
+              </aside>
+            </div>
           )}
 
           <div className="space-y-5 border-t border-[var(--color-border)] pt-6">
