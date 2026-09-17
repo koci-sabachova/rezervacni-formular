@@ -43,7 +43,8 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-hummus",
     kategorie: "mala_jidla",
-    nazev: "Hummus ze žlutého hrachu (vegan)",
+    nazev: "Hummus ze žlutého hrachu",
+    tagy: ["vegan"],
     jednotka: "porce",
     cena: 115,
     varianty: ["S focacciou", "Se zeleninou & focacciou"],
@@ -56,7 +57,8 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-baba",
     kategorie: "mala_jidla",
-    nazev: "Baba ganoush (vegan)",
+    nazev: "Baba ganoush",
+    tagy: ["vegan"],
     jednotka: "porce",
     cena: 115,
     varianty: ["S focacciou", "Se zeleninou & focacciou"],
@@ -69,7 +71,8 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-muhammara",
     kategorie: "mala_jidla",
-    nazev: "Muhammara (vegan)",
+    nazev: "Muhammara",
+    tagy: ["vegan"],
     jednotka: "porce",
     cena: 135,
     varianty: ["S focacciou", "Se zeleninou & focacciou"],
@@ -82,7 +85,8 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-olivy-rajcata",
     kategorie: "mala_jidla",
-    nazev: "Nakládané olivy & sušená rajčata (vegan)",
+    nazev: "Nakládané olivy & sušená rajčata",
+    tagy: ["vegan"],
     popis: "S focacciou",
     jednotka: "porce",
     cena: 115,
@@ -91,8 +95,9 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-chorizovka",
     kategorie: "mala_jidla",
-    nazev: "Chorizo pomazánka (pálivé)",
-    popis: "Pomazánka ze španělského salámu chorizo, rajčat a kremového sýra & focaccia (pálivé)",
+    nazev: "Chorizo pomazánka",
+    tagy: ["palive"],
+    popis: "Pomazánka ze španělského salámu chorizo, rajčat a kremového sýra & focaccia",
     jednotka: "porce",
     cena: 145,
     aktivni: true,
@@ -109,7 +114,8 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-orisky",
     kategorie: "mala_jidla",
-    nazev: "Pražené oříšky s kukuřicí (pálivé)",
+    nazev: "Pražené oříšky s kukuřicí",
+    tagy: ["palive"],
     jednotka: "porce",
     cena: 105,
     aktivni: true,
@@ -117,7 +123,8 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-popcorn",
     kategorie: "mala_jidla",
-    nazev: "Cobří máslový popcorn (veggie)",
+    nazev: "Cobří máslový popcorn",
+    tagy: ["veggie"],
     jednotka: "porce",
     cena: 105,
     aktivni: true,
@@ -236,7 +243,8 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mis-olivy",
     kategorie: "misy",
-    nazev: "Marinované olivy a sušená rajčata (vegan)",
+    nazev: "Marinované olivy a sušená rajčata",
+    tagy: ["vegan"],
     jednotka: "porce",
     cena: 135,
     aktivni: true,

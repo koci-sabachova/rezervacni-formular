@@ -8,6 +8,7 @@ import {
   type CateringCategory,
   type CateringItem,
   type CateringPick,
+  type CateringTag,
 } from "@/lib/schemas/catering";
 import { priceCatering, formatCzk } from "@/lib/catering/calculate";
 import { translateVariant } from "@/lib/catering/variant-labels";
@@ -109,6 +110,7 @@ function CateringItemRow({
   tItems: ReturnType<typeof useTranslations>;
 }) {
   const locale = useLocale();
+  const tTags = useTranslations("schemas.cateringTags");
   const isBudget = item.cena === "individualne";
   const isCake = item.kategorie === "dort";
   const isKanapky = item.kategorie === "kanapky";
@@ -120,7 +122,10 @@ function CateringItemRow({
     return (
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 py-4 border-b border-[var(--color-border)] last:border-0">
         <div className="flex-1">
-          <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
+            <CateringTagBadges tags={item.tagy} tTags={tTags} />
+          </div>
           <p className="text-xs text-[var(--color-text-subtle)]">
             {item.popis ?? t("budgetDefault")}
           </p>
@@ -165,7 +170,10 @@ function CateringItemRow({
       <div className="space-y-3 py-4 border-b border-[var(--color-border)] last:border-0">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
+              <CateringTagBadges tags={item.tagy} tTags={tTags} />
+            </div>
             {item.popis && (
               <p className="text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
             )}
@@ -211,7 +219,10 @@ function CateringItemRow({
   return (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 py-4 border-b border-[var(--color-border)] last:border-0">
       <div className="flex-1">
-        <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
+          <CateringTagBadges tags={item.tagy} tTags={tTags} />
+        </div>
         <p className="text-xs text-[var(--color-text-subtle)]">
           {item.jednotka} · {formatCzk(item.cena as number)}
           {isKanapky && (
@@ -231,6 +242,25 @@ function CateringItemRow({
         t={t}
       />
     </div>
+  );
+}
+
+function CateringTagBadges({
+  tags,
+  tTags,
+}: {
+  tags: CateringTag[] | undefined;
+  tTags: ReturnType<typeof useTranslations>;
+}) {
+  if (!tags || tags.length === 0) return null;
+  return (
+    <>
+      {tags.map((tag) => (
+        <span key={tag} className={tag === "palive" ? "chip-danger" : "chip"}>
+          {tTags(tag)}
+        </span>
+      ))}
+    </>
   );
 }
 

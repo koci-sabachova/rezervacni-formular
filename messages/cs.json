@@ -8,7 +8,9 @@
       "title": "Rezervace větší skupiny · Cobra & Informace",
       "description": "Rezervace skupin 10–35 lidí pro bar Cobra a výčep Informace. Catering na míru, ozveme se do 48 hodin."
     },
-    "thankYou": { "title": "Děkujeme · Cobra & Informace" },
+    "thankYou": {
+      "title": "Děkujeme · Cobra & Informace"
+    },
     "inquiry": {
       "title": "Pronájem baru Cobra, poptávka · Cobra & Informace",
       "description": "Poptávkový formulář pro uzavřené společnosti od 40 lidí. Domluvíme se individuálně."
@@ -169,7 +171,9 @@
       "linkSite": "Stránky podniku",
       "linkMenu": "Menu (PDF)"
     },
-    "unsure": { "tagline": "Společně najdeme to pravé pro vaši rezervaci." },
+    "unsure": {
+      "tagline": "Společně najdeme to pravé pro vaši rezervaci."
+    },
     "informaceCapacityTitle": "Blížíte se kapacitě Informací",
     "informaceCapacityBody": "V takovém počtu lidí už by se vám hodilo mít pro sebe celý podnik. Za uzavřenou společnost v našich podnicích nevybíráme žádný nájem, ale domluvíme se na výši garantované minimální útraty. Tu v ideálním případě v plné výši prokonzumujete.",
     "eventTypeLegend": "Druh akce",
@@ -261,6 +265,11 @@
       "misy": "Mísy hojnosti v libovolném množství dle budgetu",
       "mala_jidla": "Malá jídla z celodenní nabídky",
       "dort": "Dort"
+    },
+    "cateringTags": {
+      "vegan": "vegan",
+      "veggie": "veggie",
+      "palive": "pálivé"
     }
   },
   "validation": {
@@ -370,14 +379,14 @@
     "slane-tatarak": "Hovězí tatarák & topinky z kváskového chleba",
     "slane-carpaccio": "Carpaccio se sýrem parmigiano reggiano, rukola, citron & focaccia",
     "slane-salat-krevety": "Salát z krevet, brambor a sušených rajčat & naše focaccia",
-    "mj-hummus": "Hummus ze žlutého hrachu (vegan)",
-    "mj-baba": "Baba ganoush (vegan)",
-    "mj-muhammara": "Muhammara (vegan)",
-    "mj-olivy-rajcata": "Nakládané olivy & sušená rajčata (vegan)",
-    "mj-chorizovka": "Chorizo pomazánka (pálivé)",
+    "mj-hummus": "Hummus ze žlutého hrachu",
+    "mj-baba": "Baba ganoush",
+    "mj-muhammara": "Muhammara",
+    "mj-olivy-rajcata": "Nakládané olivy & sušená rajčata",
+    "mj-chorizovka": "Chorizo pomazánka",
     "mj-sendvic": "Sendvič dle denní nabídky",
-    "mj-orisky": "Pražené oříšky s kukuřicí (pálivé)",
-    "mj-popcorn": "Cobří máslový popcorn (veggie)",
+    "mj-orisky": "Pražené oříšky s kukuřicí",
+    "mj-popcorn": "Cobří máslový popcorn",
     "mj-brownie": "Brownie s malinami",
     "mj-susenka": "Sušenka s bílou čokoládou a sušeným banánem",
     "kan-prazska": "Pražská šunka, smetanový křen, cornichon, kváskový chléb",
@@ -390,7 +399,7 @@
     "kan-focaccia-halloumi-granat": "Naše focaccia s pomazánkou z pečených paprik a vlašských oříšků Muhammara, sýr halloumi & granátové jablko",
     "kan-focaccia-muhammara": "Kanapky s naší focacciou, muhammarou a grilovaným halloumi",
     "kan-pizza-snek": "Pizza šnek se šunkou a sýrem",
-    "mis-olivy": "Marinované olivy a sušená rajčata (vegan)",
+    "mis-olivy": "Marinované olivy a sušená rajčata",
     "mis-syry": "Mísa evropských sýrů a hroznové víno",
     "mis-uzeniny": "Mísa uzenin, nakládaná zelenina a hrubozrnná hořčice",
     "dort-12": "Narozeninový dort"

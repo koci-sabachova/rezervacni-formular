@@ -10,6 +10,10 @@ export const CATERING_CATEGORIES = [
 
 export type CateringCategory = (typeof CATERING_CATEGORIES)[number];
 
+export const CATERING_TAGS = ["vegan", "veggie", "palive"] as const;
+
+export type CateringTag = (typeof CATERING_TAGS)[number];
+
 export const CATEGORY_LABELS: Record<CateringCategory, string> = {
   slane_hlavni: "Sharing platters not on our regular menu",
   kanapky: "Canapés and small bites",
@@ -28,6 +32,7 @@ export const cateringItemSchema = z.object({
   min_pocet: z.number().int().positive().optional(),
   varianty: z.array(z.string()).optional(),
   varianty_ceny: z.record(z.string(), z.number().nonnegative()).optional(),
+  tagy: z.array(z.enum(CATERING_TAGS)).optional(),
   aktivni: z.boolean(),
 });
 

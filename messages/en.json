@@ -8,7 +8,9 @@
       "title": "Group reservation · Cobra & Informace",
       "description": "Group reservations for 10–35 people at Bar Cobra and Tap Room Informace. Custom catering, we'll get back to you within 48 hours."
     },
-    "thankYou": { "title": "Thank you · Cobra & Informace" },
+    "thankYou": {
+      "title": "Thank you · Cobra & Informace"
+    },
     "inquiry": {
       "title": "Bar Cobra private hire, enquiry · Cobra & Informace",
       "description": "Enquiry form for private events from 40 people. We'll work out the details individually."
@@ -169,7 +171,9 @@
       "linkSite": "Venue website",
       "linkMenu": "Menu (PDF)"
     },
-    "unsure": { "tagline": "We'll find the right fit for your reservation together." },
+    "unsure": {
+      "tagline": "We'll find the right fit for your reservation together."
+    },
     "informaceCapacityTitle": "Approaching capacity at Informace",
     "informaceCapacityBody": "At this size, you'd probably want the whole venue to yourselves. We don't charge rent for a private hire at our venues, instead we agree on a guaranteed minimum spend, ideally one you consume in full anyway.",
     "eventTypeLegend": "Type of event",
@@ -261,6 +265,11 @@
       "misy": "Abundance platters in any quantity to match your budget",
       "mala_jidla": "Small dishes from our all-day menu",
       "dort": "Cake"
+    },
+    "cateringTags": {
+      "vegan": "vegan",
+      "veggie": "veggie",
+      "palive": "spicy"
     }
   },
   "validation": {
@@ -370,14 +379,14 @@
     "slane-tatarak": "Beef tartare & sourdough toast",
     "slane-carpaccio": "Beef carpaccio with parmigiano reggiano, rocket, lemon & focaccia",
     "slane-salat-krevety": "Prawn, potato & sun-dried tomato salad with our focaccia",
-    "mj-hummus": "Yellow pea hummus (vegan)",
-    "mj-baba": "Baba ganoush (vegan)",
-    "mj-muhammara": "Muhammara (vegan)",
-    "mj-olivy-rajcata": "Marinated olives & sun-dried tomatoes (vegan)",
-    "mj-chorizovka": "Chorizo spread (spicy)",
+    "mj-hummus": "Yellow pea hummus",
+    "mj-baba": "Baba ganoush",
+    "mj-muhammara": "Muhammara",
+    "mj-olivy-rajcata": "Marinated olives & sun-dried tomatoes",
+    "mj-chorizovka": "Chorizo spread",
     "mj-sendvic": "Sandwich of the day",
-    "mj-orisky": "Roasted nuts with corn (spicy)",
-    "mj-popcorn": "Cobra butter popcorn (veggie)",
+    "mj-orisky": "Roasted nuts with corn",
+    "mj-popcorn": "Cobra butter popcorn",
     "mj-brownie": "Raspberry brownie",
     "mj-susenka": "White chocolate & dried banana cookie",
     "kan-prazska": "Prague ham, creamed horseradish, cornichon, sourdough bread",
@@ -390,7 +399,7 @@
     "kan-focaccia-halloumi-granat": "Our focaccia with muhammara spread, halloumi & pomegranate",
     "kan-focaccia-muhammara": "Canapés with our focaccia, muhammara and grilled halloumi",
     "kan-pizza-snek": "Ham and cheese pizza scrolls",
-    "mis-olivy": "Marinated olives & sun-dried tomatoes (vegan)",
+    "mis-olivy": "Marinated olives & sun-dried tomatoes",
     "mis-syry": "European cheese board with grapes",
     "mis-uzeniny": "Charcuterie board, pickled vegetables & wholegrain mustard",
     "dort-12": "Birthday cake"

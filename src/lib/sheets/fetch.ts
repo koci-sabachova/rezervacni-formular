@@ -22,6 +22,7 @@ const COLUMN_ORDER = [
   "cena",
   "min_pocet",
   "varianty",
+  "tagy",
   "aktivni",
 ] as const;
 
@@ -58,6 +59,13 @@ function parseRow(row: string[]): CateringItem | null {
       .filter(Boolean);
   }
 
+  if (typeof obj.tagy === "string") {
+    obj.tagy = obj.tagy
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+
   if (typeof obj.aktivni === "string") {
     const v = obj.aktivni.toLowerCase();
     obj.aktivni = v === "true" || v === "yes" || v === "1" || v === "ano";
@@ -76,7 +84,7 @@ async function fetchFromSheets(): Promise<CateringItem[] | null> {
     "\n",
   );
   const sheetId = process.env.GOOGLE_SHEETS_ID;
-  const range = process.env.GOOGLE_SHEETS_RANGE ?? "Menu!A:I";
+  const range = process.env.GOOGLE_SHEETS_RANGE ?? "Menu!A:J";
 
   if (!clientEmail || !privateKey || !sheetId) {
     return null;

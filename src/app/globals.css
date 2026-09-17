@@ -184,6 +184,14 @@
   border: 1px solid rgba(31, 110, 90, 0.18);
 }
 
+/* Same shape as .chip, danger-colored — for tags like "pálivé" (spicy). */
+@utility chip-danger {
+  @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium tracking-wide;
+  background-color: rgba(179, 48, 48, 0.07);
+  color: var(--color-danger);
+  border: 1px solid rgba(179, 48, 48, 0.18);
+}
+
 @utility eyebrow {
   @apply text-xs uppercase font-medium;
   letter-spacing: 0.18em;
