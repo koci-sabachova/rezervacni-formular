@@ -13,7 +13,7 @@ export function BrandMarks({ only }: { only?: "cobra" | "informace" }) {
           alt=""
           width={48}
           height={48}
-          className="h-9 w-9 sm:h-12 sm:w-12"
+          className="h-12 w-12 sm:h-16 sm:w-16"
         />
       )}
       {only !== "cobra" && (
@@ -22,7 +22,7 @@ export function BrandMarks({ only }: { only?: "cobra" | "informace" }) {
           alt=""
           width={48}
           height={48}
-          className="h-9 w-9 sm:h-12 sm:w-12"
+          className="h-12 w-12 sm:h-16 sm:w-16"
         />
       )}
     </span>
