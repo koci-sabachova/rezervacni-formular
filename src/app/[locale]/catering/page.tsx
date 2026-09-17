@@ -40,12 +40,6 @@ export default async function CateringMenuPage({
         </p>
       </header>
 
-      {menu.source === "snapshot" && (
-        <div className="alert-warning mb-8">
-          <p className="opacity-80">{t("snapshotWarning")}</p>
-        </div>
-      )}
-
       <CateringOrderForm menu={menu} />
     </main>
   );

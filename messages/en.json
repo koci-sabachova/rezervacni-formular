@@ -85,8 +85,7 @@
   },
   "cateringPage": {
     "title": "Catering order",
-    "subtitle": "Pick from the Cobra and Informace menu and order it directly. Prices are indicative, we'll confirm the final offer based on your group size and date.",
-    "snapshotWarning": "The catering menu is currently loaded from a bundled snapshot (live data is not available). Items and prices may be slightly out of date, we'll confirm the final price in our reply."
+    "subtitle": "Pick from the Cobra and Informace menu and order it directly."
   },
   "cateringOrderForm": {
     "menuEmpty": "We couldn't load the catering menu right now. Please email us directly at rezervace@barcobra.cz.",

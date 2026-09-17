@@ -85,8 +85,7 @@
   },
   "cateringPage": {
     "title": "Objednávka cateringu",
-    "subtitle": "Vyberte si z nabídky Cobry i Informací a rovnou objednejte. Ceny jsou orientační, finální nabídku potvrdíme podle počtu lidí a termínu.",
-    "snapshotWarning": "Catering nabídka se aktuálně načítá z bundlovaného snapshotu (živá data nejsou dostupná). Položky a ceny mohou být mírně neaktuální, finální cenu potvrdíme v odpovědi."
+    "subtitle": "Vyberte si z nabídky Cobry i Informací a rovnou objednejte."
   },
   "cateringOrderForm": {
     "menuEmpty": "Nabídku cateringu se teď nepodařilo načíst. Napište nám prosím přímo na rezervace@barcobra.cz.",
