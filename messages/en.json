@@ -98,7 +98,7 @@
     "eventDatePlaceholder": "e.g. 15 Oct 2026, or \"not sure yet\"",
     "noteLabel": "Note",
     "noteOptional": "optional",
-    "notePlaceholder": "Anything we should know — allergies, guest count, pickup time…",
+    "notePlaceholder": "Anything we should know — allergies, guest count, should the food be ready for when you arrive?",
     "honeypot": "Leave this empty",
     "gdpr": "I consent to the processing of my personal data to handle this order.",
     "submit": "Send order",
@@ -383,6 +383,6 @@
     "mis-olivy": "Marinated olives & sun-dried tomatoes (vegan)",
     "mis-syry": "European cheese board with grapes",
     "mis-uzeniny": "Charcuterie board, pickled vegetables & wholegrain mustard",
-    "dort-12": "Cake for 12 people"
+    "dort-12": "Birthday cake"
   }
 }

@@ -98,7 +98,7 @@
     "eventDatePlaceholder": "např. 15. 10. 2026, nebo „ještě nevím“",
     "noteLabel": "Poznámka",
     "noteOptional": "volitelné",
-    "notePlaceholder": "Cokoliv, co bychom měli vědět — alergie, počet lidí, čas vyzvednutí…",
+    "notePlaceholder": "Cokoliv, co bychom měli vědět — alergie, počet lidí, má být jídlo přichystáno na váš příchod?",
     "honeypot": "Nechte prázdné",
     "gdpr": "Souhlasím se zpracováním osobních údajů za účelem vyřízení objednávky.",
     "submit": "Odeslat objednávku",
@@ -369,7 +369,7 @@
     "mj-baba": "Baba ganoush (vegan)",
     "mj-muhammara": "Muhammara (vegan)",
     "mj-olivy-rajcata": "Nakládané olivy & sušená rajčata (vegan)",
-    "mj-chorizovka": "Chorizovka (pálivé)",
+    "mj-chorizovka": "Chorizo pomazánka (pálivé)",
     "kan-prazska": "Pražská šunka, smetanový křen, cornichon, kváskový chléb",
     "kan-lilek": "Marinovaný lilek, focaccia, oliva",
     "kan-vajicka": "Vajíčková pomazánka s lanýžovou majonézou, naše focaccia, pažitka",
@@ -383,6 +383,6 @@
     "mis-olivy": "Marinované olivy a sušená rajčata (vegan)",
     "mis-syry": "Mísa evropských sýrů a hroznové víno",
     "mis-uzeniny": "Mísa uzenin, nakládaná zelenina a hrubozrnná hořčice",
-    "dort-12": "Dort pro 12 lidí"
+    "dort-12": "Narozeninový dort"
   }
 }
