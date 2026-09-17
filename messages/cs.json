@@ -101,10 +101,16 @@
     "notePlaceholder": "Cokoliv, co bychom měli vědět — alergie, počet lidí, má být jídlo přichystáno na váš příchod?",
     "honeypot": "Nechte prázdné",
     "gdpr": "Souhlasím se zpracováním osobních údajů za účelem vyřízení objednávky.",
-    "submit": "Odeslat objednávku",
-    "submitting": "Odesílám…",
-    "serverError": "Něco se pokazilo při odesílání. Zkuste to prosím za chvíli znovu, nebo nám napište na rezervace@barcobra.cz.",
-    "formErrorTitle": "Zkontrolujte prosím zvýrazněná pole ve formuláři výše."
+    "submit": "Otevřít e-mail s objednávkou",
+    "formErrorTitle": "Zkontrolujte prosím zvýrazněná pole ve formuláři výše.",
+    "mailSubject": "Objednávka cateringu · {amount} Kč · {name}",
+    "mailContactLabel": "Kontakt",
+    "mailEventDateLabel": "Termín akce",
+    "mailOrderLabel": "Objednávka",
+    "mailTotalLabel": "Celkem",
+    "mailInclEstimates": "vč. odhadů",
+    "mailNoteLabel": "Poznámka",
+    "mailOpened": "Otevřeli jsme ti e-mailového klienta s předvyplněnou objednávkou na rezervace@barcobra.cz. Zkontroluj ji a odešli — bez toho nám objednávka nedorazí."
   },
   "stepIndicator": {
     "label": "Krok {current} z {total}",

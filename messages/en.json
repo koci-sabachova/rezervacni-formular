@@ -101,10 +101,16 @@
     "notePlaceholder": "Anything we should know — allergies, guest count, should the food be ready for when you arrive?",
     "honeypot": "Leave this empty",
     "gdpr": "I consent to the processing of my personal data to handle this order.",
-    "submit": "Send order",
-    "submitting": "Sending…",
-    "serverError": "Something went wrong while submitting. Please try again in a moment, or email us at rezervace@barcobra.cz.",
-    "formErrorTitle": "Please check the highlighted fields in the form above."
+    "submit": "Open email with order",
+    "formErrorTitle": "Please check the highlighted fields in the form above.",
+    "mailSubject": "Catering order · {amount} Kč · {name}",
+    "mailContactLabel": "Contact",
+    "mailEventDateLabel": "Event date",
+    "mailOrderLabel": "Order",
+    "mailTotalLabel": "Total",
+    "mailInclEstimates": "incl. estimates",
+    "mailNoteLabel": "Note",
+    "mailOpened": "We've opened your email client with the order pre-filled, addressed to rezervace@barcobra.cz. Check it and hit send — without that, the order won't reach us."
   },
   "stepIndicator": {
     "label": "Step {current} of {total}",

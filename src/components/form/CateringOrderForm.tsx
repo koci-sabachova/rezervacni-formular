@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 import {
   createCateringOrderSchema,
@@ -12,10 +11,10 @@ import {
 } from "@/lib/schemas/catering-order";
 import type { CateringMenu } from "@/lib/sheets/fetch";
 import { CateringBuilder, StickyCateringTotal } from "./CateringBuilder";
-import { TurnstileWidget } from "./Turnstile";
-import { submitCateringOrder } from "@/app/actions/submit-catering-order";
+import { priceCatering } from "@/lib/catering/calculate";
 
 const DRAFT_KEY = "catering-order-draft-v1";
+const ORDER_EMAIL = "rezervace@barcobra.cz";
 
 const DEFAULT_VALUES: CateringOrderInput = {
   name: "",
@@ -30,13 +29,11 @@ const DEFAULT_VALUES: CateringOrderInput = {
 };
 
 export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
-  const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("cateringOrderForm");
   const tVal = useTranslations("validation");
 
-  const [serverError, setServerError] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mailOpened, setMailOpened] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
   const validationMsgs = useMemo<CateringOrderValidationMessages>(
@@ -88,23 +85,34 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
     return () => sub.unsubscribe();
   }, [watch, hydrated]);
 
-  async function onSubmit(values: CateringOrderInput) {
-    setServerError(null);
-    setIsSubmitting(true);
-    try {
-      const result = await submitCateringOrder(values, locale);
-      if (result.ok) {
-        try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
-        router.push(`/${locale}/thank-you?typ=catering`);
-      } else {
-        setServerError(result.error);
-        setIsSubmitting(false);
-      }
-    } catch (err) {
-      console.error(err);
-      setServerError(t("serverError"));
-      setIsSubmitting(false);
-    }
+  // No backend email delivery is wired up yet (see PRD/team notes) — instead
+  // of failing silently, this hands the guest a pre-filled email to their own
+  // mail client, addressed to us. Nothing is sent to our server at all.
+  function onSubmit(values: CateringOrderInput) {
+    const priced = priceCatering(values.catering ?? [], menu.items);
+    const subject = t("mailSubject", {
+      amount: priced.total.toLocaleString("en-US"),
+      name: values.name,
+    });
+    const bodyLines = [
+      `${t("mailContactLabel")}: ${values.name}, ${values.phone}, ${values.email}`,
+      values.eventDate ? `${t("mailEventDateLabel")}: ${values.eventDate}` : null,
+      "",
+      `${t("mailOrderLabel")}:`,
+      ...priced.lines.map((l) => `- ${l.label} — ${l.lineTotal.toLocaleString("en-US")} Kč`),
+      "",
+      `${t("mailTotalLabel")}: ${priced.total.toLocaleString("en-US")} Kč${priced.hasEstimates ? ` (${t("mailInclEstimates")})` : ""}`,
+      values.note ? `\n${t("mailNoteLabel")}:\n${values.note}` : null,
+    ].filter((line): line is string => line !== null);
+
+    const mailtoUrl =
+      `mailto:${ORDER_EMAIL}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+
+    try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
+    window.location.href = mailtoUrl;
+    setMailOpened(true);
   }
 
   // The menu is long — a validation error can land far above the submit
@@ -186,11 +194,6 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
               <textarea id="note" rows={4} placeholder={t("notePlaceholder")} className="input-base" {...register("note")} />
             </div>
 
-            <div aria-hidden className="hidden">
-              <label htmlFor="honeypot">{t("honeypot")}</label>
-              <input id="honeypot" type="text" tabIndex={-1} autoComplete="off" {...register("honeypot")} />
-            </div>
-
             <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-elevated)] p-4 transition hover:border-[var(--color-border-strong)]">
               <input type="checkbox" className="mt-0.5 h-4 w-4 accent-[var(--color-accent)]" {...register("gdpr")} />
               <span className="text-sm text-[var(--color-text-muted)]">
@@ -199,22 +202,20 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
             </label>
             {errors.gdpr && <p className="field-error">{errors.gdpr.message as string}</p>}
 
-            <TurnstileWidget
-              onToken={(token) =>
-                methods.setValue("turnstileToken", token, { shouldDirty: false, shouldValidate: false })
-              }
-            />
-
-            {serverError && <div className="alert-danger">{serverError}</div>}
-            {!serverError && Object.keys(errors).length > 0 && (
+            {mailOpened && (
+              <div role="status" className="alert-notice">
+                {t("mailOpened")}
+              </div>
+            )}
+            {!mailOpened && Object.keys(errors).length > 0 && (
               <div role="alert" className="alert-danger">
                 {t("formErrorTitle")}
               </div>
             )}
 
             <div className="flex justify-end pt-2">
-              <button type="submit" disabled={isSubmitting} className="btn-primary">
-                {isSubmitting ? t("submitting") : t("submit")}
+              <button type="submit" className="btn-primary">
+                {t("submit")}
               </button>
             </div>
           </div>
