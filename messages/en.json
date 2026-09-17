@@ -221,7 +221,6 @@
     "budgetLabel": "Budget (Kč)",
     "budgetDefault": "Quantity adjusted to your budget.",
     "selectVariant": "Select a variant",
-    "inCart": "in cart",
     "minPcs": "min. {min} pcs per type",
     "items": "{count, plural, one {# item} other {# items}}",
     "inclEstimates": "incl. estimates"

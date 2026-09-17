@@ -173,9 +173,6 @@ function CateringItemRow({
               {item.jednotka}{hasPricedVariants ? ` · ${priceLabel}` : ` · ${formatCzk(item.cena as number)}`}
             </p>
           </div>
-          {pick && count > 0 && (
-            <span className="chip">{count}× {t("inCart")}</span>
-          )}
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
           <select

@@ -221,7 +221,6 @@
     "budgetLabel": "Rozpočet (Kč)",
     "budgetDefault": "Množství upravíme podle rozpočtu.",
     "selectVariant": "Vyberte variantu",
-    "inCart": "v košíku",
     "minPcs": "min. {min} ks od jednoho druhu",
     "items": "{count, plural, one {# položka} few {# položky} other {# položek}}",
     "inclEstimates": "vč. odhadů"
