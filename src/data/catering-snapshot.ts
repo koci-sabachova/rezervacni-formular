@@ -271,7 +271,7 @@ export const cateringSnapshot: CateringItem[] = [
 
   {
     id: "mis-olivy",
-    kategorie: "misy",
+    kategorie: "mala_jidla",
     nazev: "Marinované olivy a sušená rajčata",
     tagy: ["vegan"],
     jednotka: "porce",
