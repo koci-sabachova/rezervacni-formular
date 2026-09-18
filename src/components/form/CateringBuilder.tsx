@@ -126,7 +126,7 @@ function CateringItemRow({
             <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
             <CateringTagBadges tags={item.tagy} tTags={tTags} />
           </div>
-          <p className="text-xs text-[var(--color-text-subtle)]">
+          <p className="whitespace-pre-line text-xs text-[var(--color-text-subtle)]">
             {item.popis ?? t("budgetDefault")}
           </p>
         </div>
@@ -175,7 +175,7 @@ function CateringItemRow({
               <CateringTagBadges tags={item.tagy} tTags={tTags} />
             </div>
             {item.popis && (
-              <p className="text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
+              <p className="whitespace-pre-line text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
             )}
             <p className="text-xs text-[var(--color-text-subtle)]">
               {item.jednotka}{hasPricedVariants ? ` · ${priceLabel}` : ` · ${formatCzk(item.cena as number)}`}
@@ -224,7 +224,7 @@ function CateringItemRow({
           <CateringTagBadges tags={item.tagy} tTags={tTags} />
         </div>
         {item.popis && (
-          <p className="text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
+          <p className="whitespace-pre-line text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
         )}
         <p className="mt-1 text-xs text-[var(--color-text-subtle)]">
           {item.jednotka} · {formatCzk(item.cena as number)}
