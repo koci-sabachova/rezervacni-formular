@@ -118,7 +118,7 @@ export const cateringSnapshot: CateringItem[] = [
     tagy: ["vegan"],
     popis: "S focacciou",
     jednotka: "porce",
-    cena: 115,
+    cena: 135,
     aktivni: true,
   },
   {
@@ -269,15 +269,6 @@ export const cateringSnapshot: CateringItem[] = [
     aktivni: true,
   },
 
-  {
-    id: "mis-olivy",
-    kategorie: "mala_jidla",
-    nazev: "Marinované olivy a sušená rajčata",
-    tagy: ["vegan"],
-    jednotka: "porce",
-    cena: 135,
-    aktivni: true,
-  },
   {
     id: "mis-syry",
     kategorie: "misy",
