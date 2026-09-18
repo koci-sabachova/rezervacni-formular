@@ -182,7 +182,7 @@ function CateringItemRow({
             </p>
           </div>
         </div>
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
           <select
             className="input-base !py-2 sm:max-w-xs"
             value={variant}
