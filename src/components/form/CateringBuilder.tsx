@@ -223,6 +223,9 @@ function CateringItemRow({
           <p className="font-medium text-[var(--color-text)]">{tItems(item.id)}</p>
           <CateringTagBadges tags={item.tagy} tTags={tTags} />
         </div>
+        {item.popis && (
+          <p className="text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
+        )}
         <p className="text-xs text-[var(--color-text-subtle)]">
           {item.jednotka} · {formatCzk(item.cena as number)}
           {isKanapky && (
