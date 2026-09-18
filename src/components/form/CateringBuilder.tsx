@@ -226,7 +226,7 @@ function CateringItemRow({
         {item.popis && (
           <p className="text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
         )}
-        <p className="text-xs text-[var(--color-text-subtle)]">
+        <p className="mt-1 text-xs text-[var(--color-text-subtle)]">
           {item.jednotka} · {formatCzk(item.cena as number)}
           {isKanapky && (
             <span className="ml-2 text-[var(--color-gold)]">
