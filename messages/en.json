@@ -264,6 +264,7 @@
     },
     "categories": {
       "slane_hlavni": "Sharing platters not on our regular menu",
+      "mezze": "Popular staples of our caterings, also always on our dinner menu",
       "kanapky": "Canapés and small bites",
       "misy": "Abundance platters in any quantity to match your budget",
       "mala_jidla": "Small dishes from our all-day menu",
@@ -382,6 +383,9 @@
     "slane-tatarak": "Beef tartare & sourdough toast",
     "slane-carpaccio": "Beef carpaccio with parmigiano reggiano, rocket, lemon & focaccia",
     "slane-salat-krevety": "Prawn, potato & sun-dried tomato salad with our focaccia",
+    "slane-mezze-falafel": "Mezze plate with Falafel",
+    "slane-mezze-halloumi": "Mezze plate with grilled Halloumi",
+    "slane-mezze-merguez": "Mezze plate with Merguez sausages",
     "mj-hummus": "Yellow pea hummus",
     "mj-baba": "Baba ganoush",
     "mj-muhammara": "Muhammara",

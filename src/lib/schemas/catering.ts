@@ -2,6 +2,7 @@ import { z } from "zod";
 
 export const CATERING_CATEGORIES = [
   "slane_hlavni",
+  "mezze",
   "mala_jidla",
   "kanapky",
   "misy",
@@ -16,6 +17,7 @@ export type CateringTag = (typeof CATERING_TAGS)[number];
 
 export const CATEGORY_LABELS: Record<CateringCategory, string> = {
   slane_hlavni: "Sharing platters not on our regular menu",
+  mezze: "Popular staples of our caterings, also always on our dinner menu",
   kanapky: "Canapés and small bites",
   misy: "Abundance platters in any quantity to match your budget",
   mala_jidla: "Small dishes from our all-day menu",

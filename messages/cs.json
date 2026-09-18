@@ -264,6 +264,7 @@
     },
     "categories": {
       "slane_hlavni": "Hojnost, kterou nemáme v běžné nabídce na místě",
+      "mezze": "Oblíbené stálice našich cateringů, zároveň vždy přítomné na večeřovém menu",
       "kanapky": "Kanapky a malé pochutiny",
       "misy": "Mísy hojnosti v libovolném množství dle budgetu",
       "mala_jidla": "Malá jídla z celodenní nabídky",
@@ -382,6 +383,9 @@
     "slane-tatarak": "Hovězí tatarák & topinky z kváskového chleba",
     "slane-carpaccio": "Carpaccio se sýrem parmigiano reggiano, rukola, citron & focaccia",
     "slane-salat-krevety": "Salát z krevet, brambor a sušených rajčat & naše focaccia",
+    "slane-mezze-falafel": "Mezze talíř s Falafelem",
+    "slane-mezze-halloumi": "Mezze talíř s Halloumi",
+    "slane-mezze-merguez": "Mezze talíř s Merguez klobáskami",
     "mj-hummus": "Hummus ze žlutého hrachu",
     "mj-baba": "Baba ganoush",
     "mj-muhammara": "Muhammara",
