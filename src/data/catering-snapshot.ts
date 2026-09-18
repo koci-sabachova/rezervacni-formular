@@ -134,7 +134,7 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "mj-sendvic",
     kategorie: "mala_jidla",
-    nazev: "Sendvič dle denní nabídky",
+    nazev: "Sendvič dle aktuální nabídky",
     popis: "Lze naporcovat na čtvrtky jako mini sendviče.\nAktuální sendvič pro září: Triple grilled cheese & kimchi — toast z pekárny Ve mlýně, gouda, čedar, blaťácké zlato, naše veganské kimchi.",
     jednotka: "1 ks",
     cena: 235,
