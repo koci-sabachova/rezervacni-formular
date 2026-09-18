@@ -241,16 +241,6 @@ export const cateringSnapshot: CateringItem[] = [
     aktivni: true,
   },
   {
-    id: "kan-focaccia-halloumi-granat",
-    kategorie: "kanapky",
-    nazev:
-      "Naše focaccia s pomazánkou z pečených paprik a vlašských oříšků Muhammara, sýr halloumi & granátové jablko",
-    jednotka: "1 ks",
-    cena: 80,
-    min_pocet: 5,
-    aktivni: true,
-  },
-  {
     id: "kan-focaccia-muhammara",
     kategorie: "kanapky",
     nazev: "Kanapky s naší focacciou, muhammarou a grilovaným halloumi",
