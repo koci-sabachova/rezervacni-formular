@@ -52,12 +52,6 @@
       "cta": "Poslat poptávku"
     }
   },
-  "layout": {
-    "footerMore": "Plánujete akci pro",
-    "footerBold": "ještě více lidí",
-    "footerLinkText": "Napište nám email",
-    "footerSuffix": "pobavíme se spolu o uzavřené společnosti v baru Cobra."
-  },
   "reservationPage": {
     "eyebrow": "Cobra & Informace · Praha",
     "title": "Rezervace větší skupiny",

@@ -52,12 +52,6 @@
       "cta": "Send an enquiry"
     }
   },
-  "layout": {
-    "footerMore": "Planning an event for",
-    "footerBold": "even more people",
-    "footerLinkText": "Send us an email",
-    "footerSuffix": "and we'll talk about a private hire at Bar Cobra."
-  },
   "reservationPage": {
     "eyebrow": "Cobra & Informace · Prague",
     "title": "Group reservation",
