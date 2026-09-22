@@ -11,7 +11,7 @@ import {
   type CateringTag,
 } from "@/lib/schemas/catering";
 import { priceCatering, formatCzk } from "@/lib/catering/calculate";
-import { translateVariant } from "@/lib/catering/variant-labels";
+import { translateVariant, translateUnit } from "@/lib/catering/variant-labels";
 
 type Props = {
   menu: CateringItem[];
@@ -178,7 +178,7 @@ function CateringItemRow({
               <p className="whitespace-pre-line text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
             )}
             <p className="text-xs text-[var(--color-text-subtle)]">
-              {item.jednotka}{hasPricedVariants ? ` · ${priceLabel}` : ` · ${formatCzk(item.cena as number)}`}
+              {translateUnit(item.jednotka, locale)}{hasPricedVariants ? ` · ${priceLabel}` : ` · ${formatCzk(item.cena as number)}`}
             </p>
           </div>
         </div>
@@ -227,7 +227,7 @@ function CateringItemRow({
           <p className="whitespace-pre-line text-xs text-[var(--color-text-subtle)]">{item.popis}</p>
         )}
         <p className="mt-1 text-xs text-[var(--color-text-subtle)]">
-          {item.jednotka} · {formatCzk(item.cena as number)}
+          {translateUnit(item.jednotka, locale)} · {formatCzk(item.cena as number)}
           {isKanapky && (
             <span className="ml-2 text-[var(--color-gold)]">
               ({t("minPcs", { min })})

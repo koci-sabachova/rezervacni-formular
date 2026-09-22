@@ -20,3 +20,20 @@ export function translateVariant(label: string, locale: string): string {
   if (locale !== "en") return label;
   return EN_LABELS[label] ?? label;
 }
+
+/**
+ * Same idea as EN_LABELS above, but for the `jednotka` (unit) field —
+ * also single-language at the source.
+ */
+const EN_UNIT_LABELS: Record<string, string> = {
+  "1 ks": "1 pc",
+  "1 talíř": "1 plate",
+  porce: "portion",
+  "12 porcí": "12 portions",
+  "dle rozpočtu": "per budget",
+};
+
+export function translateUnit(unit: string, locale: string): string {
+  if (locale !== "en") return unit;
+  return EN_UNIT_LABELS[unit] ?? unit;
+}
