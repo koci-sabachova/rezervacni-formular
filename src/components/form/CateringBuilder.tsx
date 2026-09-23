@@ -9,6 +9,7 @@ import {
   type CateringItem,
   type CateringPick,
   type CateringTag,
+  type PricedCateringLine,
 } from "@/lib/schemas/catering";
 import { priceCatering, formatCzk } from "@/lib/catering/calculate";
 import { translateVariant, translateUnit } from "@/lib/catering/variant-labels";
@@ -362,6 +363,28 @@ export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
 }
 
 /**
+ * priceCatering()'s `label` is built from the raw (Czech-only) menu data
+ * because it also feeds server-side email templates that intentionally
+ * keep item names in Czech for the operator. On screen, rebuild the label
+ * from the translated item name instead so it follows the active locale.
+ */
+function localizedLineLabel(
+  line: PricedCateringLine,
+  tItems: ReturnType<typeof useTranslations>,
+  locale: string,
+): string {
+  const name = tItems(line.item.id);
+  if (line.isEstimate) {
+    return `${name} — est. ${line.lineTotal.toLocaleString("en-US")} Kč`;
+  }
+  const count = line.pick.count ?? 0;
+  if (line.pick.variant && line.item.varianty?.includes(line.pick.variant)) {
+    return `${count}× ${name} (${translateVariant(line.pick.variant, locale)})`;
+  }
+  return `${count}× ${name}`;
+}
+
+/**
  * Itemized running order — meant to sit as a sticky sidebar next to the
  * menu on wide screens, so items add up in view instead of only showing
  * as a bottom-bar total (see StickyCateringTotal, used on narrow screens).
@@ -369,6 +392,8 @@ export function StickyCateringTotal({ menu }: { menu: CateringItem[] }) {
 export function CateringOrderSummary({ menu }: { menu: CateringItem[] }) {
   const { watch } = useFormContext<FieldValues>();
   const t = useTranslations("catering");
+  const tItems = useTranslations("cateringItems");
+  const locale = useLocale();
   const picks = (watch("catering") ?? []) as CateringPick[];
   const priced = priceCatering(picks, menu);
 
@@ -381,7 +406,9 @@ export function CateringOrderSummary({ menu }: { menu: CateringItem[] }) {
         <ul className="space-y-2">
           {priced.lines.map((line, i) => (
             <li key={i} className="flex items-baseline justify-between gap-3 text-sm">
-              <span className="text-[var(--color-text-muted)]">{line.label}</span>
+              <span className="text-[var(--color-text-muted)]">
+                {localizedLineLabel(line, tItems, locale)}
+              </span>
               <span className="shrink-0 font-medium text-[var(--color-text)]">
                 {formatCzk(line.lineTotal)}
               </span>
