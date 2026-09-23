@@ -175,6 +175,33 @@ export const cateringSnapshot: CateringItem[] = [
     cena: 50,
     aktivni: true,
   },
+  {
+    id: "mj-tabouleh",
+    kategorie: "mala_jidla",
+    nazev: "Salát Tabouleh",
+    tagy: ["vegan"],
+    jednotka: "porce",
+    cena: 65,
+    aktivni: true,
+  },
+  {
+    id: "mj-brambor-salat",
+    kategorie: "mala_jidla",
+    nazev: "Lehký bramborový salát",
+    tagy: ["veggie"],
+    jednotka: "porce",
+    cena: 60,
+    aktivni: true,
+  },
+  {
+    id: "mj-mediterran-cizrna",
+    kategorie: "mala_jidla",
+    nazev: "Mediteránský salát s cizrnou & olivami Kalamata",
+    tagy: ["vegan"],
+    jednotka: "porce",
+    cena: 70,
+    aktivni: true,
+  },
 
   {
     id: "kan-prazska",
