@@ -8,6 +8,7 @@ export const CATERING_CATEGORIES = [
   "kanapky",
   "misy",
   "dort",
+  "kuchyne",
 ] as const;
 
 export type CateringCategory = (typeof CATERING_CATEGORIES)[number];
@@ -24,6 +25,7 @@ export const CATEGORY_LABELS: Record<CateringCategory, string> = {
   mala_jidla: "Small dishes from our all-day menu",
   salaty: "Salads",
   dort: "Cake",
+  kuchyne: "Kitchen",
 };
 
 export const cateringItemSchema = z.object({

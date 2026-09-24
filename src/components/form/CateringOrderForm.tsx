@@ -10,13 +10,14 @@ import {
   type CateringOrderValidationMessages,
 } from "@/lib/schemas/catering-order";
 import type { CateringMenu } from "@/lib/sheets/fetch";
+import type { CateringPick } from "@/lib/schemas/catering";
 import { CateringBuilder, StickyCateringTotal, CateringOrderSummary } from "./CateringBuilder";
 import { priceCatering } from "@/lib/catering/calculate";
 
-const DRAFT_KEY = "catering-order-draft-v1";
+const DEFAULT_DRAFT_KEY = "catering-order-draft-v1";
 const ORDER_EMAIL = "rezervace@barcobra.cz";
 
-const DEFAULT_VALUES: CateringOrderInput = {
+const BASE_DEFAULT_VALUES: CateringOrderInput = {
   name: "",
   phone: "",
   email: "",
@@ -28,7 +29,21 @@ const DEFAULT_VALUES: CateringOrderInput = {
   turnstileToken: "",
 };
 
-export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
+export function CateringOrderForm({
+  menu,
+  defaultCatering,
+  draftKey = DEFAULT_DRAFT_KEY,
+}: {
+  menu: CateringMenu;
+  /** Pre-fills quantities, e.g. for an already-agreed private order. */
+  defaultCatering?: CateringPick[];
+  /** Keep distinct per menu so drafts don't leak between pages sharing this form. */
+  draftKey?: string;
+}) {
+  const DEFAULT_VALUES: CateringOrderInput = {
+    ...BASE_DEFAULT_VALUES,
+    catering: defaultCatering ?? [],
+  };
   const locale = useLocale();
   const t = useTranslations("cateringOrderForm");
   const tVal = useTranslations("validation");
@@ -66,7 +81,7 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
 
   useEffect(() => {
     try {
-      const raw = localStorage.getItem(DRAFT_KEY);
+      const raw = localStorage.getItem(draftKey);
       if (raw) reset({ ...DEFAULT_VALUES, ...JSON.parse(raw) });
     } catch { /* ignore */ }
     setHydrated(true);
@@ -79,7 +94,7 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
       try {
         const { turnstileToken: _t, honeypot: _h, ...persisted } = values as Record<string, unknown>;
         void _t; void _h;
-        localStorage.setItem(DRAFT_KEY, JSON.stringify(persisted));
+        localStorage.setItem(draftKey, JSON.stringify(persisted));
       } catch { /* ignore */ }
     });
     return () => sub.unsubscribe();
@@ -110,7 +125,7 @@ export function CateringOrderForm({ menu }: { menu: CateringMenu }) {
       `?subject=${encodeURIComponent(subject)}` +
       `&body=${encodeURIComponent(bodyLines.join("\n"))}`;
 
-    try { localStorage.removeItem(DRAFT_KEY); } catch { /* ignore */ }
+    try { localStorage.removeItem(draftKey); } catch { /* ignore */ }
     window.location.href = mailtoUrl;
     setMailOpened(true);
   }

@@ -263,7 +263,8 @@
       "misy": "Mísy hojnosti v libovolném množství dle budgetu",
       "mala_jidla": "Malá jídla z celodenní nabídky",
       "salaty": "Saláty",
-      "dort": "Dort"
+      "dort": "Dort",
+      "kuchyne": "Kuchyně"
     },
     "cateringTags": {
       "vegan": "vegan",
@@ -407,6 +408,15 @@
     "kan-pizza-snek": "Pizza šnek se šunkou a sýrem",
     "mis-syry": "Mísa evropských sýrů a hroznové víno",
     "mis-uzeniny": "Mísa uzenin, nakládaná zelenina a hrubozrnná hořčice",
-    "dort-12": "Narozeninový dort"
+    "dort-12": "Narozeninový dort",
+    "jiras-gulas": "Guláš",
+    "jiras-dynovy-krem": "Dýňový krém",
+    "jiras-rizecky": "Kuřecí řízečky, okurčičky, citron",
+    "jiras-foccaccia": "Velká foccaccia v celku",
+    "jiras-crudites": "Zeleninové crudites — mrkev, okurka, celer",
+    "jiras-hummus": "Hummus",
+    "jiras-babaganoush": "Babaganoush",
+    "jiras-muhammara": "Muhammara",
+    "jiras-brownie": "1/2 brownie"
   }
 }
