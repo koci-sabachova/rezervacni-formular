@@ -39,6 +39,9 @@ export default async function JirasPage({
         menu={menu}
         defaultCatering={JIRAS_DEFAULT_PICKS}
         draftKey="catering-order-draft-v1:jiras"
+        showPhone={false}
+        showEmail={false}
+        showEventDate={false}
       />
     </main>
   );

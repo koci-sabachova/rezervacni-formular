@@ -33,12 +33,19 @@ export function CateringOrderForm({
   menu,
   defaultCatering,
   draftKey = DEFAULT_DRAFT_KEY,
+  showPhone = true,
+  showEmail = true,
+  showEventDate = true,
 }: {
   menu: CateringMenu;
   /** Pre-fills quantities, e.g. for an already-agreed private order. */
   defaultCatering?: CateringPick[];
   /** Keep distinct per menu so drafts don't leak between pages sharing this form. */
   draftKey?: string;
+  /** Hide fields that don't apply, e.g. a private order for a contact already known. */
+  showPhone?: boolean;
+  showEmail?: boolean;
+  showEventDate?: boolean;
 }) {
   const DEFAULT_VALUES: CateringOrderInput = {
     ...BASE_DEFAULT_VALUES,
@@ -64,7 +71,11 @@ export function CateringOrderForm({
     [locale],
   );
 
-  const schema = useMemo(() => createCateringOrderSchema(validationMsgs), [validationMsgs]);
+  const schema = useMemo(
+    () => createCateringOrderSchema(validationMsgs, { requirePhone: showPhone, requireEmail: showEmail }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [validationMsgs],
+  );
 
   const methods = useForm<CateringOrderInput>({
     defaultValues: DEFAULT_VALUES,
@@ -109,8 +120,9 @@ export function CateringOrderForm({
       amount: priced.total.toLocaleString("en-US"),
       name: values.name,
     });
+    const contactParts = [values.name, values.phone, values.email].filter(Boolean);
     const bodyLines = [
-      `${t("mailContactLabel")}: ${values.name}, ${values.phone}, ${values.email}`,
+      `${t("mailContactLabel")}: ${contactParts.join(", ")}`,
       values.eventDate ? `${t("mailEventDateLabel")}: ${values.eventDate}` : null,
       "",
       `${t("mailOrderLabel")}:`,
@@ -175,7 +187,7 @@ export function CateringOrderForm({
           <div className="space-y-5 border-t border-[var(--color-border)] pt-6">
             <h2 className="text-lg font-medium text-[var(--color-text)]">{t("contactTitle")}</h2>
 
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className={showPhone ? "grid gap-4 sm:grid-cols-2" : "grid gap-4"}>
               <div>
                 <label htmlFor="name" className="field-label">
                   {t("name")} <span className="text-[var(--color-accent-soft)]">*</span>
@@ -183,30 +195,36 @@ export function CateringOrderForm({
                 <input id="name" type="text" autoComplete="name" className="input-base" {...register("name")} />
                 {errors.name && <p className="field-error">{errors.name.message as string}</p>}
               </div>
+              {showPhone && (
+                <div>
+                  <label htmlFor="phone" className="field-label">
+                    {t("phone")} <span className="text-[var(--color-accent-soft)]">*</span>
+                  </label>
+                  <input id="phone" type="tel" autoComplete="tel" placeholder="+420 777 123 456" className="input-base" {...register("phone")} />
+                  {errors.phone && <p className="field-error">{errors.phone.message as string}</p>}
+                </div>
+              )}
+            </div>
+
+            {showEmail && (
               <div>
-                <label htmlFor="phone" className="field-label">
-                  {t("phone")} <span className="text-[var(--color-accent-soft)]">*</span>
+                <label htmlFor="email" className="field-label">
+                  {t("email")} <span className="text-[var(--color-accent-soft)]">*</span>
                 </label>
-                <input id="phone" type="tel" autoComplete="tel" placeholder="+420 777 123 456" className="input-base" {...register("phone")} />
-                {errors.phone && <p className="field-error">{errors.phone.message as string}</p>}
+                <input id="email" type="email" autoComplete="email" className="input-base" {...register("email")} />
+                {errors.email && <p className="field-error">{errors.email.message as string}</p>}
               </div>
-            </div>
+            )}
 
-            <div>
-              <label htmlFor="email" className="field-label">
-                {t("email")} <span className="text-[var(--color-accent-soft)]">*</span>
-              </label>
-              <input id="email" type="email" autoComplete="email" className="input-base" {...register("email")} />
-              {errors.email && <p className="field-error">{errors.email.message as string}</p>}
-            </div>
-
-            <div>
-              <label htmlFor="eventDate" className="field-label">
-                {t("eventDateLabel")}{" "}
-                <span className="text-[var(--color-text-subtle)] text-xs">({t("eventDateOptional")})</span>
-              </label>
-              <input id="eventDate" type="text" placeholder={t("eventDatePlaceholder")} className="input-base" {...register("eventDate")} />
-            </div>
+            {showEventDate && (
+              <div>
+                <label htmlFor="eventDate" className="field-label">
+                  {t("eventDateLabel")}{" "}
+                  <span className="text-[var(--color-text-subtle)] text-xs">({t("eventDateOptional")})</span>
+                </label>
+                <input id="eventDate" type="text" placeholder={t("eventDatePlaceholder")} className="input-base" {...register("eventDate")} />
+              </div>
+            )}
 
             <div>
               <label htmlFor="note" className="field-label">

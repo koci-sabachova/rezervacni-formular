@@ -20,16 +20,28 @@ const defaultMsgs: CateringOrderValidationMessages = {
   gdpr: "Consent is required to submit the order",
 };
 
-export function createCateringOrderSchema(msgs: CateringOrderValidationMessages = defaultMsgs) {
+export type CateringOrderSchemaOptions = {
+  requirePhone?: boolean;
+  requireEmail?: boolean;
+};
+
+export function createCateringOrderSchema(
+  msgs: CateringOrderValidationMessages = defaultMsgs,
+  { requirePhone = true, requireEmail = true }: CateringOrderSchemaOptions = {},
+) {
   return z
     .object({
       name: z.string().trim().min(2, msgs.name).max(120),
-      phone: z
-        .string()
-        .trim()
-        .min(9, msgs.phoneMin)
-        .regex(/^[+]?[\d\s\-()]{9,20}$/, msgs.phoneRegex),
-      email: z.string().trim().email(msgs.email),
+      phone: requirePhone
+        ? z
+            .string()
+            .trim()
+            .min(9, msgs.phoneMin)
+            .regex(/^[+]?[\d\s\-()]{9,20}$/, msgs.phoneRegex)
+        : z.string().trim().max(20).optional().or(z.literal("")),
+      email: requireEmail
+        ? z.string().trim().email(msgs.email)
+        : z.string().trim().optional().or(z.literal("")),
       eventDate: z.string().trim().max(120).optional().or(z.literal("")),
       note: z.string().trim().max(2000).optional().or(z.literal("")),
       catering: z.array(cateringPickSchema).default([]),
