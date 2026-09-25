@@ -17,7 +17,7 @@ export const cateringSnapshot: CateringItem[] = [
   {
     id: "slane-arancini",
     kategorie: "slane_hlavni",
-    nazev: "Arancini",
+    nazev: "Smažené rýžové kuličky Arancini plněné sýrem provolone",
     jednotka: "1 ks (cca 125 g)",
     cena: 55,
     min_pocet: 5,
