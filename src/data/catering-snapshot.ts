@@ -15,6 +15,15 @@ export const cateringSnapshot: CateringItem[] = [
     aktivni: true,
   },
   {
+    id: "slane-arancini",
+    kategorie: "slane_hlavni",
+    nazev: "Arancini",
+    jednotka: "1 ks (cca 125 g)",
+    cena: 55,
+    min_pocet: 5,
+    aktivni: true,
+  },
+  {
     id: "slane-tatarak",
     kategorie: "slane_hlavni",
     nazev: "Hovězí tatarák & topinky z kváskového chleba",

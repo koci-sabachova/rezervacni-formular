@@ -229,7 +229,7 @@ function CateringItemRow({
         )}
         <p className="mt-1 text-xs text-[var(--color-text-subtle)]">
           {translateUnit(item.jednotka, locale)} · {formatCzk(item.cena as number)}
-          {isKanapky && (
+          {min > 1 && (
             <span className="ml-2 text-[var(--color-gold)]">
               ({t("minPcs", { min })})
             </span>
