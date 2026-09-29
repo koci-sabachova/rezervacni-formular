@@ -12,7 +12,7 @@ import {
 import type { CateringMenu } from "@/lib/sheets/fetch";
 import type { CateringPick } from "@/lib/schemas/catering";
 import { CateringBuilder, StickyCateringTotal, CateringOrderSummary } from "./CateringBuilder";
-import { priceCatering } from "@/lib/catering/calculate";
+import { priceCatering, kitchenLineLabel } from "@/lib/catering/calculate";
 
 const DEFAULT_DRAFT_KEY = "catering-order-draft-v1";
 const ORDER_EMAIL = "rezervace@barcobra.cz";
@@ -126,7 +126,7 @@ export function CateringOrderForm({
       values.eventDate ? `${t("mailEventDateLabel")}: ${values.eventDate}` : null,
       "",
       `${t("mailOrderLabel")}:`,
-      ...priced.lines.map((l) => `- ${l.label} — ${l.lineTotal.toLocaleString("en-US")} Kč`),
+      ...priced.lines.map((l) => `- ${kitchenLineLabel(l)} — ${l.lineTotal.toLocaleString("en-US")} Kč`),
       "",
       `${t("mailTotalLabel")}: ${priced.total.toLocaleString("en-US")} Kč${priced.hasEstimates ? ` (${t("mailInclEstimates")})` : ""}`,
       values.note ? `\n${t("mailNoteLabel")}:\n${values.note}` : null,

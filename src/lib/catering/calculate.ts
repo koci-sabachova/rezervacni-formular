@@ -67,3 +67,68 @@ export function priceCatering(
 export function formatCzk(amount: number): string {
   return `${amount.toLocaleString("en-US")} Kč`;
 }
+
+const WEIGHT_UNIT_RE = /^(\d+(?:[.,]\d+)?)\s*(kg|g)$/i;
+const PLATE_UNIT_RE = /^(\d+(?:[.,]\d+)?)?\s*talíř/i;
+const PORTION_UNIT_RE = /^(\d+(?:[.,]\d+)?)?\s*porc[eíi]/i;
+
+function czechPortionWord(n: number): string {
+  return n >= 5 || !Number.isInteger(n) ? "porcí" : "porce";
+}
+
+function czechPlateWord(n: number): string {
+  if (n === 1) return "talíř";
+  return n >= 2 && n <= 4 ? "talíře" : "talířů";
+}
+
+/**
+ * Kitchen prep quantity for one item ("4 kg", "2 talíře", "4 porce") derived
+ * from its jednotka × count — e.g. "1 kg" priced per kilo means 4 picks is
+ * 4 kg to weigh out, not "4 pieces". Returns null for piece-counted items
+ * (jednotka "1 ks" or anything else that doesn't parse) — those are already
+ * unambiguous as a plain count.
+ */
+function kitchenQuantity(jednotka: string, count: number): string | null {
+  const trimmed = jednotka.trim();
+
+  const weight = trimmed.match(WEIGHT_UNIT_RE);
+  if (weight) {
+    const perUnit = parseFloat(weight[1].replace(",", "."));
+    const unit = weight[2].toLowerCase();
+    const total = Math.round(perUnit * count * 100) / 100;
+    return `${total} ${unit}`;
+  }
+
+  const plate = trimmed.match(PLATE_UNIT_RE);
+  if (plate) {
+    const perUnit = plate[1] ? parseFloat(plate[1].replace(",", ".")) : 1;
+    const total = Math.round(perUnit * count * 100) / 100;
+    return `${total} ${czechPlateWord(total)}`;
+  }
+
+  const portion = trimmed.match(PORTION_UNIT_RE);
+  if (portion) {
+    const perUnit = portion[1] ? parseFloat(portion[1].replace(",", ".")) : 1;
+    const total = Math.round(perUnit * count * 100) / 100;
+    return `${total} ${czechPortionWord(total)}`;
+  }
+
+  return null;
+}
+
+/**
+ * Same line as PricedCateringLine.label, but for kitchen/operator use: an
+ * item priced by weight or plate shows the total to prep (e.g. "4 kg"), not
+ * a piece count that reads like "4 whole batches".
+ */
+export function kitchenLineLabel(line: PricedCateringLine): string {
+  if (line.isEstimate) return line.label;
+
+  const { item, pick } = line;
+  const count = Math.max(0, Math.floor(pick.count ?? 0));
+  const variantSuffix =
+    pick.variant && item.varianty?.includes(pick.variant) ? ` (${pick.variant})` : "";
+  const qty = kitchenQuantity(item.jednotka, count);
+  if (qty) return `${qty} ${item.nazev}${variantSuffix}`;
+  return `${count}× ${item.nazev}${variantSuffix}`;
+}
