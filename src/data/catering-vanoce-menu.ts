@@ -9,9 +9,10 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-olivy-rajcata",
     kategorie: "predkrmy",
-    nazev: "Marinované olivy a sušená rajčata (vegan)",
+    nazev: "Marinované olivy a sušená rajčata",
     jednotka: "70 g",
     cena: 135,
+    tagy: ["vegan"],
     aktivni: true,
   },
   {
@@ -210,9 +211,10 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-udon-cacio",
     kategorie: "bufet",
-    nazev: "Udon cacio e pepe (vegetarian)",
+    nazev: "Udon cacio e pepe",
     jednotka: "porce",
     cena: 130,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -226,33 +228,37 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-falafel-dynovy",
     kategorie: "bufet",
-    nazev: "Dýňový falafel (vegan)",
+    nazev: "Dýňový falafel",
     jednotka: "3 ks",
     cena: 90,
+    tagy: ["vegan"],
     aktivni: true,
   },
   {
     id: "van-bramborovy-salat",
     kategorie: "bufet",
-    nazev: "Lehký bramborový salát (vegetarian)",
+    nazev: "Lehký bramborový salát",
     jednotka: "125 g",
     cena: 75,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
     id: "van-sopsky-salat",
     kategorie: "bufet",
-    nazev: "Šopský salát (vegetarian)",
+    nazev: "Šopský salát",
     jednotka: "125 g",
     cena: 60,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
     id: "van-mediterranean-salat",
     kategorie: "bufet",
-    nazev: "Mediterranean salát s cizrnou a olivami Kalamata (vegan)",
+    nazev: "Mediterranean salát s cizrnou a olivami Kalamata",
     jednotka: "125 g",
     cena: 80,
+    tagy: ["vegan"],
     aktivni: true,
   },
   {
@@ -314,18 +320,20 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-bezlepkovy-chleba",
     kategorie: "bufet",
-    nazev: "Bezlepkový chléb (vegan)",
+    nazev: "Bezlepkový chléb",
     jednotka: "2 plátky",
     cena: 30,
+    tagy: ["vegan"],
     aktivni: true,
   },
 
   {
     id: "van-tapioka-mango",
     kategorie: "dezerty",
-    nazev: "Kokosový tapiokový puding s mangem (vegan)",
+    nazev: "Kokosový tapiokový puding s mangem",
     jednotka: "100 g",
     cena: 85,
+    tagy: ["vegan"],
     aktivni: true,
   },
   {
