@@ -274,14 +274,6 @@ export const cateringVanoceMenu: CateringItem[] = [
     aktivni: true,
   },
   {
-    id: "van-bezlepkovy-chleba",
-    kategorie: "bufet",
-    nazev: "Bezlepkový chléb (vegan)",
-    jednotka: "2 plátky",
-    cena: 30,
-    aktivni: true,
-  },
-  {
     id: "van-quesadilla",
     kategorie: "bufet",
     nazev: "Quesadilla s pastou z černých fazolí, rajčaty, koriandrem, cheddarem a guacamole",
@@ -319,6 +311,14 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mezze plate s hráškovým falafelem a jehněčími klobáskami",
     jednotka: "porce",
     cena: 175,
+    aktivni: true,
+  },
+  {
+    id: "van-bezlepkovy-chleba",
+    kategorie: "bufet",
+    nazev: "Bezlepkový chléb (vegan)",
+    jednotka: "2 plátky",
+    cena: 30,
     aktivni: true,
   },
 
