@@ -180,6 +180,11 @@ function CateringItemRow({
             )}
             <p className="text-xs text-[var(--color-text-subtle)]">
               {translateUnit(item.jednotka, locale)}{hasPricedVariants ? ` · ${priceLabel}` : ` · ${formatCzk(item.cena as number)}`}
+              {min > 1 && (
+                <span className="ml-2 text-[var(--color-gold)]">
+                  ({t("minPcs", { min })})
+                </span>
+              )}
             </p>
           </div>
         </div>
