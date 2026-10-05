@@ -71,6 +71,20 @@ export function formatCzk(amount: number): string {
 const WEIGHT_UNIT_RE = /^(\d+(?:[.,]\d+)?)\s*(kg|g)$/i;
 const PLATE_UNIT_RE = /^(\d+(?:[.,]\d+)?)?\s*talíř/i;
 const PORTION_UNIT_RE = /^(\d+(?:[.,]\d+)?)?\s*porc[eíi]/i;
+const PACK_UNIT_RE = /^(\d+)\s*ks$/i;
+
+/**
+ * Pieces per unit for a pack-sold item (jednotka "4 ks", "2 ks", …) — e.g.
+ * a mini sendvič is one sandwich pre-cut into 4 quarters and priced as a
+ * single "4 ks" unit. Returns null for "1 ks" or anything that isn't a
+ * multi-piece pack, since a plain count is already unambiguous there.
+ */
+export function packSize(jednotka: string): number | null {
+  const match = jednotka.trim().match(PACK_UNIT_RE);
+  if (!match) return null;
+  const n = parseInt(match[1], 10);
+  return n > 1 ? n : null;
+}
 
 function czechPortionWord(n: number): string {
   return n >= 5 || !Number.isInteger(n) ? "porcí" : "porce";
@@ -111,6 +125,11 @@ function kitchenQuantity(jednotka: string, count: number): string | null {
     const perUnit = portion[1] ? parseFloat(portion[1].replace(",", ".")) : 1;
     const total = Math.round(perUnit * count * 100) / 100;
     return `${total} ${czechPortionWord(total)}`;
+  }
+
+  const pack = packSize(trimmed);
+  if (pack) {
+    return `${pack * count} ks`;
   }
 
   return null;

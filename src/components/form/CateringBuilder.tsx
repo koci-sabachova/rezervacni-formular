@@ -11,7 +11,7 @@ import {
   type CateringTag,
   type PricedCateringLine,
 } from "@/lib/schemas/catering";
-import { priceCatering, formatCzk } from "@/lib/catering/calculate";
+import { priceCatering, formatCzk, packSize } from "@/lib/catering/calculate";
 import { translateVariant, translateUnit } from "@/lib/catering/variant-labels";
 
 type Props = {
@@ -378,10 +378,12 @@ function localizedLineLabel(
     return `${name} — est. ${line.lineTotal.toLocaleString("en-US")} Kč`;
   }
   const count = line.pick.count ?? 0;
+  const pack = packSize(line.item.jednotka);
+  const packSuffix = pack ? ` (${pack * count} ks)` : "";
   if (line.pick.variant && line.item.varianty?.includes(line.pick.variant)) {
-    return `${count}× ${name} (${translateVariant(line.pick.variant, locale)})`;
+    return `${count}× ${name} (${translateVariant(line.pick.variant, locale)})${packSuffix}`;
   }
-  return `${count}× ${name}`;
+  return `${count}× ${name}${packSuffix}`;
 }
 
 /**
