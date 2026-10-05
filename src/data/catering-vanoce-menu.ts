@@ -238,15 +238,6 @@ export const cateringVanoceMenu: CateringItem[] = [
     aktivni: true,
   },
   {
-    id: "van-falafel-dynovy",
-    kategorie: "bufet",
-    nazev: "Dýňový falafel",
-    jednotka: "3 ks",
-    cena: 90,
-    tagy: ["vegan"],
-    aktivni: true,
-  },
-  {
     id: "van-bramborovy-salat",
     kategorie: "bufet",
     nazev: "Lehký bramborový salát",
