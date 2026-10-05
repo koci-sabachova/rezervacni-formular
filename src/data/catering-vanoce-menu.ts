@@ -45,7 +45,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-tatarak-rajcata",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Tatarák ze sušených rajčat",
     jednotka: "1 ks",
     cena: 80,
@@ -55,6 +55,7 @@ export const cateringVanoceMenu: CateringItem[] = [
       "Na topince": 80,
     },
     tagy: ["vegan"],
+    min_pocet: 10,
     aktivni: true,
   },
   {
