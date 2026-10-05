@@ -41,9 +41,10 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-focaccia-tatarak-rajcata",
     kategorie: "predkrmy",
-    nazev: "Naše focaccia s tataráčkem ze sušených rajčat (vegan)",
+    nazev: "Naše focaccia s tataráčkem ze sušených rajčat",
     jednotka: "1 ks",
     cena: 80,
+    tagy: ["vegan"],
     aktivni: true,
   },
   {
