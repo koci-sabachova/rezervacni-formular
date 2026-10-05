@@ -17,7 +17,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-kanapky-focaccia-halloumi",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Kanapky s naší focacciou, muhammarou a grilovaným halloumi",
     jednotka: "1 ks",
     cena: 85,
@@ -25,7 +25,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-kanapky-serrano-meloun",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Kanapky s jamón serrano a cantaloupe melounem",
     jednotka: "1 ks",
     cena: 95,
@@ -55,7 +55,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-chlebicek-skvarky",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Chlebíček se škvarkovou pomazánkou a nakládanou zeleninou",
     jednotka: "1 ks",
     cena: 75,
@@ -129,7 +129,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-sendvic-kure",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Mini sendvič s kuřecím / krůtím prsem, bylinkovo-citronovou mayo, slaninou, paprikou a sýrem",
     jednotka: "4 ks",
     cena: 250,
@@ -137,7 +137,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-sendvic-mozzarella",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Mini sendvič mozzarella, čerstvá rajčata, bazalkové pesto, čerstvá bazalka, balzamiková redukce",
     jednotka: "4 ks",
     cena: 220,
@@ -145,7 +145,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-sendvic-halloumi",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Mini sendvič grilovaný sýr halloumi, pečená červená paprika, rukola, česnekový jogurtový dip",
     jednotka: "4 ks",
     cena: 220,
@@ -153,7 +153,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-sendvic-provolone",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Mini sendvič sušená rajčata, grilovaná cuketa, sýr provolone, bazalkové pesto, rukola",
     jednotka: "4 ks",
     cena: 220,
@@ -161,7 +161,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-sendvic-fazole",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Mini sendvič černé fazole, avokádo, cheddar, nakládané jalapeños, červená cibule, chipotle majonéza",
     jednotka: "4 ks",
     cena: 230,
