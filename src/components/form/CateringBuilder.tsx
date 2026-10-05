@@ -217,6 +217,13 @@ function CateringItemRow({
   }
 
   const count = pick?.count ?? 0;
+  // Pack-sold items (jednotka "4 ks" etc.) are priced and stored per pack,
+  // but the stepper and the "min" hint display the piece-equivalent so a
+  // customer sees "16" (pieces), not "4" (packs) — clicking +/- still
+  // moves one whole pack at a time.
+  const pack = packSize(item.jednotka) ?? 1;
+  const displayCount = count * pack;
+  const displayMin = min * pack;
   return (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4 py-4 border-b border-[var(--color-border)] last:border-0">
       <div className="flex-1">
@@ -229,19 +236,21 @@ function CateringItemRow({
         )}
         <p className="mt-1 text-xs text-[var(--color-text-subtle)]">
           {translateUnit(item.jednotka, locale)} · {formatCzk(item.cena as number)}
-          {min > 1 && (
+          {displayMin > 1 && (
             <span className="ml-2 text-[var(--color-gold)]">
-              ({t("minPcs", { min })})
+              ({t("minPcs", { min: displayMin })})
             </span>
           )}
         </p>
       </div>
       <CountStepper
-        value={count}
-        min={min}
+        value={displayCount}
+        min={displayMin}
+        step={pack}
         onChange={(n) => {
-          if (n <= 0) onRemove();
-          else onSet({ count: n });
+          const next = n / pack;
+          if (next <= 0) onRemove();
+          else onSet({ count: next });
         }}
         t={t}
       />
@@ -274,21 +283,24 @@ function CountStepper({
   disabled,
   onChange,
   t,
+  step = 1,
 }: {
   value: number;
   min: number;
   disabled?: boolean;
   onChange: (next: number) => void;
   t: ReturnType<typeof useTranslations>;
+  /** Click increment, and the only valid multiple for typed values — used for pack-sold items so +/- moves one whole pack at a time. */
+  step?: number;
 }) {
   const decrement = () => {
     if (value === 0) return;
     if (value <= min) onChange(0);
-    else onChange(value - 1);
+    else onChange(value - step);
   };
   const increment = () => {
     if (value === 0) onChange(min);
-    else onChange(value + 1);
+    else onChange(value + step);
   };
   return (
     <div className="flex items-center gap-2">
@@ -305,15 +317,15 @@ function CountStepper({
         type="number"
         inputMode="numeric"
         min={0}
-        step={1}
+        step={step}
         value={value || ""}
         placeholder="0"
         disabled={disabled}
         onChange={(e) => {
           const n = Number(e.target.value);
           if (Number.isNaN(n) || n <= 0) { onChange(0); return; }
-          if (n < min) onChange(min);
-          else onChange(Math.floor(n));
+          const snapped = Math.max(step, Math.round(n / step) * step);
+          onChange(Math.max(min, snapped));
         }}
         className="input-base !py-1.5 w-16 text-center"
       />
@@ -378,12 +390,12 @@ function localizedLineLabel(
     return `${name} — est. ${line.lineTotal.toLocaleString("en-US")} Kč`;
   }
   const count = line.pick.count ?? 0;
-  const pack = packSize(line.item.jednotka);
-  const packSuffix = pack ? ` (${pack * count} ks)` : "";
+  const pack = packSize(line.item.jednotka) ?? 1;
+  const displayCount = count * pack;
   if (line.pick.variant && line.item.varianty?.includes(line.pick.variant)) {
-    return `${count}× ${name} (${translateVariant(line.pick.variant, locale)})${packSuffix}`;
+    return `${displayCount}× ${name} (${translateVariant(line.pick.variant, locale)})`;
   }
-  return `${count}× ${name}${packSuffix}`;
+  return `${displayCount}× ${name}`;
 }
 
 /**
