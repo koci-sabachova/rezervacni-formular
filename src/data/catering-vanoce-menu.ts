@@ -21,6 +21,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Kanapky s naší focacciou, muhammarou a grilovaným halloumi",
     jednotka: "1 ks",
     cena: 85,
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -29,14 +30,16 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Kanapky s jamón serrano a cantaloupe melounem",
     jednotka: "1 ks",
     cena: 95,
+    min_pocet: 10,
     aktivni: true,
   },
   {
     id: "van-bruschetta-tatarak",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Bruschetta s hovězím tataráčkem a lanýžovou majonézou",
     jednotka: "1 ks",
     cena: 110,
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -59,6 +62,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Chlebíček se škvarkovou pomazánkou a nakládanou zeleninou",
     jednotka: "1 ks",
     cena: 75,
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -105,10 +109,11 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-bruschetta-caprese",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Bruschetta caprese s buvolí mozzarellou",
     jednotka: "1 ks",
     cena: 135,
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -133,6 +138,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mini sendvič s kuřecím / krůtím prsem, bylinkovo-citronovou mayo, slaninou, paprikou a sýrem",
     jednotka: "4 ks",
     cena: 250,
+    min_pocet: 4,
     aktivni: true,
   },
   {
@@ -141,6 +147,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mini sendvič mozzarella, čerstvá rajčata, bazalkové pesto, čerstvá bazalka, balzamiková redukce",
     jednotka: "4 ks",
     cena: 220,
+    min_pocet: 4,
     aktivni: true,
   },
   {
@@ -149,6 +156,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mini sendvič grilovaný sýr halloumi, pečená červená paprika, rukola, česnekový jogurtový dip",
     jednotka: "4 ks",
     cena: 220,
+    min_pocet: 4,
     aktivni: true,
   },
   {
@@ -157,6 +165,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mini sendvič sušená rajčata, grilovaná cuketa, sýr provolone, bazalkové pesto, rukola",
     jednotka: "4 ks",
     cena: 220,
+    min_pocet: 4,
     aktivni: true,
   },
   {
@@ -165,6 +174,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mini sendvič černé fazole, avokádo, cheddar, nakládané jalapeños, červená cibule, chipotle majonéza",
     jednotka: "4 ks",
     cena: 230,
+    min_pocet: 4,
     aktivni: true,
   },
   {
@@ -299,6 +309,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mezze plate s hráškovým falafelem",
     jednotka: "porce",
     cena: 155,
+    tagy: ["vegan"],
     aktivni: true,
   },
   {
@@ -307,6 +318,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mezze plate s hráškovým falafelem a grilovaným halloumi",
     jednotka: "porce",
     cena: 165,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
