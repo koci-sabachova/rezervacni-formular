@@ -253,6 +253,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "125 g",
     cena: 75,
     tagy: ["veggie"],
+    min_pocet: 5,
     aktivni: true,
   },
   {
@@ -262,6 +263,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "125 g",
     cena: 60,
     tagy: ["veggie"],
+    min_pocet: 5,
     aktivni: true,
   },
   {
@@ -271,6 +273,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "125 g",
     cena: 80,
     tagy: ["vegan"],
+    min_pocet: 5,
     aktivni: true,
   },
   {
