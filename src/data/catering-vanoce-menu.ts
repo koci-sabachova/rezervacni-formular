@@ -22,6 +22,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "1 ks",
     cena: 85,
     min_pocet: 10,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -114,6 +115,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "1 ks",
     cena: 135,
     min_pocet: 10,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -132,6 +134,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "1 ks",
     cena: 90,
     min_pocet: 10,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -150,6 +153,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "4 ks",
     cena: 220,
     min_pocet: 4,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -159,6 +163,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "4 ks",
     cena: 220,
     min_pocet: 4,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -168,6 +173,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "4 ks",
     cena: 220,
     min_pocet: 4,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -177,6 +183,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "4 ks",
     cena: 230,
     min_pocet: 4,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -185,6 +192,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Mísa evropských sýrů a hroznové víno",
     jednotka: "800 g",
     cena: 1500,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -235,6 +243,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Arancini – smažené rýžové kuličky plněné sýrem Provolone",
     jednotka: "2 ks",
     cena: 110,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -289,6 +298,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Quesadilla s pastou z černých fazolí, rajčaty, koriandrem, cheddarem a guacamole",
     jednotka: "porce",
     cena: 170,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -357,6 +367,7 @@ export const cateringVanoceMenu: CateringItem[] = [
       "S kokosem a mangem": 95,
     },
     min_pocet: 10,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -366,6 +377,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "100 g",
     cena: 95,
     min_pocet: 10,
+    tagy: ["vegan"],
     aktivni: true,
   },
   {
@@ -375,6 +387,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "100 g",
     cena: 95,
     min_pocet: 10,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -384,6 +397,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "100 g",
     cena: 90,
     min_pocet: 10,
+    tagy: ["veggie"],
     aktivni: true,
   },
   {
@@ -393,6 +407,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "100 g",
     cena: 95,
     min_pocet: 10,
+    tagy: ["veggie"],
     aktivni: true,
   },
 ];
