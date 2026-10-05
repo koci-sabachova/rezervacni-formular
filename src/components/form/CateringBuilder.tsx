@@ -190,7 +190,7 @@ function CateringItemRow({
             onChange={(e) => {
               const v = e.target.value;
               if (!v) onRemove();
-              else onSet({ variant: v, count: count || 1 });
+              else onSet({ variant: v, count: count || min });
             }}
           >
             <option value="">{t("selectVariant")}</option>
@@ -203,7 +203,7 @@ function CateringItemRow({
           </select>
           <CountStepper
             value={count}
-            min={1}
+            min={min}
             disabled={!variant}
             onChange={(n) => {
               if (n <= 0) onRemove();

@@ -348,6 +348,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "100 g",
     cena: 85,
     tagy: ["vegan"],
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -361,6 +362,7 @@ export const cateringVanoceMenu: CateringItem[] = [
       "S malinami": 95,
       "S kokosem a mangem": 95,
     },
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -369,6 +371,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Salát z tropického ovoce a máty",
     jednotka: "100 g",
     cena: 95,
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -377,6 +380,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Tiramisu",
     jednotka: "100 g",
     cena: 95,
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -385,6 +389,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Panna cotta",
     jednotka: "100 g",
     cena: 90,
+    min_pocet: 10,
     aktivni: true,
   },
   {
@@ -393,6 +398,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     nazev: "Cheesecake",
     jednotka: "100 g",
     cena: 95,
+    min_pocet: 10,
     aktivni: true,
   },
 ];
