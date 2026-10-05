@@ -118,18 +118,20 @@ export const cateringVanoceMenu: CateringItem[] = [
   },
   {
     id: "van-zavitek-kreveta",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Letní závitek s krevetou",
     jednotka: "1 ks",
     cena: 105,
+    min_pocet: 10,
     aktivni: true,
   },
   {
     id: "van-zavitek-tofu",
-    kategorie: "predkrmy",
+    kategorie: "kanapky",
     nazev: "Letní závitek s tofu, zeleninou a omeletou",
     jednotka: "1 ks",
     cena: 90,
+    min_pocet: 10,
     aktivni: true,
   },
   {
