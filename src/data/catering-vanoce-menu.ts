@@ -245,6 +245,7 @@ export const cateringVanoceMenu: CateringItem[] = [
     jednotka: "2 ks",
     cena: 110,
     tagy: ["veggie"],
+    min_pocet: 5,
     aktivni: true,
   },
   {
