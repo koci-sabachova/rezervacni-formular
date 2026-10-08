@@ -346,6 +346,24 @@ export const cateringVanoceMenu: CateringItem[] = [
     tagy: ["vegan"],
     aktivni: true,
   },
+  {
+    id: "van-orisky-kukurice",
+    kategorie: "bufet",
+    nazev: "Pražené oříšky s kukuřicí",
+    jednotka: "porce",
+    cena: 105,
+    tagy: ["palive"],
+    aktivni: true,
+  },
+  {
+    id: "van-popcorn",
+    kategorie: "bufet",
+    nazev: "Cobří máslový popcorn",
+    jednotka: "porce",
+    cena: 105,
+    tagy: ["veggie"],
+    aktivni: true,
+  },
 
   {
     id: "van-tapioka-mango",
@@ -410,6 +428,22 @@ export const cateringVanoceMenu: CateringItem[] = [
     cena: 95,
     min_pocet: 10,
     tagy: ["veggie"],
+    aktivni: true,
+  },
+  {
+    id: "van-brownie-maliny",
+    kategorie: "dezerty",
+    nazev: "Brownie s malinami",
+    jednotka: "1 ks",
+    cena: 65,
+    aktivni: true,
+  },
+  {
+    id: "van-susenka-cokolada",
+    kategorie: "dezerty",
+    nazev: "Sušenka s bílou čokoládou a sušeným banánem",
+    jednotka: "1 ks",
+    cena: 50,
     aktivni: true,
   },
 ];
