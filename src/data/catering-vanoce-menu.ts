@@ -44,6 +44,16 @@ export const cateringVanoceMenu: CateringItem[] = [
     aktivni: true,
   },
   {
+    id: "van-bruschetta-caprese",
+    kategorie: "kanapky",
+    nazev: "Bruschetta caprese s buvolí mozzarellou",
+    jednotka: "1 ks",
+    cena: 135,
+    min_pocet: 10,
+    tagy: ["veggie"],
+    aktivni: true,
+  },
+  {
     id: "van-tatarak-rajcata",
     kategorie: "kanapky",
     nazev: "Tatarák ze sušených rajčat",
@@ -107,16 +117,6 @@ export const cateringVanoceMenu: CateringItem[] = [
       "Se zeleninovými crudités": 135,
     },
     tagy: ["vegan"],
-    aktivni: true,
-  },
-  {
-    id: "van-bruschetta-caprese",
-    kategorie: "kanapky",
-    nazev: "Bruschetta caprese s buvolí mozzarellou",
-    jednotka: "1 ks",
-    cena: 135,
-    min_pocet: 10,
-    tagy: ["veggie"],
     aktivni: true,
   },
   {
