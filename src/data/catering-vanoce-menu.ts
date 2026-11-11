@@ -178,6 +178,15 @@ export const cateringVanoceMenu: CateringItem[] = [
     aktivni: true,
   },
   {
+    id: "van-sendvic-bucek",
+    kategorie: "kanapky",
+    nazev: "Mini sendvič pomalu pečený bůček, škvarky, ementál, kyselá okurka, smažená cibulka & křenová majonéza",
+    jednotka: "4 ks",
+    cena: 235,
+    min_pocet: 4,
+    aktivni: true,
+  },
+  {
     id: "van-sendvic-fazole",
     kategorie: "kanapky",
     nazev: "Mini sendvič černé fazole, avokádo, cheddar, nakládané jalapeños, červená cibule, chipotle majonéza",
