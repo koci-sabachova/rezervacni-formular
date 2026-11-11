@@ -415,6 +415,10 @@ export function CateringOrderSummary({ menu }: { menu: CateringItem[] }) {
   const locale = useLocale();
   const picks = (watch("catering") ?? []) as CateringPick[];
   const priced = priceCatering(picks, menu);
+  const menuOrder = new Map(menu.map((item, i) => [item.id, i]));
+  const sortedLines = [...priced.lines].sort(
+    (a, b) => (menuOrder.get(a.item.id) ?? 999) - (menuOrder.get(b.item.id) ?? 999),
+  );
 
   return (
     <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-card)] p-5">
@@ -423,7 +427,7 @@ export function CateringOrderSummary({ menu }: { menu: CateringItem[] }) {
         <p className="text-sm text-[var(--color-text-subtle)]">{t("summaryEmpty")}</p>
       ) : (
         <ul className="space-y-2">
-          {priced.lines.map((line, i) => (
+          {sortedLines.map((line, i) => (
             <li key={i} className="flex items-baseline justify-between gap-3 text-sm">
               <span className="text-[var(--color-text-muted)]">
                 {localizedLineLabel(line, tItems, locale)}
