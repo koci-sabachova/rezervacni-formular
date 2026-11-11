@@ -178,6 +178,15 @@ export const cateringVanoceMenu: CateringItem[] = [
     aktivni: true,
   },
   {
+    id: "van-sendvic-bucek",
+    kategorie: "kanapky",
+    nazev: "Mini sendvič pomalu pečený bůček, škvarky, ementál, kyselá okurka, smažená cibulka & křenová majonéza",
+    jednotka: "4 ks",
+    cena: 235,
+    min_pocet: 4,
+    aktivni: true,
+  },
+  {
     id: "van-sendvic-fazole",
     kategorie: "kanapky",
     nazev: "Mini sendvič černé fazole, avokádo, cheddar, nakládané jalapeños, červená cibule, chipotle majonéza",
@@ -314,7 +323,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-mezze-falafel",
     kategorie: "bufet",
-    nazev: "Mezze plate s hráškovým falafelem",
+    nazev: "Mezze plate s cizrnovým falafelem",
     jednotka: "porce",
     cena: 155,
     tagy: ["vegan"],
@@ -323,7 +332,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-mezze-halloumi",
     kategorie: "bufet",
-    nazev: "Mezze plate s hráškovým falafelem a grilovaným halloumi",
+    nazev: "Mezze plate s cizrnovým falafelem a grilovaným halloumi",
     jednotka: "porce",
     cena: 165,
     tagy: ["veggie"],
@@ -332,7 +341,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-mezze-klobasky",
     kategorie: "bufet",
-    nazev: "Mezze plate s hráškovým falafelem a jehněčími klobáskami",
+    nazev: "Mezze plate s cizrnovým falafelem a jehněčími klobáskami",
     jednotka: "porce",
     cena: 175,
     aktivni: true,
