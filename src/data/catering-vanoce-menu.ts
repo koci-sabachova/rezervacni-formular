@@ -314,7 +314,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-mezze-falafel",
     kategorie: "bufet",
-    nazev: "Mezze plate s hráškovým falafelem",
+    nazev: "Mezze plate s cizrnovým falafelem",
     jednotka: "porce",
     cena: 155,
     tagy: ["vegan"],
@@ -323,7 +323,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-mezze-halloumi",
     kategorie: "bufet",
-    nazev: "Mezze plate s hráškovým falafelem a grilovaným halloumi",
+    nazev: "Mezze plate s cizrnovým falafelem a grilovaným halloumi",
     jednotka: "porce",
     cena: 165,
     tagy: ["veggie"],
@@ -332,7 +332,7 @@ export const cateringVanoceMenu: CateringItem[] = [
   {
     id: "van-mezze-klobasky",
     kategorie: "bufet",
-    nazev: "Mezze plate s hráškovým falafelem a jehněčími klobáskami",
+    nazev: "Mezze plate s cizrnovým falafelem a jehněčími klobáskami",
     jednotka: "porce",
     cena: 175,
     aktivni: true,
